@@ -849,15 +849,15 @@ section p {
     Footer Section Styles (id="Footer")
 */
 #Footer {
-    background-color: #1f1f1f; /* Dark footer background */
+    background-color: #161B22; /* Secondary dark for footer background */
     color: #e0e0e0; /* Light text */
-    padding: 50px 5% 30px 5%; /* Adjusted padding */
+    padding: 60px 5% 0 5%; /* Increased top padding, bottom padding will be handled by footer-bottom */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around; /* Better distribution for 2 columns */
     align-items: flex-start;
     font-family: 'Poppins', 'Arial', sans-serif; /* Consistent font */
-    border-top: 2px solid #00c6ff; /* Accent top border for the entire footer */
+    border-top: 3px solid #00A9FF; /* Slightly thicker accent top border */
 }
 
 /* General & Links Section */
@@ -865,15 +865,15 @@ section p {
     flex: 1;
     min-width: 250px;
     margin-bottom: 30px; /* Increased bottom margin for spacing */
-    padding: 0 15px; /* Add some horizontal padding within columns */
+    padding: 0 20px; /* Increased horizontal padding within columns */
 }
 
 /* Corrected h1 to h2 to match HTML */
 .general h2, .important-links-certificates h2 {
     font-size: 22px;
     margin-bottom: 15px; /* Increased margin */
-    color: #00c6ff; /* Accent color */
-    border-bottom: 1px solid #00c6ff; /* Subtle underline for headings */
+    color: #00A9FF; /* Accent color */
+    border-bottom: 2px solid #00A9FF; /* Slightly thicker underline for headings */
     padding-bottom: 8px;
     display: inline-block; /* So border only spans text width */
 }
@@ -894,16 +894,16 @@ ul li {
 
 ul li a {
     text-decoration: none;
-    color: #c0c0c0; /* Light link color */
+    color: #b0b8c4; /* Slightly softer light link color */
     font-size: 16px;
-    transition: color 0.3s, padding-left 0.3s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
     position: relative; /* For pseudo-element effects */
     display: inline-block; /* Allows padding and better interaction */
 }
 
 ul li a:hover {
-    color: #00c6ff; /* Accent hover */
-    padding-left: 5px; /* Slight indent on hover */
+    color: #00A9FF; /* Accent hover */
+    transform: translateX(3px); /* Slight shift on hover instead of padding change */
 }
 
 /* Optional: Add a subtle underline effect on hover for links */
@@ -914,7 +914,7 @@ ul li a::before {
     height: 1px;
     bottom: -2px;
     left: 0;
-    background-color: #00c6ff;
+    background-color: #00A9FF;
     transition: width 0.3s ease;
 }
 
@@ -951,13 +951,14 @@ ul li a:hover::before {
 
 /* Styling for the .footer-bottom div */
 .footer-bottom {
+    background-color: #0D1117; /* Primary dark, distinct from main footer area */
     flex-basis: 100%; /* Makes it take the full width */
     text-align: center;
-    margin-top: 30px; /* Space above the copyright */
-    padding-top: 20px; /* Padding above the text */
-    border-top: 1px solid #333; /* Subtle separator line */
+    margin-top: 40px; /* Space above this section, ensuring it's after columns */
+    padding: 25px 5%; /* Padding for the bottom bar */
+    border-top: 1px solid #30363D; /* Softer separator line */
     font-size: 0.9em;
-    color: #aaa; /* Slightly dimmer text */
+    color: #8B949E; /* Muted copyright text */
 }
 /*
     Intro Section Styles (id="home" - also styled earlier, this is more specific for content)
@@ -1119,4 +1120,75 @@ a:hover {
 /* Optional: Style for focus state on skill-box if using tabindex */
 .skill-box:focus {
   outline: 2px solid blue; /* Example focus indicator */
+}
+
+.modal-btn { /* Style for the GitHub button inside the modal */
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #00c6ff;
+    background-color: #00A9FF; /* Accent */
+    color: #121212; /* Dark text on accent button */
+}
+
+/* Certifications Page Styles */
+#certifications-page { /* Using an ID for the section on the new page */
+    padding: 40px 20px;
+    max-width: 1000px; /* Increased max-width for potentially wider layout */
+    margin: 100px auto;
+    text-align: center; /* Center the section title and intro paragraph */
+}
+
+.certificates-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between cards */
+    margin-top: 40px; /* Space below intro paragraph */
+    text-align: left; /* Reset text-align for card content */
+}
+
+.certificate-card {
+    background-color: #161B22; /* Consistent with other cards */
+    border: 1px solid #30363D;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 169, 255, 0.3); /* Accent shadow */
+    border-color: #00A9FF;
+}
+
+.certificate-card h3 {
+    font-size: 1.3em; /* Slightly adjusted size */
+    color: #00A9FF; /* Accent color */
+    margin-bottom: 12px;
+}
+
+.certificate-card .instructors {
+    font-size: 0.9em;
+    color: #c0c0c0;
+    margin-bottom: 15px;
+}
+
+.certificate-card .certificate-link {
+    display: inline-block; /* Changed to inline-block for better alignment if text is short */
+    align-self: flex-start; /* Align button to the start of the flex container */
+    margin-top: auto; /* Pushes button to the bottom if card content height varies */
+    padding: 10px 18px;
+    background-color: #00A9FF;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.certificate-card .certificate-link:hover {
+    background-color: #0077B3; /* Darker accent */
 }

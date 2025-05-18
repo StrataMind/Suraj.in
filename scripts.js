@@ -192,21 +192,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Active link highlighting on scroll
-    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
     sidebarNavLinks.forEach(link => {
         link.classList.remove('active');
         const linkHref = link.getAttribute('href');
-        const linkPageName = linkHref.split("#")[0];
+        const linkTargetPage = linkHref.split("#")[0]; // Get the page name from href (e.g., "projects.html")
 
-        if (linkPageName === currentPath || (currentPath === "index.html" && linkPageName === "")) {
-            if (!linkHref.includes("#") || currentPath !== "index.html") {
+        // If the link's target page matches the current page, and it's not just a hash link on index.html (unless it's the home link)
+        if (linkTargetPage === currentPage) {
+            if (currentPage !== "index.html" || linkHref === "#home" || linkHref === "index.html#home" || linkHref === "index.html") {
                 link.classList.add('active');
             }
         }
     });
-
-    if (currentPath === "index.html") {
+    if (currentPage === "index.html") {
         const sections = document.querySelectorAll('main section[id]');
         const homeLink = document.querySelector('.sidebar-nav-links .nav-link[href="#home"]');
 
