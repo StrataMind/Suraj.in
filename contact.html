@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="styles.css">
+  <title>Contact | Suraj Kumar</title>
+</head>
+<body>
+
+  <!-- Particle.js container -->
+  <div id="particles-js"></div>
+
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+      <div class="sidebar-header">
+          <a href="index.html#home" class="sidebar-logo-link">
+              <img src="images/profile_picture.jpeg" alt="Suraj Kumar" class="sidebar-logo">
+              <span>Suraj Kumar</span>
+          </a>
+      </div>
+      <ul class="sidebar-nav-links">
+          <li><a href="index.html#home" class="nav-link">Home</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+      </ul>
+      <div class="sidebar-social-icons">
+          <a href="https://github.com/surajsk2003" target="_blank">
+              <img src="images/github.png" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">
+              <img src="images/linkedin.png" alt="LinkedIn">
+          </a>
+      </div>
+  </nav>
+
+  <button class="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+  </button>
+
+<main>
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <h2 class="section-title">Contact Me</h2>
+    <p>If you have any questions, feedback, or collaboration ideas, feel free to reach out to us using the form below.</p>
+
+    <form id="contactForm" action="https://formspree.io/f/mzzroqev" method="POST">
+      
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="responseMessage"></div>
+  </section>
+</main>
+
+  <script src="scripts.js"></script>
+  <script src="particles.js"></script>
+  <script src="particle-config.js"></script>
+
+  <!-- Footer will be added if you decide to have a common footer component -->
+  <!-- For now, keeping it simple. If you have a footer in index.html, replicate it here -->
+  <div class="footer-bottom">
+      <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
+      <p>Designed by Suraj Kumar</p>
+  </div>
+</body>
+</html>

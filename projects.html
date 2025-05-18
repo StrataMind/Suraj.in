@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="styles.css">
+  <title>Projects | Suraj Kumar</title>
+</head>
+<body>
+
+  <!-- Particle.js container -->
+  <div id="particles-js"></div>
+
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+      <div class="sidebar-header">
+          <a href="index.html#home" class="sidebar-logo-link">
+              <img src="images/profile_picture.jpeg" alt="Suraj Kumar" class="sidebar-logo">
+              <span>Suraj Kumar</span>
+          </a>
+      </div>
+      <ul class="sidebar-nav-links">
+          <li><a href="index.html#home" class="nav-link">Home</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+          <li><a href="projects.html" class="nav-link active">Projects</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="sidebar-social-icons">
+          <a href="https://github.com/surajsk2003" target="_blank">
+              <img src="images/github.png" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">
+              <img src="images/linkedin.png" alt="LinkedIn">
+          </a>
+      </div>
+  </nav>
+
+  <button class="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+  </button>
+
+<main>
+  <!-- Projects Section -->
+  <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p>Some of my projects...</p>
+
+      <div class="projects-container">
+          <!-- Project 1: StudyBud -->
+          <div class="project-card" 
+               data-title="StudyBud – A Random Chatroom Application"
+               data-description="Developed a web-based chatroom where users can connect and chat randomly. Focused on user experience and real-time messaging. Planned to add login, chat history, and notifications in future versions."
+               data-image="images/studybud_placeholder.png" 
+               data-technologies="Python, Django"
+               data-github-link="YOUR_STUDYBUD_GITHUB_LINK_HERE"> <!-- Add actual link -->
+              <div class="project-header">
+                  <h3>StudyBud – Random Chatroom</h3>
+              </div>
+              <div class="project-description">
+                  <p>Web-based random chatroom application focusing on real-time messaging. Click to learn more.</p>
+              </div>
+              <div class="project-links">
+                  <a href="YOUR_STUDYBUD_GITHUB_LINK_HERE" target="_blank">Source Code</a>
+              </div>
+          </div>
+
+          <!-- Project 2: Mock OCR Model -->
+          <div class="project-card"
+               data-title="Mock OCR Model – CPU vs GPU Performance Check"
+               data-description="Built a deep learning model to read text from images. Compared model performance on CPU and GPU in terms of speed and efficiency. Used charts to show the performance difference and integrated Tesseract for text extraction."
+               data-image="images/ocr_placeholder.png"
+               data-technologies="Python, PyTorch, Matplotlib, Tesseract"
+               data-github-link="YOUR_OCR_GITHUB_LINK_HERE"> <!-- Add actual link -->
+              <div class="project-header">
+                  <h3>Mock OCR Model</h3>
+              </div>
+              <div class="project-description">
+                  <p>Deep learning OCR model comparing CPU vs GPU performance. Click to learn more.</p>
+              </div>
+              <div class="project-links">
+                  <a href="YOUR_OCR_GITHUB_LINK_HERE" target="_blank">Source Code</a>
+              </div>
+          </div>
+
+          <!-- Project 3: QA_Docs -->
+          <div class="project-card"
+               data-title="QA_Docs – AI Q&A App for Documents"
+               data-description="Created an AI-powered app to answer questions from uploaded documents. Used OpenAI GPT and Hugging Face models for accurate and smart responses. Deployed the app on Azure and set up automatic deployment using GitHub."
+               data-image="images/qadocs_placeholder.png"
+               data-technologies="Python, Django, Hugging Face, Azure, OpenAI API"
+               data-github-link="YOUR_QADOCS_GITHUB_LINK_HERE"> <!-- Add actual link -->
+              <div class="project-header">
+                  <h3>QA_Docs – AI Q&A App</h3>
+              </div>
+              <div class="project-description">
+                  <p>AI-powered Q&A system for documents using advanced NLP models. Click to learn more.</p>
+              </div>
+              <div class="project-links">
+                  <a href="https://github.com/surajsk2003/QA_DOCS.git" target="_blank">GitHub Repo</a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+</main>
+
+  <script src="scripts.js"></script>
+  <script src="particles.js"></script>
+  <script src="particle-config.js"></script>
+</body>
+</html>
