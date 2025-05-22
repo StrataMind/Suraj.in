@@ -5,7 +5,7 @@ This is the source code for my personal portfolio website, designed to showcase 
 <!-- Optional: Add a screenshot or GIF of your portfolio here -->
 <!-- ![Portfolio Screenshot](link_to_your_screenshot.png) -->
 
-**Live Demo:** [Suraj](https://surajsk2003.github.io/Suraj.in/)
+**Live Demo:** [Suraj.in](https://surajsk2003.github.io/Suraj.in/)
 
 ## Features
 
