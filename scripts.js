@@ -46,26 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (error) {
                 console.error("Error submitting form:", error);
-                document.getElementById("responseMessage").textContent = "An error occurred, please try again.";
+                const responseMessage = document.getElementById("responseMessage"); // Fixed: Added declaration
+                responseMessage.textContent = "An error occurred, please try again.";
                 responseMessage.style.color = "red";
             }
         });
     }
-
-    // live animation (bgAnimation) - This code is likely redundant due to particles.js
-    // and will error if the #bgAnimation element is not in the HTML.
-    // Consider removing it if particles.js is your primary background.
-    /*
-    const bgAnimation = document.getElementById('bgAnimation');
-    if (bgAnimation) { // Add a null check
-        const numberOfColorBoxes = 400;
-        for (let i = 0; i < numberOfColorBoxes; i++) {
-            const colorBox = document.createElement('div');
-            colorBox.classList.add('colorBox');
-            bgAnimation.append(colorBox);
-        }
-    }
-    */
 
     // Project Modal Functionality
     const projectModalElement = document.getElementById('projectModal');
@@ -94,24 +80,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     modalGithubLink.style.display = 'none';
                 }
 
-                projectModalElement.style.display = 'block';
+                projectModalElement.style.display = 'block'; // Show modal when card is clicked
             });
         });
 
+        // Setup close listeners only once, outside the forEach loop
         if (closeButton) {
             closeButton.addEventListener('click', () => {
                 projectModalElement.style.display = 'none';
             });
         }
-
-        // Close modal when clicking outside of the modal content
+    
+        // Close modal when clicking outside of the modal content (setup once)
         window.addEventListener('click', (event) => {
             if (event.target === projectModalElement) {
                 projectModalElement.style.display = 'none';
             }
         });
-
-        // Optional: Close modal with Escape key
+    
+        // Optional: Close modal with Escape key (setup once)
         window.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && projectModalElement.style.display === 'block') {
                 projectModalElement.style.display = 'none';
@@ -123,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.querySelector('.sidebar');
     const sidebarToggle = document.querySelector('.sidebar-toggle');
     const mainContent = document.querySelector('main');
-    const PEEK_AMOUNT = 40; 
+    const PEEK_AMOUNT = 40; // Restored for peeking sidebar on desktop
     const SIDEBAR_WIDTH = 260; 
 
     if (sidebarToggle && sidebar && mainContent) { // Added null check for mainContent
@@ -132,32 +119,35 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebarToggle.classList.toggle('open');
             sidebarToggle.setAttribute('aria-expanded', sidebar.classList.contains('open'));
             if (window.innerWidth > 768) { // Only adjust main margin on desktop
-                if (sidebar.classList.contains('open')) {
-                    mainContent.style.marginLeft = SIDEBAR_WIDTH + 'px';
-                } else {
-                    mainContent.style.marginLeft = PEEK_AMOUNT + 'px';
-                }
-            } else { // On mobile, main content margin is 0 when sidebar is closed
+                // On desktop, main content margin is SIDEBAR_WIDTH when open, PEEK_AMOUNT when closed
+                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : PEEK_AMOUNT + 'px';
+            } else { // On mobile, main content margin is SIDEBAR_WIDTH when open, 0 when closed
                  mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : '0px';
             }
         });
     }
 
-    // Desktop: Sidebar hover to open/close
-    if (window.innerWidth > 768 && sidebar && mainContent) { // Added null check for mainContent
+    // Desktop: Sidebar hover to open/close (Restored)
+    if (window.innerWidth > 768 && sidebar && mainContent) {
         sidebar.addEventListener('mouseenter', () => {
-            if (!sidebar.classList.contains('open')) { // Only trigger if not already opened by button
-                 sidebar.classList.add('hover-open'); // Use a different class for hover to distinguish
+            // If sidebar is not already open by button click, expand it on hover
+            if (!sidebar.classList.contains('open')) {
+                sidebar.classList.add('hover-open'); // Mark as hover-opened
+                mainContent.style.marginLeft = SIDEBAR_WIDTH + 'px';
+            } else {
+                 // If already open by button, ensure margin is full width
+                mainContent.style.marginLeft = SIDEBAR_WIDTH + 'px';
             }
-            mainContent.style.marginLeft = SIDEBAR_WIDTH + 'px';
         });
         sidebar.addEventListener('mouseleave', () => {
+            // If it was opened by hover (and not by button click)
             if (sidebar.classList.contains('hover-open')) {
                 sidebar.classList.remove('hover-open');
-                 if (!sidebarToggle.classList.contains('open')) { // If button didn't force it open
+                if (!sidebar.classList.contains('open')) { // Check again if button made it open
                     mainContent.style.marginLeft = PEEK_AMOUNT + 'px';
-                 }
-            } else if (!sidebar.classList.contains('open')) { // If it was never open by button or hover
+                }
+            } else if (!sidebar.classList.contains('open')) {
+                // If it was never open (neither by button nor hover), ensure it's peeking
                 mainContent.style.marginLeft = PEEK_AMOUNT + 'px';
             }
             // If sidebar.classList.contains('open') (opened by button), margin stays wide
@@ -165,17 +155,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Adjust main content margin on resize for mobile/desktop views
-    window.addEventListener('resize', () => {
+    const adjustMainContentMargin = () => {
         if (mainContent && sidebar) { // Added null check
             if (window.innerWidth <= 768) {
                 mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : '0px';
             } else {
-                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : PEEK_AMOUNT + 'px';
+                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : PEEK_AMOUNT + 'px'; // Desktop margin is PEEK_AMOUNT when closed
             }
         }
-    });
-    // Initial call to set margin correctly
-    if (mainContent) window.dispatchEvent(new Event('resize'));
+    }; // Fixed: Added missing semicolon
+
+    // Add resize event listener - Fixed: This was missing
+    window.addEventListener('resize', adjustMainContentMargin);
+    
+    // Initial call to set main content margin correctly on page load
+    if (mainContent) adjustMainContentMargin(); // Call the simplified function directly
     
     // Close sidebar when a link is clicked (on mobile)
     const sidebarNavLinks = document.querySelectorAll('.sidebar-nav-links .nav-link'); // Renamed to avoid conflict
@@ -189,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
 
     // Active link highlighting on scroll
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
@@ -206,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
     if (currentPage === "index.html") {
         const sections = document.querySelectorAll('main section[id]');
         const homeLink = document.querySelector('.sidebar-nav-links .nav-link[href="#home"]');
@@ -216,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 150; // Adjusted offset
-                
+
                 // Check if section is in viewport or closest to top
                 if (window.scrollY >= sectionTop - section.offsetHeight / 2 && window.scrollY < sectionTop + section.offsetHeight / 2) {
                      currentSectionId = section.getAttribute('id');
@@ -228,8 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!currentSectionId) currentSectionId = section.getAttribute('id'); // Tentatively set
                 }
             });
-            
-            if (window.scrollY < (sections.length > 0 ? sections[0].offsetTop - 150 : window.innerHeight / 2) ) {
+
+            if (window.scrollY < (sections.length > 0 ? sections[0].offsetTop - 150 : window.innerHeight / 2)) {
                  currentSectionId = "home";
             }
 
@@ -241,9 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         };
-        window.addEventListener('scroll', activateLinkOnScroll);
+        window.addEventListener('scroll', activateLinkOnScroll); // Add scroll listener
         activateLinkOnScroll(); // Initial call
     }
+
     // New Skills Section Interaction
     const accordionItems = document.querySelectorAll('.skill-accordion-item');
 
@@ -254,8 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (header && content) {
                 header.addEventListener('click', () => {
-                    const isOpen = item.classList.contains('open');
-
                     // Optional: Close all other open items if you want only one open at a time
                     // accordionItems.forEach(otherItem => {
                     //     if (otherItem !== item) {
@@ -296,35 +289,91 @@ document.addEventListener('DOMContentLoaded', () => {
     // Typing JS (moved from inline script in index.html)
     const typedTextElement = document.getElementById("typed-text");
     if (typedTextElement) {
-        const textArray = ["Suraj", "Software Engineer", "Machine Engineer"];
+        const textArray = ["Suraj", "Software Engineer", "Machine Learning Engineer"]; // Corrected "Machine Learning Engineer"
         let textIndex = 0;
-        let letterIndex = 0;
+        let letterIndex = 0; // Represents the number of characters of currentFullString currently displayed
         let isDeleting = false;
-        let currentText = "";
 
         function type() {
-            if (!isDeleting) {
-                currentText = "I am " + textArray[textIndex].substring(0, letterIndex + 1);
-                letterIndex++;
-            } else {
-                currentText = "I am " + textArray[textIndex].substring(0, letterIndex -1);
+            const currentFullString = textArray[textIndex];
+            let typeSpeed;
+
+            if (isDeleting) {
+                // Deleting
+                typedTextElement.textContent = "I am " + currentFullString.substring(0, letterIndex);
                 letterIndex--;
+                typeSpeed = 100; // Deleting speed
+
+                if (letterIndex < 0) { // Finished deleting
+                    isDeleting = false;
+                    letterIndex = 0; // Reset for typing next word
+                    textIndex = (textIndex + 1) % textArray.length;
+                    typeSpeed = 500; // Pause slightly before starting next word
+                }
+            } else {
+                // Typing
+                typedTextElement.textContent = "I am " + currentFullString.substring(0, letterIndex + 1);
+                letterIndex++;
+                typeSpeed = 150; // Typing speed
+
+                if (letterIndex > currentFullString.length) { // Finished typing current word
+                    isDeleting = true;
+                    letterIndex = currentFullString.length; // Set letterIndex to start deleting from the end
+                    typeSpeed = 1000; // Pause at the end of the word
+                }
             }
-
-            typedTextElement.textContent = currentText;
-
-            if (letterIndex === textArray[textIndex].length + 1 && !isDeleting) { // Adjusted condition
-                setTimeout(() => { isDeleting = true; }, 1000);
-            }
-
-            if (letterIndex === 0 && isDeleting) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % textArray.length;
-            }
-
-            const typingSpeed = isDeleting ? 100 : 150;
-            setTimeout(type, typingSpeed);
+            setTimeout(type, typeSpeed); // Fixed: Changed from 'typingSpeed' to 'typeSpeed'
         }
         type(); // Start the typing animation
+    }
+
+    // Footer Accordion Functionality (Mobile)
+    const footerAccordionItems = document.querySelectorAll('#Footer .general, #Footer .important-links-certificates');
+
+    if (footerAccordionItems.length > 0) {
+        footerAccordionItems.forEach(item => {
+            const header = item.querySelector('.footer-accordion-header');
+            const content = item.querySelector('ul');
+
+            if (header && content) {
+                console.log("Footer accordion header found for:", item.firstElementChild.textContent.trim()); // Log which header is being processed
+                header.addEventListener('click', () => {
+                    console.log("Header clicked:", header.textContent.trim(), "Window width:", window.innerWidth);
+                    if (window.innerWidth <= 768) { // Only enable accordion on mobile
+                        console.log("Mobile view detected for accordion.");
+                        
+                        item.classList.toggle('open');
+                        console.log("Item classList after toggle:", item.classList.toString());
+
+                        if (item.classList.contains('open')) {
+                            // OPENING
+                            console.log("Attempting to open accordion content.");
+                            // Use double requestAnimationFrame to ensure styles (padding) are applied before measuring scrollHeight
+                            requestAnimationFrame(() => { // First frame: browser processes style changes from .open class
+                                requestAnimationFrame(() => { // Second frame: measure after styles are applied
+                                    const currentScrollHeight = content.scrollHeight;
+                                    console.log("Calculated scrollHeight for content (rAF):", currentScrollHeight);
+                                    if (currentScrollHeight > 0) {
+                                        content.style.maxHeight = currentScrollHeight + "px";
+                                        console.log("maxHeight set to (rAF):", content.style.maxHeight);
+                                    } else {
+                                        console.warn("scrollHeight (rAF) is 0 or less. Check content and CSS padding on .open ul.");
+                                        // If scrollHeight is still 0, it means the content (li) isn't rendering with height
+                                        // or padding isn't effectively applied before measurement.
+                                    }
+                                });
+                            });
+                        } else {
+                            // CLOSING
+                            console.log("Attempting to close accordion content.");
+                            // CSS transition will handle collapsing from its current maxHeight to 0
+                            // when the .open class is removed and padding is reset by CSS.
+                            content.style.maxHeight = "0px";
+                            console.log("maxHeight set to 0px for closing.");
+                        }
+                    }
+                });
+            }
+        });
     }
 });
