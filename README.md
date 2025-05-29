@@ -23,9 +23,11 @@ This is the source code for my personal portfolio website, designed to showcase 
     *   "Phases of My Life" section with interactive flip cards.
 *   **Skills Section:** Categorized skills displayed in an accordion interface.
 *   **Separate Pages:** Dedicated pages for:
+    *   Game Zone (`games.html`)
     *   Projects (`projects.html`)
     *   Certifications (`certifications.html`)
     *   Contact (`contact.html`)
+*   **Custom Fonts:** Utilizes a selection of Google Fonts for a unique and stylish appearance.
 *   **Project Modal:** (On `projects.html`) Displays detailed information about each project when a card is clicked.
 *   **Contact Form:** (On `contact.html`) Allows visitors to send messages directly (requires a backend service like Formspree or a custom backend).
 *   **Styled Footer:**
@@ -46,6 +48,15 @@ This is the source code for my personal portfolio website, designed to showcase 
 *   **Libraries/Frameworks:**
     *   Particle.js - For the animated background.
 *   **Tools:**
+    *   VS Code (or any preferred code editor)
+    *   Git & GitHub (for version control)
+*   **Fonts (from Google Fonts):**
+    *   Poppins (Primary body font)
+    *   Emilys Candy
+    *   Moon Dance
+    *   Playfair Display
+    *   Dancing Script
+    *   Pacifico
     *   VS Code (or any preferred code editor)
     *   Git & GitHub (for version control)
 
