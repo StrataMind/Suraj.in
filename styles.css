@@ -19,11 +19,23 @@
 /*
     General Body Styles
     - Base font, color, and layout properties.
-*/
+/* Body styles */
 body {
     margin: 0;
-    font-family: 'Poppins', 'Arial', sans-serif;    
+    font-family: 'Poppins', 'Arial', sans-serif;
     background-color: #0A0A14; /* Fallback if particles don't load, matches main */
+}
+
+/* Moon Dance CSS class */
+.moon-dance-regular {
+    font-family: "Moon Dance", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Playfair Display remains available */
+.playfair-display {
+    font-family: "Playfair Display", serif;
 }
 
 
@@ -1404,8 +1416,330 @@ a:hover {
 .quote-author { /* Style for the author's name */
     color: rgb(223, 69, 69);
     font-style: normal; /* Authors are not usually italicized with the quote */
-    font-weight: 500; /* Slightly bolder */
+    font-weight: 500;
     /* display: block; /* Uncomment if you want author on a new line */
     /* margin-top: 5px; /* Add space if on a new line */
 }
 
+/* Add this to your styles.css file */
+
+/* Right Sidebar Core Styles */
+.sidebar-right {
+    /* Variables for consistency, can be defined in :root or here */
+    --sidebar-right-width: 280px;
+    --peek-amount-right: 40px;
+
+    height: 100%;
+    width: var(--sidebar-right-width);
+    position: fixed;
+    top: 0;
+    right: 0; /* Positioned at the right edge */
+    background-color: #181824; /* Match left sidebar background */
+    color: #f0f0f0; /* Light text color */
+    padding: 20px; /* General padding */
+    padding-right: 10px; /* Reduced padding when peeking */
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3); /* Shadow on the left edge */
+    transform: translateX(calc(100% - var(--peek-amount-right))); /* Initially peek out */
+    transition: transform 0.3s ease-in-out, padding-right 0.3s ease-in-out;
+    z-index: 1000; /* Ensure it's above most content */
+    overflow-y: auto; /* Allow scrolling if content is long */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', 'Arial', sans-serif; /* Match left sidebar font */
+}
+
+/* Styles when right sidebar is open or hovered (desktop) */
+.sidebar-right.open,
+.sidebar-right:hover:not(.no-hover-effect) { /* :not(.no-hover-effect) will be controlled by JS for mobile */
+    transform: translateX(0);
+    padding-right: 20px; /* Restore full padding */
+}
+
+/* Right Sidebar Header */
+.sidebar-right .sidebar-header {
+    text-align: center;
+    margin-bottom: 30px; /* Match left sidebar */
+    /* Removed background-color and specific padding to make it like the left sidebar's header */
+}
+
+.sidebar-right .sidebar-header span { /* For "Game Zone" text */
+    font-size: 1.2em; /* Match left sidebar name, or adjust as preferred */
+    font-weight: bold;
+    color: #e0e0e0; /* Match left sidebar name color */
+    opacity: 0; /* Hidden when peeking */
+    white-space: nowrap;
+    transition: opacity 0.3s ease-in-out 0.1s;
+}
+
+.sidebar-right .sidebar-nav-links { /* General style for the list */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-right .sidebar-nav-links li a {
+    display: block;
+    padding: 12px 20px;
+    color: #a0a0b0; /* Match left sidebar link color */
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+    border-radius: 5px; /* Match left sidebar */
+    margin-bottom: 8px; /* Match left sidebar */
+    font-weight: 500; /* Match left sidebar */
+}
+
+.sidebar-right .sidebar-nav-links li:last-child a {
+    border-bottom: none; /* No border for the last item */
+}
+
+.sidebar-right .sidebar-nav-links li a:hover {
+    background-color: #00c6ff; /* Match left sidebar active/hover */
+    color: #121212; /* Match left sidebar active/hover */
+    /* padding-left: 25px; /* Slight indent on hover - keep if desired, or remove for consistency */
+}
+
+/* Show content when right sidebar is open or hovered (desktop) */
+.sidebar-right.open .sidebar-header span,
+.sidebar-right:hover:not(.no-hover-effect) .sidebar-header span,
+.sidebar-right.open .sidebar-nav-links,
+.sidebar-right:hover:not(.no-hover-effect) .sidebar-nav-links {
+    opacity: 1;
+}
+
+/* Ensure nav links are also hidden initially */
+.sidebar-right .sidebar-nav-links {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out 0.1s;
+}
+
+/* Right Sidebar Toggle Button */
+.sidebar-right-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1001; /* Above the sidebar itself */
+    background: #00c6ff; /* Match left sidebar toggle */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px; /* Slightly rounded corners */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40px; /* Button width */
+    height: 35px; /* Button height */
+}
+
+.sidebar-right-toggle span {
+    display: block;
+    width: 22px;
+    height: 3px;
+    background-color: #121212; /* Match left sidebar toggle spans */
+    border-radius: 1px;
+    transition: all 0.3s cubic-bezier(.86,0,.07,1); /* Smooth transition for animation */
+    margin: 0 auto; /* Center spans if button is wider */
+}
+
+/* Animation for hamburger to X (for right toggle) */
+.sidebar-right-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+
+.sidebar-right-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-100%); /* Slide out */
+}
+
+.sidebar-right-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* Main content adjustment for right sidebar */
+main {
+    /* Ensure transition for margin-right is also present if not already */
+    transition: margin-left 0.3s ease-in-out, margin-right 0.3s ease-in-out;
+}
+
+/* Mobile specific for right sidebar hover behavior */
+@media (max-width: 768px) {
+    .sidebar-right {
+        /* On mobile, it should be fully off-screen unless 'open' */
+        transform: translateX(100%);
+        padding-right: 20px; /* Full padding when open or fully hidden */
+    }
+    .sidebar-right.open {
+        transform: translateX(0); /* Slide in when open */
+    }
+    .sidebar-right:hover:not(.no-hover-effect) .sidebar-header span,
+    .sidebar-right:hover:not(.no-hover-effect) .sidebar-nav-links {
+        opacity: 0; /* Keep content hidden on hover on mobile */
+    }
+}
+/* ... existing styles ... */
+
+/* Game Zone Page Styles */
+#game-zone-page {
+    padding: 40px 20px;
+    max-width: 1200px; /* Allow a bit more width for game cards */
+    margin: 100px auto;
+    text-align: center;
+}
+
+#game-zone-page p { /* Intro paragraph for game zone */
+    font-size: 1.2rem;
+    color: #c0c0c0;
+    margin-bottom: 40px;
+}
+
+.games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between cards */
+    text-align: left; /* Reset text-align for card content */
+}
+
+.game-card-link {
+    text-decoration: none; /* Remove underline from the link wrapping the card */
+    color: inherit; /* Inherit text color */
+    display: block; /* Make the link a block to contain the card properly */
+}
+
+.game-card {
+    background-color: #161B22; /* Dark background, consistent with other cards */
+    border: 1px solid #30363D; /* Subtle border */
+    border-radius: 10px; /* Slightly more rounded */
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content like logo and title */
+    text-align: center;
+    height: 100%; /* Make cards in a row equal height if grid behaves that way */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-10px) scale(1.03); /* Lift and slightly scale */
+    box-shadow: 0 12px 25px rgba(0, 169, 255, 0.35); /* Brighter, accent shadow */
+    border-color: #00A9FF; /* Accent border on hover */
+}
+
+.game-logo {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    object-fit: contain; /* Or 'cover', depending on your logos */
+    margin-bottom: 20px;
+    border-radius: 8px; /* Optional: if logos look better with rounded corners */
+}
+
+.game-card h3 {
+    font-size: 1.4em;
+    color: #00A9FF; /* Accent color for game title */
+    margin-bottom: 10px;
+}
+
+.game-card .game-tagline {
+    font-size: 0.95em;
+    color: #b0b8c4; /* Lighter text for tagline */
+    line-height: 1.5;
+    flex-grow: 1; /* Allows tagline to take available space, pushing button down if any */
+    margin-bottom: 15px; /* Space before an implicit or explicit play button */
+}
+
+/* Optional: If you want an explicit "Play" button inside the card instead of the whole card being a link */
+/*
+.game-card .play-button {
+    display: inline-block;
+    margin-top: auto; 
+    padding: 10px 20px;
+    background-color: #00A9FF;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.game-card .play-button:hover {
+    background-color: #0077B3;
+}
+*/
+
+/* Responsive adjustments for game cards if needed */
+@media (max-width: 600px) {
+    .games-container {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .game-logo {
+        width: 80px;
+        height: 80px;
+    }
+    .game-card h3 {
+        font-size: 1.2em;
+    }
+}
+
+/* Emilys Candy Font Utility Class */
+.emilys-candy-regular {
+  font-family: "Emilys Candy", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Playfair Display Font Utility Classes */
+.playfair-display-regular {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.playfair-display-bold {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.playfair-display-regular-italic {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Applying Playfair Display to Footer Quotes for demonstration */
+#Footer .footer-quotes ul li {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.05em;
+  color: #00c6ff;
+  margin-bottom: 15px;
+}
+
+/* Optional: Style for the author part if you separate it, e.g., with a span */
+.quote-author {
+  color: rgb(223, 69, 69);
+  font-family: "Playfair Display", serif;
+  font-style: normal;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+/* Dancing Script Font Utility Classes */
+.dancing-script-regular {
+  font-family: "Dancing Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dancing-script-bold {
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Pacifico Font Utility Class */
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400; /* Pacifico is typically a single weight font */
+  font-style: normal;
+}

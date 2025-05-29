@@ -110,7 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.querySelector('.sidebar');
     const sidebarToggle = document.querySelector('.sidebar-toggle');
     const mainContent = document.querySelector('main');
-    const PEEK_AMOUNT = 40; // Restored for peeking sidebar on desktop
+    // Left Sidebar constants
+    const PEEK_AMOUNT_LEFT = 40; 
     const SIDEBAR_WIDTH = 260; 
 
     if (sidebarToggle && sidebar && mainContent) { // Added null check for mainContent
@@ -120,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebarToggle.setAttribute('aria-expanded', sidebar.classList.contains('open'));
             if (window.innerWidth > 768) { // Only adjust main margin on desktop
                 // On desktop, main content margin is SIDEBAR_WIDTH when open, PEEK_AMOUNT when closed
-                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : PEEK_AMOUNT + 'px';
+                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : PEEK_AMOUNT_LEFT + 'px';
             } else { // On mobile, main content margin is SIDEBAR_WIDTH when open, 0 when closed
                  mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : '0px';
             }
@@ -144,11 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sidebar.classList.contains('hover-open')) {
                 sidebar.classList.remove('hover-open');
                 if (!sidebar.classList.contains('open')) { // Check again if button made it open
-                    mainContent.style.marginLeft = PEEK_AMOUNT + 'px';
+                    mainContent.style.marginLeft = PEEK_AMOUNT_LEFT + 'px';
                 }
             } else if (!sidebar.classList.contains('open')) {
                 // If it was never open (neither by button nor hover), ensure it's peeking
-                mainContent.style.marginLeft = PEEK_AMOUNT + 'px';
+                mainContent.style.marginLeft = PEEK_AMOUNT_LEFT + 'px';
             }
             // If sidebar.classList.contains('open') (opened by button), margin stays wide
         });
@@ -160,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth <= 768) {
                 mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : '0px';
             } else {
-                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : PEEK_AMOUNT + 'px'; // Desktop margin is PEEK_AMOUNT when closed
+                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : PEEK_AMOUNT_LEFT + 'px'; // Desktop margin is PEEK_AMOUNT when closed
             }
         }
     }; // Fixed: Added missing semicolon
@@ -192,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const linkHref = link.getAttribute('href');
         const linkTargetPage = linkHref.split("#")[0]; // Get the page name from href (e.g., "projects.html")
 
-        // If the link's target page matches the current page, and it's not just a hash link on index.html (unless it's the home link)
+        // If the link's target page matches the current page
         if (linkTargetPage === currentPage) {
             if (currentPage !== "index.html" || linkHref === "#home" || linkHref === "index.html#home" || linkHref === "index.html") {
                 link.classList.add('active');
