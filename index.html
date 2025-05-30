@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="styles.css"> <!-- Link to styles.css in the same directory -->
-  <!-- Google Fonts: Emilys Candy -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&display=swap" rel="stylesheet">
-  <!-- The .emilys-candy-regular class is now defined in styles.css -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Pacifico&family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+ 
   <title>Suraj Kumar | Portfolio</title>
   <!-- Removed redundant stylesheet link, assuming css/style.css is the main one -->
 </head>
 <body>
 
-  <!-- Particle.js container -->
-  <div id="particles-js"></div>
+  <!-- Vanta.js FOG background container -->
+  <div id="vanta-background-index"></div>
 
   <!-- Sidebar Navigation (Replaces old Header) -->
   <nav class="sidebar">
@@ -65,7 +65,7 @@
     <div class="social-logos-container">
         <div class="social-logos-track">
             <!-- Resume -->
-            <a href="https://drive.google.com/file/d/14exYOJ13zG1fBMpTuI_yj5qQfPdaRNIZ/view?usp=drive_link" target="_blank" title="My Resume">
+            <a href="https://drive.google.com/file/d/14exYOJ13zG1fBMpTuI_yj5qQfPdaRNIZ/view?usp=drive_link" target="_blank" title="My Resume ">
                 <img src="images/resume-icon.png" alt="Resume">
             </a>
             <!-- LinkedIn -->
@@ -272,7 +272,7 @@
                 <li><em>"Strive not to be a success, but rather to be of value." <span class="quote-author">- Albert Einstein</span></em></li>
             </ul>
         </div>
-        <div class="general">
+        <div class="general emilys-candy">
             <h2 class="footer-accordion-header">
                 General
                 <span class="footer-accordion-arrow"></span>
@@ -286,7 +286,7 @@
             </ul>
         </div>
 
-        <div class="important-links-certificates">
+        <div class="important-links-certificates emilys-candy">
             <h2 class="footer-accordion-header">
                 Important Links
                 <span class="footer-accordion-arrow"></span>
@@ -300,7 +300,7 @@
             </ul>
         </div>
         <!-- footer-bottom should be a direct child of #Footer to span full width correctly -->
-        <div class="footer-bottom">
+        <div class="footer-bottom emilys-candy">
             <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
             <p>Designed by Suraj Kumar</p>
         </div>
@@ -309,8 +309,29 @@
   <!-- Optional: Add JS functionality for the contact form -->
   <!-- <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script> --> <!-- Commented out to prevent conflict with custom typing animation -->
   <script src="scripts.js"></script> <!-- Link to scripts.js in the same directory -->
-  <script src="particles.js"></script> <!-- CORRECTED: Match the actual library filename -->
-  <script src="particle-config.js"></script> <!-- Our custom particles.js configuration -->
+  <!-- Vanta.js GLOBE scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.VANTA) {
+      window.VANTA.GLOBE({
+        el: "#vanta-background-index", // Target the new div
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: 0x141316,
+        color: 0x7a55f5,
+        color2: 0xffffff, // Note: color2 might not be used by the GLOBE effect, but included as requested.
+        size: 1.30
+      });
+    }
+  });
+  </script>
 
 </body>
 </html>

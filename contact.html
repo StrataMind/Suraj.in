@@ -8,15 +8,15 @@
   <!-- Google Fonts: Emilys Candy -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-  <link href="https://fonts.googleapis.com/css2?family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Dancing+Script:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Pacifico&family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   
   <!-- The .emilys-candy-regular class is now defined in styles.css -->
   <title>Contact | Suraj Kumar</title>
 </head>
 <body>
 
-  <!-- Particle.js container -->
-  <div id="particles-js"></div>
+  <!-- Vanta.js background container -->
+  <div id="vanta-background"></div>
 
   <!-- Sidebar Navigation -->
   <nav class="sidebar">
@@ -75,15 +75,72 @@
   </section>
 </main>
 
-  <script src="scripts.js"></script>
-  <script src="particles.js"></script>
-  <script src="particle-config.js"></script>
+  <!-- Footer Section -->
+  <footer id="Footer">
+      <div class="footer-quotes">
+          <ul>
+              <li><em>"The best way to predict the future is to invent it." <span class="quote-author">- Alan Kay</span></em></li>
+              <li><em>"Innovation distinguishes between a leader and a follower." <span class="quote-author">- Steve Jobs</span></em></li>
+              <li><em>"Strive not to be a success, but rather to be of value." <span class="quote-author">- Albert Einstein</span></em></li>
+          </ul>
+      </div>
+      <div class="general emilys-candy">
+          <h2 class="footer-accordion-header">
+              General
+              <span class="footer-accordion-arrow"></span>
+          </h2>
+          <ul>
+              <li><a href="contact.html" class="nav-link">Contact Me</a></li>
+              <li><a href="index.html#about" class="nav-link">My Life & Journey</a></li>
+              <li><a href="#">Blogs (Coming Soon)</a></li>
+              <li><a href="https://medium.com/@surajkumarsksk2003" target="_blank">Medium</a></li>
+              <li>BTech | EEE | NITK</li>
+          </ul>
+      </div>
+      <div class="important-links-certificates emilys-candy">
+          <h2 class="footer-accordion-header">
+              Important Links
+              <span class="footer-accordion-arrow"></span>
+          </h2>
+          <ul>
+              <li><a href="https://drive.google.com/file/d/14exYOJ13zG1fBMpTuI_yj5qQfPdaRNIZ/view?usp=drive_link" target="_blank">My Resume</a></li>
+              <li><a href="https://github.com/surajsk2003" target="_blank">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">LinkedIn</a></li>
+              <li><a href="https://www.kaggle.com/surajnitk2021" target="_blank">Kaggle</a></li>
+              <li><a href="certifications.html">View All Certifications</a></li>
+          </ul>
+      </div>
+      <div class="footer-bottom emilys-candy">
+          <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
+          <p>Designed by Suraj Kumar</p>
+      </div>
+  </footer>
 
-  <!-- Footer will be added if you decide to have a common footer component -->
-  <!-- For now, keeping it simple. If you have a footer in index.html, replicate it here -->
-  <div class="footer-bottom">
-      <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
-      <p>Designed by Suraj Kumar</p>
-  </div>
+  <script src="scripts.js"></script>
+  <!-- Vanta.js scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.VANTA) {
+      window.VANTA.DOTS({
+        el: "#vanta-background", // Targets the new div
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: 0x110101,
+        color: 0xe1b21b,
+        color2: 0xff203a,
+        size: 4.20,
+        spacing: 25.00,
+        showLines: true // Assuming true as 'showLines' was provided
+      });
+    }
+  });
+  </script>
 </body>
 </html>

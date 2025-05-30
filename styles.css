@@ -16,13 +16,61 @@
     background-color: #0A0A14; /* Fallback if particles don't load, matches main */
 }
 
+/* Vanta.js Background container styling */
+#vanta-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Ensure it's behind other content */
+    /* Vanta.js will set its own background color via JS options.
+       The backgroundColor in VANTA.BIRDS options is primary. */
+}
+
+/* Vanta.js FOG Background container styling for index.html */
+#vanta-background-index {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Ensure it's behind other content */
+    /* Vanta.js FOG will use its baseColor option for the background. */
+}
+
+/* Vanta.js HALO Background container styling for games.html */
+#vanta-background-games {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Ensure it's behind other content */
+    /* Vanta.js HALO will use its backgroundColor option. */
+}
+
+/* Vanta.js RINGS Background container styling for projects.html */
+#vanta-background-projects {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Ensure it's behind other content */
+    /* Vanta.js RINGS will use its backgroundColor option. */
+}
+
+
+
 /*
     General Body Styles
     - Base font, color, and layout properties.
 /* Body styles */
 body {
     margin: 0;
-    font-family: 'Poppins', 'Arial', sans-serif;
+    font-family: 'Emilys Candy', cursive;
+
     background-color: #0A0A14; /* Fallback if particles don't load, matches main */
 }
 
@@ -36,6 +84,19 @@ body {
 /* Playfair Display remains available */
 .playfair-display {
     font-family: "Playfair Display", serif;
+}
+
+.pacifico-font {
+    font-family: 'Pacifico', cursive;
+}
+.dancing-script {
+    font-family: 'Dancing Script', cursive;
+}
+.playfair-display {
+    font-family: 'Playfair Display', serif;
+}
+.emilys-candy {
+    font-family: 'Emilys Candy', cursive;
 }
 
 
