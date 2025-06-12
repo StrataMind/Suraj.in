@@ -323,6 +323,112 @@ body {
     opacity: 1;
 }
 
+/* Skills Section Styles */
+.skills-accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skill-accordion-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgba(30, 30, 40, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.skill-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(40, 40, 50, 0.8);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.skill-header-content {
+    display: flex;
+    align-items: center;
+}
+
+.skill-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.accordion-arrow {
+    border: solid #00c6ff;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.skill-accordion-item.open .accordion-arrow {
+    transform: rotate(-135deg);
+}
+
+.sub-skills-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 20px;
+}
+
+.skill-accordion-item.open .sub-skills-content {
+    padding: 20px;
+    max-height: 1000px; /* Adjust this value as needed */
+}
+
+.skill-progress-container {
+    margin-bottom: 20px;
+}
+
+.skill-with-progress {
+    margin-bottom: 15px;
+}
+
+.skill-label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.progress-bar-container {
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #00c6ff;
+    border-radius: 4px;
+}
+
+.sub-skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 300px; /* Set a max height for the container */
+    overflow-y: auto; /* Add scrolling if content exceeds height */
+}
+
+.sub-skill-box {
+    background-color: rgba(0, 198, 255, 0.2);
+    color: #e0e0e0;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    display: inline-block;
+}
+
 /* Main content adjustment */
 main {
     margin-left: 5px; /* Reduced margin to match the more subtle sidebar peek */
