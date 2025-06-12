@@ -1,6 +1,6 @@
 # Suraj Kumar - Personal Portfolio
 
-This is the source code for my personal portfolio website, designed to showcase my skills, projects, journey, and ways to connect with me. It's built with HTML, CSS, and JavaScript, featuring a responsive design and interactive elements..
+This is the source code for my personal portfolio website, designed to showcase my skills, projects, journey, and ways to connect with me. It's built with HTML, CSS, and JavaScript, featuring a responsive design and interactive elements.
 
 <!-- Optional: Add a screenshot or GIF of your portfolio here -->
 <!-- ![Portfolio Screenshot](link_to_your_screenshot.png) -->
@@ -142,5 +142,6 @@ If you have any questions or want to connect, feel free to reach out!
 *   **LinkedIn:** [suraj-singh-96b45220a](https://www.linkedin.com/in/suraj-singh-96b45220a/)
 *   **GitHub:** [surajsk2003](https://github.com/surajsk2003)
 *   **Email:** surajkumarsksk2000@gmail.com
+*   **Medium:** [surajsinghnitk.medium.com](https://surajsinghnitk.medium.com/)
 
 ---
