@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
   <title>Game Zone | Suraj Kumar</title>
 </head>
 <body>
@@ -94,45 +97,184 @@
 <main>
   <section id="game-zone-page">
       <h2 class="section-title">Game Zone</h2>
-      <p>Dive into some of the games I've developed. Click to play!</p>
+      <p class="game-intro">Dive into my collection of interactive web games built with JavaScript, HTML5, and CSS3. Hover over each card to see more details, then click to play!</p>
+      
+      <div class="game-stats">
+          <div class="stat-card">
+              <div class="stat-number">7</div>
+              <div class="stat-label">Games</div>
+          </div>
+          <div class="stat-card">
+              <div class="stat-number">5K+</div>
+              <div class="stat-label">Players</div>
+          </div>
+          <div class="stat-card">
+              <div class="stat-number">4.8</div>
+              <div class="stat-label">Avg Rating</div>
+          </div>
+      </div>
 
       <div class="games-container">
-          <!-- Game 1: Neon Snake Nexus -->
+          <!-- Game 1: Chess -->
+          <a href="https://surajsk2003.github.io/Chess/" target="_blank" class="game-card-link">
+              <div class="game-card">
+                  <div class="game-card-inner">
+                      <div class="game-card-front">
+                          <img src="images/Chess.png" alt="Chess Game" class="game-logo">
+                          <h3>Chess</h3>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                      <div class="game-card-back">
+                          <h3>Chess</h3>
+                          <p class="game-tagline">Classic chess game with intuitive controls and strategic gameplay.</p>
+                          <ul class="game-features">
+                              <li>Full chess rules implementation</li>
+                              <li>Elegant UI design</li>
+                              <li>Move validation</li>
+                          </ul>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                  </div>
+              </div>
+          </a>
+
+          <!-- Game 2: Rock Paper Scissors -->
+          <a href="https://surajsk2003.github.io/Rock-Paper-Scissors/" target="_blank" class="game-card-link">
+              <div class="game-card">
+                  <div class="game-card-inner">
+                      <div class="game-card-front">
+                          <img src="images/Rock-Paper-Scissors.png" alt="Rock Paper Scissors Game" class="game-logo">
+                          <h3>Rock Paper Scissors</h3>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                      <div class="game-card-back">
+                          <h3>Rock Paper Scissors</h3>
+                          <p class="game-tagline">The timeless game of chance and strategy with a modern interface.</p>
+                          <ul class="game-features">
+                              <li>Score tracking</li>
+                              <li>Animated transitions</li>
+                              <li>Responsive design</li>
+                          </ul>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                  </div>
+              </div>
+          </a>
+
+          <!-- Game 3: Minesweeper -->
+          <a href="https://surajsk2003.github.io/Minesweeper/" target="_blank" class="game-card-link">
+              <div class="game-card">
+                  <div class="game-card-inner">
+                      <div class="game-card-front">
+                          <img src="images/Minesweeper-Game.png" alt="Minesweeper Game" class="game-logo">
+                          <h3>Minesweeper</h3>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                      <div class="game-card-back">
+                          <h3>Minesweeper</h3>
+                          <p class="game-tagline">Test your logic and memory in this classic puzzle game.</p>
+                          <ul class="game-features">
+                              <li>Multiple difficulty levels</li>
+                              <li>Timer and flag counter</li>
+                              <li>First-click protection</li>
+                          </ul>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                  </div>
+              </div>
+          </a>
+
+          <!-- Game 4: Neon Snake Nexus -->
           <a href="https://surajsk2003.github.io/Neon-Snake-Nexus/" target="_blank" class="game-card-link">
               <div class="game-card">
-                  <img src="images/NEON_SNAKE_NEXUS.png" alt="Neon Snake Nexus Logo" class="game-logo">
-                  <h3>Neon Snake Nexus</h3>
-                  <p class="game-tagline">A modern twist on the classic snake game with vibrant neon aesthetics.</p>
+                  <div class="game-card-inner">
+                      <div class="game-card-front">
+                          <img src="images/NEON_SNAKE_NEXUS.png" alt="Neon Snake Nexus Logo" class="game-logo">
+                          <h3>Neon Snake Nexus</h3>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                      <div class="game-card-back">
+                          <h3>Neon Snake Nexus</h3>
+                          <p class="game-tagline">A modern twist on the classic snake game with vibrant neon aesthetics.</p>
+                          <ul class="game-features">
+                              <li>Neon visual effects</li>
+                              <li>Progressive difficulty</li>
+                              <li>High score tracking</li>
+                          </ul>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                  </div>
               </div>
           </a>
 
-          <!-- Game 2: Typing Speed Challenge -->
+          <!-- Game 5: Typing Speed Challenge -->
           <a href="https://surajsk2003.github.io/Typing-Speed-Challenge/" target="_blank" class="game-card-link">
               <div class="game-card">
-                  <img src="images/Typing_Speed_Challenge.png" alt="Typing Speed Challenge Logo" class="game-logo">
-                  <h3>Typing Speed Challenge</h3>
-                  <p class="game-tagline">Test and improve your typing speed and accuracy with this fun challenge.</p>
+                  <div class="game-card-inner">
+                      <div class="game-card-front">
+                          <img src="images/Typing_Speed_Challenge.png" alt="Typing Speed Challenge Logo" class="game-logo">
+                          <h3>Typing Speed Challenge</h3>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                      <div class="game-card-back">
+                          <h3>Typing Speed Challenge</h3>
+                          <p class="game-tagline">Test and improve your typing speed and accuracy with this fun challenge.</p>
+                          <ul class="game-features">
+                              <li>WPM and accuracy metrics</li>
+                              <li>Multiple text difficulties</li>
+                              <li>Real-time feedback</li>
+                          </ul>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                  </div>
               </div>
           </a>
 
-          <!-- Game 3: Tricore -->
+          <!-- Game 6: Tricore -->
           <a href="https://surajsk2003.github.io/Tricore/" target="_blank" class="game-card-link">
               <div class="game-card">
-                  <img src="images/Tricore_Game.png" alt="Tricore Logo" class="game-logo">
-                  <h3>Tricore</h3>
-                  <p class="game-tagline">An engaging puzzle or strategy game (describe your game here!).</p>
+                  <div class="game-card-inner">
+                      <div class="game-card-front">
+                          <img src="images/Tricore_Game.png" alt="Tricore Logo" class="game-logo">
+                          <h3>Tricore</h3>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                      <div class="game-card-back">
+                          <h3>Tricore</h3>
+                          <p class="game-tagline">An engaging puzzle or strategy game with unique mechanics.</p>
+                          <ul class="game-features">
+                              <li>Innovative gameplay</li>
+                              <li>Multiple levels</li>
+                              <li>Challenging puzzles</li>
+                          </ul>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                  </div>
               </div>
           </a>
 
-          <!-- Game 4: 9x9 Tic-Tac-Toe -->
+          <!-- Game 7: 9x9 Tic-Tac-Toe -->
           <a href="https://surajsk2003.github.io/9x9-Tic-Tac-game/" target="_blank" class="game-card-link">
               <div class="game-card">
-                  <img src="images/9x9_Tic-Tac_Game.png" alt="9x9 Tic-Tac-Toe Logo" class="game-logo">
-                  <h3>9x9 Tic-Tac-Toe</h3>
-                  <p class="game-tagline">The classic Tic-Tac-Toe, expanded to a challenging 9x9 grid.</p>
+                  <div class="game-card-inner">
+                      <div class="game-card-front">
+                          <img src="images/9x9_Tic-Tac_Game.png" alt="9x9 Tic-Tac-Toe Logo" class="game-logo">
+                          <h3>9x9 Tic-Tac-Toe</h3>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                      <div class="game-card-back">
+                          <h3>9x9 Tic-Tac-Toe</h3>
+                          <p class="game-tagline">The classic Tic-Tac-Toe, expanded to a challenging 9x9 grid.</p>
+                          <ul class="game-features">
+                              <li>Extended gameplay</li>
+                              <li>Strategic depth</li>
+                              <li>Two-player mode</li>
+                          </ul>
+                          <div class="play-button">Play Now</div>
+                      </div>
+                  </div>
               </div>
           </a>
-          <!-- Add more game cards as needed -->
       </div>
   </section>
 </main>

@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
   <title>Projects | Suraj Kumar</title>
 </head>
 <body>
@@ -93,62 +96,130 @@
 
 <main>
   <!-- Projects Section -->
-  <section id="projects">
-      <h2 class="section-title">Projects</h2>
-      <p>Some of my projects...</p>
+  <section id="projects-page">
+      <h2 class="section-title">My Projects</h2>
+      <p class="projects-intro">Explore my portfolio of innovative projects spanning web development, AI, and more.</p>
+      
+      <div class="project-filters">
+          <button class="project-filter active" data-filter="all">All Projects</button>
+          <button class="project-filter" data-filter="web">Web Dev</button>
+          <button class="project-filter" data-filter="ai">AI & ML</button>
+          <button class="project-filter" data-filter="other">Other</button>
+      </div>
 
       <div class="projects-container">
           <!-- Project 1: StudyBud -->
-          <div class="project-card" 
-               data-title="StudyBud – A Random Chatroom Application"
-               data-description="Developed a web-based chatroom where users can connect and chat randomly. Focused on user experience and real-time messaging. Planned to add login, chat history, and notifications in future versions."
-               data-image="images/studybud_placeholder.png" 
-               data-technologies="Python, Django"
-               data-github-link="YOUR_STUDYBUD_GITHUB_LINK_HERE"> <!-- Add actual link -->
-              <div class="project-header">
+          <div class="project-card" data-category="web">
+              <div class="project-image">
+                  <div class="project-overlay">
+                      <div class="project-tech-stack">
+                          <span class="tech-tag">Python</span>
+                          <span class="tech-tag">Django</span>
+                          <span class="tech-tag">WebSockets</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="project-content">
                   <h3>StudyBud – Random Chatroom</h3>
-              </div>
-              <div class="project-description">
-                  <p>Web-based random chatroom application focusing on real-time messaging. Click to learn more.</p>
-              </div>
-              <div class="project-links">
-                  <a href="YOUR_STUDYBUD_GITHUB_LINK_HERE" target="_blank">Source Code</a>
+                  <p>Web-based random chatroom application focusing on real-time messaging and user experience.</p>
+                  <div class="project-features">
+                      <ul>
+                          <li>Real-time messaging</li>
+                          <li>User-friendly interface</li>
+                          <li>Random matching algorithm</li>
+                      </ul>
+                  </div>
+                  <div class="project-links">
+                      <a href="#" class="project-link" target="_blank">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                          </svg>
+                          GitHub
+                      </a>
+                      <a href="#" class="project-link" target="_blank">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 11h8v2H8v-2zm0 4h8v2H8v-2z"/>
+                          </svg>
+                          Demo
+                      </a>
+                  </div>
               </div>
           </div>
 
           <!-- Project 2: Mock OCR Model -->
-          <div class="project-card"
-               data-title="Mock OCR Model – CPU vs GPU Performance Check"
-               data-description="Built a deep learning model to read text from images. Compared model performance on CPU and GPU in terms of speed and efficiency. Used charts to show the performance difference and integrated Tesseract for text extraction."
-               data-image="images/ocr_placeholder.png"
-               data-technologies="Python, PyTorch, Matplotlib, Tesseract"
-               data-github-link="YOUR_OCR_GITHUB_LINK_HERE"> <!-- Add actual link -->
-              <div class="project-header">
+          <div class="project-card" data-category="ai">
+              <div class="project-image">
+                  <div class="project-overlay">
+                      <div class="project-tech-stack">
+                          <span class="tech-tag">Python</span>
+                          <span class="tech-tag">PyTorch</span>
+                          <span class="tech-tag">Tesseract</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="project-content">
                   <h3>Mock OCR Model</h3>
-              </div>
-              <div class="project-description">
-                  <p>Deep learning OCR model comparing CPU vs GPU performance. Click to learn more.</p>
-              </div>
-              <div class="project-links">
-                  <a href="YOUR_OCR_GITHUB_LINK_HERE" target="_blank">Source Code</a>
+                  <p>Deep learning OCR model comparing CPU vs GPU performance with comprehensive benchmarking.</p>
+                  <div class="project-features">
+                      <ul>
+                          <li>Performance benchmarking</li>
+                          <li>Text extraction from images</li>
+                          <li>Hardware optimization</li>
+                      </ul>
+                  </div>
+                  <div class="project-links">
+                      <a href="#" class="project-link" target="_blank">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                          </svg>
+                          GitHub
+                      </a>
+                      <a href="#" class="project-link" target="_blank">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5.97 4.06L14.09 9l1.06 1.06-1.06 1.06-1.06-1.06L11.97 9l1.06-1.94zm-6.03 2.53l1.65-1.65 2.65 2.65 1.06-1.06-2.65-2.65L14.06 5h2.47v2.47l-1.94 1.47 1.94 2.06v2.47h-2.47l-1.47-1.94-2.06 1.94-2.47-2.47 1.06-1.06-1.06-1.06L6.53 9.53 5 11v-1.47L7 7.06l.47 2.53z"/>
+                          </svg>
+                          Research Paper
+                      </a>
+                  </div>
               </div>
           </div>
 
           <!-- Project 3: QA_Docs -->
-          <div class="project-card"
-               data-title="QA_Docs – AI Q&A App for Documents"
-               data-description="Created an AI-powered app to answer questions from uploaded documents. Used OpenAI GPT and Hugging Face models for accurate and smart responses. Deployed the app on Azure and set up automatic deployment using GitHub."
-               data-image="images/qadocs_placeholder.png"
-               data-technologies="Python, Django, Hugging Face, Azure, OpenAI API"
-               data-github-link="YOUR_QADOCS_GITHUB_LINK_HERE"> <!-- Add actual link -->
-              <div class="project-header">
+          <div class="project-card" data-category="ai">
+              <div class="project-image">
+                  <div class="project-overlay">
+                      <div class="project-tech-stack">
+                          <span class="tech-tag">Python</span>
+                          <span class="tech-tag">Django</span>
+                          <span class="tech-tag">OpenAI</span>
+                          <span class="tech-tag">Azure</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="project-content">
                   <h3>QA_Docs – AI Q&A App</h3>
-              </div>
-              <div class="project-description">
-                  <p>AI-powered Q&A system for documents using advanced NLP models. Click to learn more.</p>
-              </div>
-              <div class="project-links">
-                  <a href="https://github.com/surajsk2003/QA_DOCS.git" target="_blank">GitHub Repo</a>
+                  <p>AI-powered Q&A system for documents using advanced NLP models and cloud deployment.</p>
+                  <div class="project-features">
+                      <ul>
+                          <li>Document analysis</li>
+                          <li>Natural language processing</li>
+                          <li>Cloud deployment</li>
+                      </ul>
+                  </div>
+                  <div class="project-links">
+                      <a href="https://github.com/surajsk2003/QA_DOCS.git" class="project-link" target="_blank">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                          </svg>
+                          GitHub
+                      </a>
+                      <a href="#" class="project-link" target="_blank">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 11h8v2H8v-2zm0 4h8v2H8v-2z"/>
+                          </svg>
+                          Demo
+                      </a>
+                  </div>
               </div>
           </div>
       </div>
@@ -235,6 +306,30 @@
         
         // Set default background
         switchBackground('flashlight');
+        
+        // Project filtering functionality
+        const filterButtons = document.querySelectorAll('.project-filter');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
     });
 
     function switchBackground(type) {

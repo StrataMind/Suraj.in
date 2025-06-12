@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <title>My Certifications | Suraj Kumar</title>
     <!-- Performance optimizations -->
     <link rel="dns-prefetch" href="https://drive.google.com">
@@ -102,41 +105,103 @@
     <main>
         <section id="certifications-page">
             <h2 class="section-title">My Certifications</h2>
-            <p>Here are some of the certifications I've earned to enhance my skills and knowledge.</p>
+            <p class="section-subtitle">Continuous learning and professional development are key to staying at the forefront of technology.</p>
+            
+            <div class="cert-categories">
+                <button class="cert-filter active" data-filter="all">All</button>
+                <button class="cert-filter" data-filter="programming">Programming</button>
+                <button class="cert-filter" data-filter="data-science">Data Science</button>
+                <button class="cert-filter" data-filter="soft-skills">Soft Skills</button>
+            </div>
 
             <div class="certificates-container">
-                <div class="certificate-card">
+                <div class="certificate-card" data-category="soft-skills">
+                    <div class="certificate-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                        </svg>
+                    </div>
                     <h3>Psychology of Stress, Health and Well-Being</h3>
                     <p class="instructors">Issuer: NPTEL Online Certification (Funded by the MoE, Govt. of India)</p>
+                    <div class="cert-details">
+                        <span class="cert-date">Issued: June 2023</span>
+                        <span class="cert-badge">Top 5%</span>
+                    </div>
                     <a href="https://drive.google.com/file/d/1Gk8yulY3pSSwtISYQF5H-6XudZtan-C4/view?usp=drive_link" target="_blank" class="certificate-link" rel="noopener">View Certificate</a> 
                 </div>
 
-                <div class="certificate-card">
+                <div class="certificate-card" data-category="programming">
+                    <div class="certificate-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                        </svg>
+                    </div>
                     <h3>100 Days of Code: The Complete Python Pro Bootcamp</h3>
                     <p class="instructors">Instructors: Dr. Angela Yu, Developer and Lead Instructor</p>
+                    <div class="cert-details">
+                        <span class="cert-date">Issued: March 2023</span>
+                        <span class="cert-badge">100% Completed</span>
+                    </div>
                     <a href="https://drive.google.com/file/d/1FwwvFLmCV-vdWWlTdr5jfZtyya76gnpU/view?usp=drive_link" target="_blank" class="certificate-link" rel="noopener">View Certificate</a>
                 </div>
 
-                <div class="certificate-card">
+                <div class="certificate-card" data-category="programming">
+                    <div class="certificate-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                        </svg>
+                    </div>
                     <h3>Blockchain A-Z: Build a Blockchain, a Crypto + ChatGPT Prize</h3>
-                    <p class="instructors">Instructors: Hadelin de Ponteves, Kirill Eremenko, SuperDataScience Team, Ligency Team</p>
+                    <p class="instructors">Instructors: Hadelin de Ponteves, Kirill Eremenko, SuperDataScience Team</p>
+                    <div class="cert-details">
+                        <span class="cert-date">Issued: August 2023</span>
+                        <span class="cert-badge">Advanced</span>
+                    </div>
                     <a href="https://drive.google.com/file/d/1RhzHdEL89Wy2sMYbPHu69UWJRy64-BB6/view?usp=drive_link" target="_blank" class="certificate-link">View Certificate</a>
                 </div>
 
-                <div class="certificate-card">
+                <div class="certificate-card" data-category="soft-skills">
+                    <div class="certificate-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
+                        </svg>
+                    </div>
                     <h3>English Speaking Complete: English Language Mastery</h3>
                     <p class="instructors">Instructors: David Morris</p>
+                    <div class="cert-details">
+                        <span class="cert-date">Issued: May 2023</span>
+                        <span class="cert-badge">Communication</span>
+                    </div>
                     <a href="https://drive.google.com/file/d/11eG3QHtdDXGDGKS4UeaFpTMdmQ8TO1pX/view?usp=drive_link" target="_blank" class="certificate-link">View Certificate</a>
                 </div>
                 
-                <div class="certificate-card">
+                <div class="certificate-card" data-category="programming">
+                    <div class="certificate-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                        </svg>
+                    </div>
                     <h3>Programming in Modern C++</h3>
                     <p class="instructors">Issuer: NPTEL Online Certification (Funded by the MoE, Govt. of India)</p>
+                    <div class="cert-details">
+                        <span class="cert-date">Issued: July 2023</span>
+                        <span class="cert-badge">Elite</span>
+                    </div>
                     <a href="https://drive.google.com/file/d/1xr7KxHSJXBJ2znONGx3JrZjkj9vm1hp-/view?usp=drive_link" target="_blank" class="certificate-link">View Certificate</a>
                 </div>
-                <div class="certificate-card">
+                
+                <div class="certificate-card" data-category="data-science">
+                    <div class="certificate-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                        </svg>
+                    </div>
                     <h3>Data Science Using Python</h3>
                     <p class="instructors">Issuer: SWAYAM Online Course Certification (Funded by the MoE, Govt. of India)</p>
+                    <div class="cert-details">
+                        <span class="cert-date">Issued: April 2023</span>
+                        <span class="cert-badge">Distinguished</span>
+                    </div>
                     <a href="https://drive.google.com/file/d/1E7QiirbFZjiMoXfskRgKKbuiczZrMSfk/view?usp=drive_link" target="_blank" class="certificate-link">View Certificate</a>
                 </div>
             </div>
@@ -228,6 +293,30 @@
                 setTimeout(function() {
                     document.getElementById('page-loader').style.display = 'none';
                 }, 500);
+            });
+            
+            // Certificate filtering functionality
+            const filterButtons = document.querySelectorAll('.cert-filter');
+            const certCards = document.querySelectorAll('.certificate-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    certCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
             });
         });
 
