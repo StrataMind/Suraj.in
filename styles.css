@@ -480,23 +480,14 @@ main > section::before {
     z-index: 101; /* Above sidebar when closed */
     background: #00c6ff;
     border: none;
-    padding: 12px; /* Larger padding for better touch target */
+    padding: 10px; /* Adjusted padding */
     cursor: pointer;
     border-radius: 5px;
-    width: 56px; /* Fixed width for larger touch target */
-    height: 56px; /* Fixed height for larger touch target */
+    width: 40px; /* Smaller width to match bg-menu-button */
+    height: 40px; /* Smaller height to match bg-menu-button */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.sidebar-toggle span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background-color: #121212;
-    margin: 4px 0;
-    transition: all 0.3s ease-in-out;
 }
 
 /*
@@ -648,16 +639,7 @@ section p {
     }
 }
 
-    /* Hamburger animation when sidebar is open */
-    .sidebar-toggle.open span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    .sidebar-toggle.open span:nth-child(2) {
-        opacity: 0;
-    }
-    .sidebar-toggle.open span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
+    /* Hamburger animation when sidebar is open - not needed with SVG icon */
 
 
 
