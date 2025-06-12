@@ -450,18 +450,19 @@
             const isMobile = window.innerWidth <= 768;
             
             if (isMobile) {
-                // If on mobile, switch to a simpler background
-                switchBackground('stars');
+                // If on mobile, switch to flashlight background
+                switchBackground('flashlight');
                 
-                // Disable complex backgrounds
-                document.getElementById('neural').style.display = 'none';
-                document.getElementById('waves').style.display = 'none';
-                document.getElementById('dots').style.display = 'none';
-                
-                // Hide complex background options
-                const complexOptions = document.querySelectorAll('.bg-option[data-bg="neural"], .bg-option[data-bg="waves"], .bg-option[data-bg="dots"]');
+                // Hide complex background options on mobile
+                const complexOptions = document.querySelectorAll('.bg-option[data-bg="neural"], .bg-option[data-bg="waves"], .bg-option[data-bg="dots"], .bg-option[data-bg="geometric"]');
                 complexOptions.forEach(option => {
                     option.style.display = 'none';
+                });
+                
+                // Only show gradient, stars and flashlight options
+                const allowedOptions = document.querySelectorAll('.bg-option[data-bg="gradient"], .bg-option[data-bg="stars"], .bg-option[data-bg="flashlight"]');
+                allowedOptions.forEach(option => {
+                    option.style.display = 'block';
                 });
             }
         }

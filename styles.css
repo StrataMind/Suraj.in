@@ -402,6 +402,19 @@ body {
     box-shadow: 5px 0 25px rgba(0, 169, 255, 0.3); /* Enhanced glow when open */
 }
 
+/* Add a delay to prevent rapid opening/closing when cursor is near the edge */
+.sidebar {
+    transition-delay: 0s;
+}
+
+.sidebar:hover {
+    transition-delay: 0.3s; /* Add delay before opening */
+}
+
+.sidebar:not(:hover) {
+    transition-delay: 0.5s; /* Add longer delay before closing */
+}
+
 .sidebar.open .sidebar-header span, /* Target only the span (name) for opacity transition */
 .sidebar:hover .sidebar-header span,
 .sidebar.open .sidebar-nav-links,
