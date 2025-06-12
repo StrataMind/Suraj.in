@@ -408,11 +408,11 @@ body {
 }
 
 .sidebar:hover {
-    transition-delay: 0.3s; /* Add delay before opening */
+    transition-delay: 0.1s; /* Add delay before opening */
 }
 
 .sidebar:not(:hover) {
-    transition-delay: 0.5s; /* Add longer delay before closing */
+    transition-delay: 0.1s; /* Add longer delay before closing */
 }
 
 .sidebar.open .sidebar-header span, /* Target only the span (name) for opacity transition */
