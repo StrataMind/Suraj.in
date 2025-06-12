@@ -1,267 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="styles.css"> <!-- Link to styles.css in the same directory -->
-<!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Pacifico&family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
- 
-  <title>Suraj Kumar | Portfolio</title>
-  <!-- Removed redundant stylesheet link, assuming css/style.css is the main one -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Background Elements -->
+    <div class="gradient-bg" id="gradient"></div>
+    <div class="gradient-stars" id="stars"></div>
+    
+    <div class="geometric-bg" id="geometric">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="wave-bg" id="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+    
+    <div class="dots-bg" id="dots"></div>
+    
+    <div class="neural-bg" id="neural"></div>
+    
+    <div class="flashlight-bg" id="flashlight"></div>
 
-  <!-- Vanta.js FOG background container -->
-  <div id="vanta-background-index"></div>
+    <!-- Background Switcher -->
+    <div class="bg-switcher-container">
+        <button class="bg-menu-button" id="bgMenuButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+            </svg>
+        </button>
+        <div class="bg-dropdown" id="bgDropdown">
+            <div class="bg-option" data-bg="gradient">Gradient</div>
+            <div class="bg-option" data-bg="stars">Stars</div>
+            <div class="bg-option" data-bg="waves">Waves</div>
+            <div class="bg-option" data-bg="dots">Dots</div>
+            <div class="bg-option" data-bg="neural">Neural</div>
+            <div class="bg-option" data-bg="flashlight">Flashlight</div>
+        </div>
+    </div>
 
-  <!-- Sidebar Navigation (Replaces old Header) -->
-  <nav class="sidebar">
-      <div class="sidebar-header">
-          <a href="#home" class="sidebar-logo-link">
-              <img src="images/profile_picture.jpeg" alt="Suraj Kumar" class="sidebar-logo">
-              <span>Suraj Kumar</span>
-          </a>
-      </div>
-      <ul class="sidebar-nav-links">
-          <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="games.html" class="nav-link">Game Zone</a></li>
-          <li><a href="projects.html" class="nav-link">Projects</a></li>
-          <li><a href="certifications.html" class="nav-link">Certifications</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="sidebar-social-icons">
-          <a href="https://github.com/surajsk2003" target="_blank">
-              <img src="images/github.png" alt="GitHub"> <!-- Assuming images folder -->
-          </a>
-          <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">
-              <img src="images/linkedin.png" alt="LinkedIn"> <!-- Assuming images folder, corrected typo -->
-          </a>
-          <!-- Add other social icons if you have them -->
-      </div>
-  </nav>
+    <!-- Vanta.js FOG background container -->
+    <div id="vanta-background-index"></div>
 
-  <button class="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-  </button>
-
-<main>
-  <!-- Home Section -->
-  <section id="home" class="intro-container">
-    <h1 id="typed-text">I am Suraj</h1>
-    <p>ML & AI Enthusiast | Developer | Building Intelligent Solutions | AI: Unlocking Human Potential</p>
-  </section>
-
-  <!-- Social Links Carousel Section -->
-  <section id="social-carousel" class="social-carousel-section">
-    <h2 class="section-title pacifico-regular">Connect & Explore</h2>
-    <div class="social-logos-container">
-        <div class="social-logos-track">
-            <!-- Resume -->
-            <a href="https://drive.google.com/file/d/14exYOJ13zG1fBMpTuI_yj5qQfPdaRNIZ/view?usp=drive_link" target="_blank" title="My Resume ">
-                <img src="images/resume-icon.png" alt="Resume">
+    <!-- Sidebar Navigation (Replaces old Header) -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <a href="#home" class="sidebar-logo-link">
+                <img src="images/profile_picture.jpeg" alt="Suraj Kumar" class="sidebar-logo">
+                <span>Suraj Kumar</span>
             </a>
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" title="LinkedIn">
-                <img src="images/linkedin.png" alt="LinkedIn">
-            </a>
-            <!-- Kaggle -->
-            <a href="https://www.kaggle.com/surajnitk2021" target="_blank" title="Kaggle">
-                <img src="images/kaggle-icon.png" alt="Kaggle">
-            </a>
-            <!-- Twitter - Replace with your actual Twitter URL -->
-            <a href="https://x.com/SurajSinghNITK" target="_blank" title="Twitter">
-                <img src="images/twitter-icon.png" alt="Twitter">
-            </a>
-            <!-- GitHub -->
-            <a href="https://github.com/surajsk2003" target="_blank" title="GitHub">
+        </div>
+        <ul class="sidebar-nav-links">
+            <li><a href="#home" class="nav-link active"><span class="nav-icon home-icon"></span>Home</a></li>
+            <li><a href="#about" class="nav-link"><span class="nav-icon about-icon"></span>About</a></li>
+            <li><a href="#skills" class="nav-link"><span class="nav-icon skills-icon"></span>Skills</a></li>
+            <li><a href="games.html" class="nav-link"><span class="nav-icon games-icon"></span>Game Zone</a></li>
+            <li><a href="projects.html" class="nav-link"><span class="nav-icon projects-icon"></span>Projects</a></li>
+            <li><a href="certifications.html" class="nav-link"><span class="nav-icon cert-icon"></span>Certifications</a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon contact-icon"></span>Contact</a></li>
+        </ul>
+        <div class="sidebar-social-icons">
+            <a href="https://github.com/surajsk2003" target="_blank">
                 <img src="images/github.png" alt="GitHub">
             </a>
-            <!-- Duplicate set for seamless scrolling effect -->
-            <a href="https://drive.google.com/file/d/14exYOJ13zG1fBMpTuI_yj5qQfPdaRNIZ/view?usp=drive_link" target="_blank" title="My Resume"><img src="images/resume-icon.png" alt="Resume"></a>
-            <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" title="LinkedIn"><img src="images/linkedin.png" alt="LinkedIn"></a>
-            <a href="https://www.kaggle.com/surajnitk2021" target="_blank" title="Kaggle"><img src="images/kaggle-icon.png" alt="Kaggle"></a>
-            <a href="https://x.com/SurajSinghNITK" target="_blank" title="Twitter"><img src="images/twitter-icon.png" alt="Twitter"></a>
-            <a href="https://github.com/surajsk2003" target="_blank" title="GitHub"><img src="images/github.png" alt="GitHub"></a>
+            <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">
+                <img src="images/linkedin.png" alt="LinkedIn">
+            </a>
         </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- About Section (Detailed - Moved from footer area) -->
-  <section id="about">
-      <div class="about-content-wrapper">
-          <h2 class="section-title">About Me</h2>
-          <p>
-              Hey there! I'm <strong>Suraj</strong>, a final-year <strong>Electrical Engineering</strong> undergraduate at
-              <strong>NITK, Surathkal</strong> (expected graduation May 2025). I have a deep passion for <strong>Machine Learning, AI, and
-              Software Development</strong>. I thrive on building intelligent systems, tackling complex problems with a blend of analytical rigor and creative solutions, and pushing the
-              boundaries of <strong>AI innovation</strong>. My mission is to contribute to impactful technological advancements.
-          </p>
-          <p>
-              I specialize in <strong>Machine Learning, Deep Learning, and AI-driven solutions</strong>, aiming to build innovative models that optimize efficiency and <strong>solve complex challenges</strong>.
-              My experience includes developing time-series forecasting models for solar energy and creating AI-powered Q&A systems for documents.
-              You can see some of my work in projects like <strong>StudyBud, a Mock OCR Model, and QA_Docs</strong>.
-          </p>
-          <p>
-              Beyond tech, I’m an <strong>explorer at heart</strong>—I love discovering new places,
-              especially those rich in <strong>greenery, hills, seas, and oceans</strong>. When I’m
-              not coding, you’ll find me playing <strong>chess, cricket, or basketball</strong>, or
-              diving into books, and I'm also an active member of the Toastmasters Club at NITK, focusing on public speaking and leadership.
-          </p>
-          <p>
-              Let’s innovate, explore, and create something amazing! 🚀
-          </p>
-      </div>
-      <div class="about-rest">
-          <h3 class="subsection-title Phases-of-My-Life dancing-script-bold" style="font-size: 2.2em;">Phases of My Life</h3>
-          <div class="phases-container">
-              <div class="phase-card">
-                  <div class="phase-year">
-                      <h3>2003 - 2018</h3>
-                  </div>
-                  <div class="phase-year-description">
-                      <h3>Foundations of Curiosity and Discipline</h3>
-                  </div>
-                  <div class="phase-description">
-                      <p>Born on 31st March 2003, I spent these early years immersed in school education, completing my schooling in 2018. This was a time of structured learning, steady growth, and the slow awakening of a deep-seated curiosity. Whether in classrooms or through personal reflection, I was beginning to grasp the vastness of the world and my place in it. These years laid the bedrock of discipline and curiosity that would later shape my ambitions in science, technology, and beyond.</p>
-                  </div>
-              </div>
-              <div class="phase-card">
-                  <div class="phase-year">
-                      <h3>2019 - 2021</h3>
-                  </div>
-                  <div class="phase-year-description">
-                      <h3>Cricket, Self-Discovery, and Self-Reliance</h3>
-                  </div>
-                  <div class="phase-description">
-                      <p>This was a defining phase of exploration, passion, and growth. I devoted about 1.5 years to club-level cricket, developing focus, teamwork, and mental toughness. The field taught me resilience and competitiveness — qualities that seamlessly translated into my academics when I made a bold shift to prepare for JEE through self-study. With minimal formal coaching, I navigated one of India’s toughest academic gauntlets with grit, eventually cracking JEE and securing admission to NITK. This journey wasn’t just about academics, but about trusting my ability to self-learn and stay disciplined under pressure.</p>
-                  </div>
-              </div>
-              <div class="phase-card">
-                  <div class="phase-year">
-                      <h3>2021 - 2025</h3>
-                  </div>
-                  <div class="phase-year-description">
-                      <h3>Transformation Through Trials and Triumphs at NITK</h3>
-                  </div>
-                  <div class="phase-description">
-                      <p>Entering NITK Surathkal in 2021 marked the beginning of a complex and transformative chapter. Initially, I faced distractions and a dip in academic focus — a period of internal conflict and disorientation. But over time, through self-awareness and renewed motivation, I recalibrated. I reconnected with my purpose, leaned into the fields of AI/ML, programming, and problem-solving, and gradually turned my academic journey around.<br><br>This phase is not defined just by the skills I’ve acquired, but by the internal evolution — from distraction to discipline, from confusion to clarity. It represents my commitment to becoming not just an engineer, but a builder, a thinker, and a future leader ready to take on larger challenges.</p>
-                      </p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+    <button class="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-  <!-- Skills Section -->
-  <section id="skills">
-      <h2 class="section-title">Skills</h2>
-      <p>Click on a category to expand its skills.</p>
-
-      <div class="skills-accordion-container">
-          <div class="skill-accordion-item">
-              <div class="skill-accordion-header">
-                  <h3>Machine Learning</h3>
-                  <span class="accordion-arrow"></span>
-              </div>
-              <div class="sub-skills-content">
-                  <div class="sub-skills-row">
-                      <div class="sub-skill-box">TensorFlow</div>
-                      <div class="sub-skill-box">scikit-learn</div>
-                      <div class="sub-skill-box">Hugging Face</div>
-                      <div class="sub-skill-box">spaCy</div>
-                      <div class="sub-skill-box">RAG</div>
-                      <div class="sub-skill-box">Transformers</div>
-                      <div class="sub-skill-box">NLTK</div>
-                      <div class="sub-skill-box">Pandas & NumPy</div>
-                      <div class="sub-skill-box">Matplotlib</div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="skill-accordion-item">
-              <div class="skill-accordion-header">
-                  <h3>Software & Web Development</h3>
-                  <span class="accordion-arrow"></span>
-              </div>
-              <div class="sub-skills-content">
-                  <div class="sub-skills-row">
-                      <div class="sub-skill-box">Python</div>
-                      <div class="sub-skill-box">Django</div>
-                      <div class="sub-skill-box">HTML</div>
-                      <div class="sub-skill-box">CSS</div>
-                      <div class="sub-skill-box">C++</div>
-                      <div class="sub-skill-box">SQL</div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="skill-accordion-item">
-              <div class="skill-accordion-header">
-                  <h3>Tools</h3>
-                  <span class="accordion-arrow"></span>
-              </div>
-              <div class="sub-skills-content">
-                  <div class="sub-skills-row">
-                      <div class="sub-skill-box">AWS</div>
-                      <div class="sub-skill-box">Git & GitHub</div>
-                      <div class="sub-skill-box">VS Code</div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="skill-accordion-item">
-              <div class="skill-accordion-header">
-                  <h3>Core Computer Science</h3>
-                  <span class="accordion-arrow"></span>
-              </div>
-              <div class="sub-skills-content">
-                  <div class="sub-skills-row">
-                      <div class="sub-skill-box">Data Structures & Algorithms</div>
-                      <div class="sub-skill-box">Operating Systems</div>
-                      <div class="sub-skill-box">Computer Networks</div>
-                      <div class="sub-skill-box">Database Management (DBMS)</div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <!-- Projects and Contact sections are now on separate pages -->
-
-    <!-- live animation (Commented Out) -->
-    <!--
-    <div class="bgAnimation" id="bgAnimation">
-        <div class="backgroundAmim">
-            
+    <main>
+        <!-- Breadcrumbs Navigation -->
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a>
         </div>
-    </div>
-    -->
+        
+        <!-- Home Section -->
+        <section id="home" class="intro-container">
+            <h1 id="typed-text">Suraj Kumar</h1>
+            <p class="tagline">ML Engineer & AI Solutions Developer</p>
+            <p class="value-prop">Transforming complex data into intelligent solutions with expertise in TensorFlow, NLP, and RAG systems</p>
+            <div class="achievements">
+                <span class="achievement-badge">NITK Surathkal</span>
+                <span class="achievement-badge">Time-Series Forecasting</span>
+                <span class="achievement-badge">AI-Powered Q&A Systems</span>
+            </div>
+        </section>
 
-    <!-- <div class="floating-ball"></div> -->
+        <!-- Social Links Carousel Section -->
+        <section id="social-carousel" class="social-carousel-section">
+            <h2 class="section-title pacifico-regular">Connect With Me</h2>
+            <p class="social-subtitle">Follow my journey and let's collaborate on exciting projects!</p>
+            <div class="social-logos-container">
+                <div class="social-logos-track">
+                    <!-- Resume -->
+                    <a href="https://drive.google.com/file/d/14exYOJ13zG1fBMpTuI_yj5qQfPdaRNIZ/view?usp=drive_link" target="_blank" title="My Resume">
+                        <img src="images/resume-icon.png" alt="Resume">
+                        <span class="social-label">Resume</span>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" title="LinkedIn">
+                        <img src="images/linkedin.png" alt="LinkedIn">
+                        <span class="social-label">LinkedIn</span>
+                    </a>
+                    <!-- Kaggle -->
+                    <a href="https://www.kaggle.com/surajnitk2021" target="_blank" title="Kaggle">
+                        <img src="images/kaggle-icon.png" alt="Kaggle">
+                        <span class="social-label">Kaggle</span>
+                    </a>
+                    <!-- Twitter -->
+                    <a href="https://x.com/SurajSinghNITK" target="_blank" title="Twitter">
+                        <img src="images/twitter-icon.png" alt="Twitter">
+                        <span class="social-label">Twitter</span>
+                    </a>
+                    <!-- GitHub -->
+                    <a href="https://github.com/surajsk2003" target="_blank" title="GitHub">
+                        <img src="images/github.png" alt="GitHub">
+                        <span class="social-label">GitHub</span>
+                    </a>
+                    <!-- Duplicate set for seamless scrolling effect -->
+                    <a href="https://drive.google.com/file/d/14exYOJ13zG1fBMpTuI_yj5qQfPdaRNIZ/view?usp=drive_link" target="_blank" title="My Resume">
+                        <img src="images/resume-icon.png" alt="Resume">
+                        <span class="social-label">Resume</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" title="LinkedIn">
+                        <img src="images/linkedin.png" alt="LinkedIn">
+                        <span class="social-label">LinkedIn</span>
+                    </a>
+                    <a href="https://www.kaggle.com/surajnitk2021" target="_blank" title="Kaggle">
+                        <img src="images/kaggle-icon.png" alt="Kaggle">
+                        <span class="social-label">Kaggle</span>
+                    </a>
+                    <a href="https://x.com/SurajSinghNITK" target="_blank" title="Twitter">
+                        <img src="images/twitter-icon.png" alt="Twitter">
+                        <span class="social-label">Twitter</span>
+                    </a>
+                    <a href="https://github.com/surajsk2003" target="_blank" title="GitHub">
+                        <img src="images/github.png" alt="GitHub">
+                        <span class="social-label">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <!-- Particle.js Background (Commented Out) -->
-    <!-- <div id="particles-js"></div> -->
-    <!-- <script>
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                shape: { type: "circle", stroke: { width: 0, color: "#000000" }, polygon: { nb_sides: 5 } },
-                opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
-                size: { value: 5, random: true, anim: { enable: true, speed: 40, size_min: 0.1 } },
-                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out" }
-            }
-        });
-    </script> -->
-</main>
+        <!-- About Section -->
+        <section id="about">
+            <div class="about-content-wrapper">
+                <h2 class="section-title">About Me</h2>
+                
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3 class="about-subtitle">Background</h3>
+                        <p>
+                            Final-year <strong>Electrical Engineering</strong> undergraduate at <strong>NITK, Surathkal</strong> with specialized focus on AI/ML applications. Expected graduation: May 2025.
+                        </p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3 class="about-subtitle">Core Strengths</h3>
+                        <p>
+                            <strong>Machine learning model development</strong>, <strong>natural language processing</strong>, and <strong>data analysis</strong> with proven ability to translate complex requirements into efficient technical solutions.
+                        </p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3 class="about-subtitle">Key Projects</h3>
+                        <p>
+                            Developed <strong>time-series forecasting models</strong> with 92% accuracy and built <strong>AI-powered Q&A systems</strong> using RAG architecture for improved information retrieval and analysis.
+                        </p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3 class="about-subtitle">Professional Skills</h3>
+                        <p>
+                            Strong <strong>analytical thinking</strong>, <strong>problem-solving</strong>, and <strong>communication skills</strong> developed through technical projects and active participation in Toastmasters Club at NITK.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="about-cta-container">
+                    <a href="projects.html" class="btn">View Projects</a>
+                    <a href="contact.html" class="btn">Discuss Opportunities</a>
+                </div>
+            </div>
+            <div class="about-rest">
+                <h3 class="subsection-title">Professional Focus</h3>
+                <div class="focus-container">
+                    <div class="focus-card">
+                        <div class="focus-icon research-icon"></div>
+                        <h3>AI Research</h3>
+                        <p>Exploring cutting-edge techniques in machine learning and natural language processing to solve complex data challenges and create intelligent systems that deliver real-world impact.</p>
+                    </div>
+                    <div class="focus-card">
+                        <div class="focus-icon technical-icon"></div>
+                        <h3>Technical Expertise</h3>
+                        <p>Specialized in TensorFlow, scikit-learn, and Hugging Face transformers with strong foundations in Python development, data structures, and algorithms for efficient solution design.</p>
+                    </div>
+                    <div class="focus-card">
+                        <div class="focus-icon mission-icon"></div>
+                        <h3>Mission-Driven</h3>
+                        <p>Committed to developing AI solutions that enhance human capabilities, improve decision-making processes, and create meaningful technological advancements in high-impact domains.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Skills</h2>
+            <p>Click on a category to expand its skills.</p>
+
+            <div class="skills-accordion-container">
+                <div class="skill-accordion-item">
+                    <div class="skill-accordion-header">
+                        <div class="skill-header-content">
+                            <div class="skill-icon ml-icon"></div>
+                            <h3>Machine Learning</h3>
+                        </div>
+                        <span class="accordion-arrow"></span>
+                    </div>
+                    <div class="sub-skills-content">
+                        <div class="skill-progress-container">
+                            <div class="skill-with-progress">
+                                <div class="skill-label">TensorFlow</div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-with-progress">
+                                <div class="skill-label">scikit-learn</div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-with-progress">
+                                <div class="skill-label">Hugging Face</div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-skills-row">
+                            <div class="sub-skill-box">spaCy</div>
+                            <div class="sub-skill-box">RAG</div>
+                            <div class="sub-skill-box">Transformers</div>
+                            <div class="sub-skill-box">NLTK</div>
+                            <div class="sub-skill-box">Pandas & NumPy</div>
+                            <div class="sub-skill-box">Matplotlib</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-accordion-item">
+                    <div class="skill-accordion-header">
+                        <div class="skill-header-content">
+                            <div class="skill-icon dev-icon"></div>
+                            <h3>Software & Web Development</h3>
+                        </div>
+                        <span class="accordion-arrow"></span>
+                    </div>
+                    <div class="sub-skills-content">
+                        <div class="skill-progress-container">
+                            <div class="skill-with-progress">
+                                <div class="skill-label">Python</div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-with-progress">
+                                <div class="skill-label">Django</div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-skills-row">
+                            <div class="sub-skill-box">HTML</div>
+                            <div class="sub-skill-box">CSS</div>
+                            <div class="sub-skill-box">C++</div>
+                            <div class="sub-skill-box">SQL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-accordion-item">
+                    <div class="skill-accordion-header">
+                        <div class="skill-header-content">
+                            <div class="skill-icon tools-icon"></div>
+                            <h3>Tools</h3>
+                        </div>
+                        <span class="accordion-arrow"></span>
+                    </div>
+                    <div class="sub-skills-content">
+                        <div class="skill-progress-container">
+                            <div class="skill-with-progress">
+                                <div class="skill-label">Git & GitHub</div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-skills-row">
+                            <div class="sub-skill-box">AWS</div>
+                            <div class="sub-skill-box">VS Code</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-accordion-item">
+                    <div class="skill-accordion-header">
+                        <div class="skill-header-content">
+                            <div class="skill-icon cs-icon"></div>
+                            <h3>Core Computer Science</h3>
+                        </div>
+                        <span class="accordion-arrow"></span>
+                    </div>
+                    <div class="sub-skills-content">
+                        <div class="skill-progress-container">
+                            <div class="skill-with-progress">
+                                <div class="skill-label">DSA</div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-skills-row">
+                            <div class="sub-skill-box">Operating Systems</div>
+                            <div class="sub-skill-box">Computer Networks</div>
+                            <div class="sub-skill-box">Database Management (DBMS)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer Section -->
     <footer id="Footer">
@@ -279,7 +369,7 @@
             </h2>
             <ul>
                 <li><a href="contact.html" class="nav-link">Contact Me</a></li>
-                <li><a href="#about" class="nav-link">My Life & Journey</a></li> <!-- Slightly more descriptive -->
+                <li><a href="#about" class="nav-link">My Life & Journey</a></li>
                 <li><a href="#">Blogs (Coming Soon)</a></li>
                 <li><a href="https://medium.com/@surajkumarsksk2003" target="_blank">Medium</a></li>
                 <li>BTech | EEE | NITK</li>
@@ -299,39 +389,161 @@
                 <li><a href="certifications.html">View All Certifications</a></li>
             </ul>
         </div>
-        <!-- footer-bottom should be a direct child of #Footer to span full width correctly -->
         <div class="footer-bottom emilys-candy">
             <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
             <p>Designed by Suraj Kumar</p>
         </div>
     </footer>
 
-  <!-- Optional: Add JS functionality for the contact form -->
-  <!-- <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script> --> <!-- Commented out to prevent conflict with custom typing animation -->
-  <script src="scripts.js"></script> <!-- Link to scripts.js in the same directory -->
-  <!-- Vanta.js GLOBE scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (window.VANTA) {
-      window.VANTA.GLOBE({
-        el: "#vanta-background-index", // Target the new div
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        backgroundColor: 0x141316,
-        color: 0x7a55f5,
-        color2: 0xffffff, // Note: color2 might not be used by the GLOBE effect, but included as requested.
-        size: 1.30
-      });
-    }
-  });
-  </script>
+    <script>
+        // Initialize neural network background
+        function createNeuralNetwork() {
+            const neural = document.getElementById('neural');
+            const nodeCount = 12;
+            const nodes = [];
 
+            // Create nodes
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'neural-node';
+                node.style.left = Math.random() * 100 + '%';
+                node.style.top = Math.random() * 100 + '%';
+                node.style.animationDelay = Math.random() * 2 + 's';
+                neural.appendChild(node);
+                nodes.push(node);
+            }
+
+            // Create connections
+            for (let i = 0; i < nodeCount; i++) {
+                for (let j = i + 1; j < nodeCount; j++) {
+                    if (Math.random() < 0.25) { // 25% chance of connection
+                        const line = document.createElement('div');
+                        line.className = 'neural-line';
+                        
+                        const node1 = nodes[i];
+                        const node2 = nodes[j];
+                        
+                        const x1 = parseFloat(node1.style.left);
+                        const y1 = parseFloat(node1.style.top);
+                        const x2 = parseFloat(node2.style.left);
+                        const y2 = parseFloat(node2.style.top);
+                        
+                        const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                        
+                        line.style.width = distance + 'vw';
+                        line.style.left = x1 + '%';
+                        line.style.top = y1 + '%';
+                        line.style.transformOrigin = '0 0';
+                        line.style.transform = `rotate(${angle}deg)`;
+                        line.style.animationDelay = Math.random() * 3 + 's';
+                        
+                        neural.appendChild(line);
+                    }
+                }
+            }
+        }
+
+        // Mobile background optimization
+        function optimizeBackgroundForMobile() {
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                // If on mobile, switch to a simpler background
+                switchBackground('stars');
+                
+                // Disable complex backgrounds
+                document.getElementById('neural').style.display = 'none';
+                document.getElementById('waves').style.display = 'none';
+                document.getElementById('dots').style.display = 'none';
+                
+                // Hide complex background options
+                const complexOptions = document.querySelectorAll('.bg-option[data-bg="neural"], .bg-option[data-bg="waves"], .bg-option[data-bg="dots"]');
+                complexOptions.forEach(option => {
+                    option.style.display = 'none';
+                });
+            }
+        }
+
+        // Background switcher functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            createNeuralNetwork();
+            
+            // Set default background
+            switchBackground('flashlight');
+            
+            // Optimize for mobile
+            optimizeBackgroundForMobile();
+            window.addEventListener('resize', optimizeBackgroundForMobile);
+            
+            // Toggle dropdown
+            const bgMenuButton = document.getElementById('bgMenuButton');
+            const bgDropdown = document.getElementById('bgDropdown');
+            
+            bgMenuButton.addEventListener('click', function() {
+                bgDropdown.classList.toggle('show');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!bgMenuButton.contains(event.target) && !bgDropdown.contains(event.target)) {
+                    bgDropdown.classList.remove('show');
+                }
+            });
+            
+            // Background switching
+            const bgOptions = document.querySelectorAll('.bg-option');
+            bgOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const bgType = this.getAttribute('data-bg');
+                    switchBackground(bgType);
+                    bgDropdown.classList.remove('show');
+                });
+            });
+
+            // Initialize accordion functionality for skills
+            const accordionHeaders = document.querySelectorAll('.skill-accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    const content = this.nextElementSibling;
+                    
+                    // Toggle active class
+                    item.classList.toggle('open');
+                    
+                    // Set max-height for animation
+                    if (item.classList.contains('open')) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        });
+
+        function switchBackground(type) {
+            // Remove active class from all backgrounds
+            const backgrounds = ['gradient', 'stars', 'geometric', 'waves', 'dots', 'neural', 'flashlight'];
+            backgrounds.forEach(bg => {
+                document.getElementById(bg).classList.remove('active-bg');
+            });
+
+            // Remove active class from all options
+            document.querySelectorAll('.bg-option').forEach(option => {
+                option.classList.remove('active');
+            });
+
+            // Activate selected background
+            document.getElementById(type).classList.add('active-bg');
+            document.querySelector(`.bg-option[data-bg="${type}"]`).classList.add('active');
+            
+            // Show gradient stars with gradient background
+            if (type === 'gradient') {
+                document.querySelector('.gradient-stars').classList.add('active-bg');
+            } else {
+                document.querySelector('.gradient-stars').classList.remove('active-bg');
+            }
+        }
+    </script>
 </body>
 </html>

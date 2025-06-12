@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts: Emilys Candy -->
+    <!-- Google Fonts with display=swap for better loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Pacifico&family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  
-    <!-- The .emilys-candy-regular class is now defined in styles.css -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <title>My Certifications | Suraj Kumar</title>
+    <!-- Performance optimizations -->
+    <link rel="dns-prefetch" href="https://drive.google.com">
+    <meta name="description" content="View Suraj Kumar's professional certifications in Python, Machine Learning, and more.">
 </head>
 <body>
-    <!-- Particle.js container -->
-    <div id="particles-js"></div>
+    <!-- Animated background effects -->
+    <div class="gradient-bg">
+        <div class="gradient-animation"></div>
+        <div class="gradient-stars"></div>
+        <div class="geometric-bg">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+    
+    <!-- Page loading indicator -->
+    <div id="page-loader">
+        <div class="loader-spinner"></div>
+        <p>Loading...</p>
+    </div>
 
     <!-- Sidebar Navigation -->
     <nav class="sidebar">
@@ -26,13 +44,13 @@
             </a>
         </div>
         <ul class="sidebar-nav-links">
-            <li><a href="index.html#home" class="nav-link">Home</a></li>
-            <li><a href="index.html#about" class="nav-link">About</a></li>
-            <li><a href="index.html#skills" class="nav-link">Skills</a></li>
-            <li><a href="games.html" class="nav-link">Game Zone</a></li>
-            <li><a href="projects.html" class="nav-link">Projects</a></li>
-            <li><a href="certifications.html" class="nav-link active">Certifications</a></li> <!-- Active class for this page -->
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="index.html#home" class="nav-link"><i class="nav-icon home-icon"></i>Home</a></li>
+            <li><a href="index.html#about" class="nav-link"><i class="nav-icon about-icon"></i>About</a></li>
+            <li><a href="index.html#skills" class="nav-link"><i class="nav-icon skills-icon"></i>Skills</a></li>
+            <li><a href="games.html" class="nav-link"><i class="nav-icon games-icon"></i>Game Zone</a></li>
+            <li><a href="projects.html" class="nav-link"><i class="nav-icon projects-icon"></i>Projects</a></li>
+            <li><a href="certifications.html" class="nav-link active"><i class="nav-icon cert-icon"></i>Certifications</a></li>
+            <li><a href="contact.html" class="nav-link"><i class="nav-icon contact-icon"></i>Contact</a></li>
         </ul>
         <div class="sidebar-social-icons">
             <a href="https://github.com/surajsk2003" target="_blank">
@@ -49,6 +67,13 @@
         <span></span>
         <span></span>
     </button>
+    
+    <!-- Breadcrumbs navigation -->
+    <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="current-page">Certifications</span>
+    </div>
 
     <main>
         <section id="certifications-page">
@@ -59,13 +84,13 @@
                 <div class="certificate-card">
                     <h3>Psychology of Stress, Health and Well-Being</h3>
                     <p class="instructors">Issuer: NPTEL Online Certification (Funded by the MoE, Govt. of India)</p>
-                    <a href="https://drive.google.com/file/d/1Gk8yulY3pSSwtISYQF5H-6XudZtan-C4/view?usp=drive_link" target="_blank" class="certificate-link">View Certificate</a> 
+                    <a href="https://drive.google.com/file/d/1Gk8yulY3pSSwtISYQF5H-6XudZtan-C4/view?usp=drive_link" target="_blank" class="certificate-link" rel="noopener">View Certificate</a> 
                 </div>
 
                 <div class="certificate-card">
                     <h3>100 Days of Code: The Complete Python Pro Bootcamp</h3>
                     <p class="instructors">Instructors: Dr. Angela Yu, Developer and Lead Instructor</p>
-                    <a href="https://drive.google.com/file/d/1FwwvFLmCV-vdWWlTdr5jfZtyya76gnpU/view?usp=drive_link" target="_blank" class="certificate-link">View Certificate</a>
+                    <a href="https://drive.google.com/file/d/1FwwvFLmCV-vdWWlTdr5jfZtyya76gnpU/view?usp=drive_link" target="_blank" class="certificate-link" rel="noopener">View Certificate</a>
                 </div>
 
                 <div class="certificate-card">
@@ -111,7 +136,7 @@
                 <li><em>"Strive not to be a success, but rather to be of value." <span class="quote-author">- Albert Einstein</span></em></li>
             </ul>
         </div>
-        <div class="general emilys-candy">
+        <div class="general">
             <h2 class="footer-accordion-header">
                 General
                 <span class="footer-accordion-arrow"></span>
@@ -124,7 +149,7 @@
                 <li>BTech | EEE | NITK</li>
             </ul>
         </div>
-        <div class="important-links-certificates emilys-candy">
+        <div class="important-links-certificates">
             <h2 class="footer-accordion-header">
                 Important Links
                 <span class="footer-accordion-arrow"></span>
@@ -137,14 +162,13 @@
                 <li><a href="certifications.html">View All Certifications</a></li>
             </ul>
         </div>
-        <div class="footer-bottom emilys-candy">
+        <div class="footer-bottom">
             <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
             <p>Designed by Suraj Kumar</p>
         </div>
     </footer>
 
     <script src="scripts.js"></script>
-    <script src="particles.js"></script>
-    <script src="particle-config.js"></script>
+    <!-- Removed particles.js scripts for better performance -->
 </body>
 </html>

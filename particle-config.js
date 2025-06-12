@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   particlesJS("particles-js", {
   "particles": {
     "number": {
-      "value": 100, // Increased number of particles
+      "value": 80, // Reduced number of particles for less visual interference
       "density": {
         "enable": true,
         "value_area": 800
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     },
     "opacity": {
-      "value": 0.5, // Slightly increased base opacity
+      "value": 0.4, // Reduced opacity for better text contrast
       "random": true,
       "anim": {
         "enable": true,

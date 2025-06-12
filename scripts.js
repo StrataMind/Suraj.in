@@ -1,380 +1,361 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Contact Form Submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener("submit", async function(event) {
-            event.preventDefault();
+// Wait for DOM to load
+document.addEventListener('DOMContentLoaded', function() {
+    // Hide page loader when page is loaded
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
 
-            // Collect form data
-            const formData = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                message: document.getElementById("message").value
-            };
-
-            const submitUrl = contactForm.getAttribute("action");
-
-            try {
-                // Send the data
-                const response = await fetch(submitUrl, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json" // Important for services like Formspree
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                const responseMessage = document.getElementById("responseMessage");
-                if (response.ok) {
-                    // Assuming a successful submission if response.ok is true
-                    // Some services might return JSON, others might not for simple success
-                    try {
-                        const result = await response.json(); // Try to parse JSON
-                        responseMessage.textContent = result.message || "Message sent successfully!";
-                    } catch (e) {
-                        // If response is not JSON, but still ok (e.g. Formspree redirects or sends simple text)
-                        responseMessage.textContent = "Message sent successfully!";
-                    }
-                    responseMessage.style.color = "green";
-                    contactForm.reset(); // Clear the form on success
-                } else {
-                    // Try to get error message from response
-                    const errorResult = await response.json().catch(() => ({ error: "Something went wrong!" }));
-                    responseMessage.textContent = errorResult.error || `Error: ${response.statusText}`;
-                    responseMessage.style.color = "red";
-                }
-            } catch (error) {
-                console.error("Error submitting form:", error);
-                const responseMessage = document.getElementById("responseMessage"); // Fixed: Added declaration
-                responseMessage.textContent = "An error occurred, please try again.";
-                responseMessage.style.color = "red";
-            }
-        });
-    }
-
-    // Project Modal Functionality
-    const projectModalElement = document.getElementById('projectModal');
-    if (projectModalElement) {
-        const modalTitle = document.getElementById('modalTitle');
-        const modalImage = document.getElementById('modalImage');
-        const modalTechnologies = document.getElementById('modalTechnologies');
-        const modalDescription = document.getElementById('modalDescription');
-        const modalGithubLink = document.getElementById('modalGithubLink');
-        const closeButton = projectModalElement.querySelector('.close-button'); // Ensure closeButton is queried within modal
-
-        const projectCards = document.querySelectorAll('.project-card');
-
-        projectCards.forEach(card => {
-            card.addEventListener('click', () => {
-                modalTitle.textContent = card.dataset.title;
-                modalImage.src = card.dataset.image || 'images/default_project.png'; // Fallback image
-                modalImage.alt = card.dataset.title + " image";
-                modalTechnologies.textContent = card.dataset.technologies;
-                modalDescription.textContent = card.dataset.description;
-                
-                if (card.dataset.githubLink && card.dataset.githubLink !== "YOUR_STUDYBUD_GITHUB_LINK_HERE" && card.dataset.githubLink !== "YOUR_OCR_GITHUB_LINK_HERE" && card.dataset.githubLink !== "YOUR_QADOCS_GITHUB_LINK_HERE") {
-                    modalGithubLink.href = card.dataset.githubLink;
-                    modalGithubLink.style.display = 'inline-block';
-                } else {
-                    modalGithubLink.style.display = 'none';
-                }
-
-                projectModalElement.style.display = 'block'; // Show modal when card is clicked
-            });
-        });
-
-        // Setup close listeners only once, outside the forEach loop
-        if (closeButton) {
-            closeButton.addEventListener('click', () => {
-                projectModalElement.style.display = 'none';
-            });
-        }
-    
-        // Close modal when clicking outside of the modal content (setup once)
-        window.addEventListener('click', (event) => {
-            if (event.target === projectModalElement) {
-                projectModalElement.style.display = 'none';
-            }
-        });
-    
-        // Optional: Close modal with Escape key (setup once)
-        window.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && projectModalElement.style.display === 'block') {
-                projectModalElement.style.display = 'none';
-            }
-        });
-    }
-
-    // Sidebar Toggle Functionality
-    const sidebar = document.querySelector('.sidebar');
+    // Sidebar toggle functionality
     const sidebarToggle = document.querySelector('.sidebar-toggle');
-    const mainContent = document.querySelector('main');
-    // Left Sidebar constants
-    const PEEK_AMOUNT_LEFT = 40; 
-    const SIDEBAR_WIDTH = 260; 
-
-    if (sidebarToggle && sidebar && mainContent) { // Added null check for mainContent
-        sidebarToggle.addEventListener('click', () => {
+    const sidebar = document.querySelector('.sidebar');
+    
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', function() {
             sidebar.classList.toggle('open');
             sidebarToggle.classList.toggle('open');
-            sidebarToggle.setAttribute('aria-expanded', sidebar.classList.contains('open'));
-            if (window.innerWidth > 768) { // Only adjust main margin on desktop
-                // On desktop, main content margin is SIDEBAR_WIDTH when open, PEEK_AMOUNT when closed
-                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : PEEK_AMOUNT_LEFT + 'px';
-            } else { // On mobile, main content margin is SIDEBAR_WIDTH when open, 0 when closed
-                 mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : '0px';
-            }
+            sidebarToggle.setAttribute('aria-expanded', 
+                sidebarToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+            );
         });
     }
 
-    // Desktop: Sidebar hover to open/close (Restored)
-    if (window.innerWidth > 768 && sidebar && mainContent) {
-        sidebar.addEventListener('mouseenter', () => {
-            // If sidebar is not already open by button click, expand it on hover
-            if (!sidebar.classList.contains('open')) {
-                sidebar.classList.add('hover-open'); // Mark as hover-opened
-                mainContent.style.marginLeft = SIDEBAR_WIDTH + 'px';
-            } else {
-                 // If already open by button, ensure margin is full width
-                mainContent.style.marginLeft = SIDEBAR_WIDTH + 'px';
-            }
-        });
-        sidebar.addEventListener('mouseleave', () => {
-            // If it was opened by hover (and not by button click)
-            if (sidebar.classList.contains('hover-open')) {
-                sidebar.classList.remove('hover-open');
-                if (!sidebar.classList.contains('open')) { // Check again if button made it open
-                    mainContent.style.marginLeft = PEEK_AMOUNT_LEFT + 'px';
-                }
-            } else if (!sidebar.classList.contains('open')) {
-                // If it was never open (neither by button nor hover), ensure it's peeking
-                mainContent.style.marginLeft = PEEK_AMOUNT_LEFT + 'px';
-            }
-            // If sidebar.classList.contains('open') (opened by button), margin stays wide
-        });
+    // Mobile detection for sidebar hover effect
+    function isMobile() {
+        return window.innerWidth <= 768;
     }
 
-    // Adjust main content margin on resize for mobile/desktop views
-    const adjustMainContentMargin = () => {
-        if (mainContent && sidebar) { // Added null check
-            if (window.innerWidth <= 768) {
-                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : '0px';
+    // Disable hover effect on mobile
+    function updateSidebarHoverEffect() {
+        if (sidebar) {
+            if (isMobile()) {
+                sidebar.classList.add('no-hover-effect');
             } else {
-                mainContent.style.marginLeft = sidebar.classList.contains('open') ? SIDEBAR_WIDTH + 'px' : PEEK_AMOUNT_LEFT + 'px'; // Desktop margin is PEEK_AMOUNT when closed
+                sidebar.classList.remove('no-hover-effect');
             }
         }
-    }; // Fixed: Added missing semicolon
-
-    // Add resize event listener - Fixed: This was missing
-    window.addEventListener('resize', adjustMainContentMargin);
-    
-    // Initial call to set main content margin correctly on page load
-    if (mainContent) adjustMainContentMargin(); // Call the simplified function directly
-    
-    // Close sidebar when a link is clicked (on mobile)
-    const sidebarNavLinks = document.querySelectorAll('.sidebar-nav-links .nav-link'); // Renamed to avoid conflict
-    sidebarNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('open') && mainContent) { // Added null checks
-                sidebar.classList.remove('open');
-                if (sidebarToggle) sidebarToggle.classList.remove('open'); // Added null check
-                if (sidebarToggle) sidebarToggle.setAttribute('aria-expanded', 'false');
-                mainContent.style.marginLeft = '0px';
-            }
-        });
-    });
-
-    // Active link highlighting on scroll
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
-
-    sidebarNavLinks.forEach(link => {
-        link.classList.remove('active');
-        const linkHref = link.getAttribute('href');
-        const linkTargetPage = linkHref.split("#")[0]; // Get the page name from href (e.g., "projects.html")
-
-        // If the link's target page matches the current page
-        if (linkTargetPage === currentPage) {
-            if (currentPage !== "index.html" || linkHref === "#home" || linkHref === "index.html#home" || linkHref === "index.html") {
-                link.classList.add('active');
-            }
-        }
-    });
-
-    if (currentPage === "index.html") {
-        const sections = document.querySelectorAll('main section[id]');
-        const homeLink = document.querySelector('.sidebar-nav-links .nav-link[href="#home"]');
-
-        const activateLinkOnScroll = () => {
-            let currentSectionId = null;
-            let minDistance = Infinity;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150; // Adjusted offset
-
-                // Check if section is in viewport or closest to top
-                if (window.scrollY >= sectionTop - section.offsetHeight / 2 && window.scrollY < sectionTop + section.offsetHeight / 2) {
-                     currentSectionId = section.getAttribute('id');
-                }
-                // Fallback for sections not perfectly in view (e.g. for very top or bottom)
-                const distanceToTop = Math.abs(window.scrollY - sectionTop);
-                if (distanceToTop < minDistance) {
-                    minDistance = distanceToTop;
-                    if (!currentSectionId) currentSectionId = section.getAttribute('id'); // Tentatively set
-                }
-            });
-
-            if (window.scrollY < (sections.length > 0 ? sections[0].offsetTop - 150 : window.innerHeight / 2)) {
-                 currentSectionId = "home";
-            }
-
-            sidebarNavLinks.forEach(link => {
-                link.classList.remove('active');
-                const href = link.getAttribute('href');
-                if (href === `#${currentSectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        };
-        window.addEventListener('scroll', activateLinkOnScroll); // Add scroll listener
-        activateLinkOnScroll(); // Initial call
     }
 
-    // New Skills Section Interaction
-    const accordionItems = document.querySelectorAll('.skill-accordion-item');
+    // Initial call and add resize listener
+    updateSidebarHoverEffect();
+    window.addEventListener('resize', updateSidebarHoverEffect);
 
-    if (accordionItems.length > 0) {
-        accordionItems.forEach(item => {
+    // Skills accordion functionality
+    const skillAccordionItems = document.querySelectorAll('.skill-accordion-item');
+    
+    if (skillAccordionItems.length > 0) {
+        skillAccordionItems.forEach(item => {
             const header = item.querySelector('.skill-accordion-header');
             const content = item.querySelector('.sub-skills-content');
+            
+            header.addEventListener('click', () => {
+                // Toggle current item
+                const isOpen = item.classList.toggle('open');
+                
+                // Set appropriate max-height
+                if (isOpen) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = '0';
+                }
+            });
+        });
+    }
 
-            if (header && content) {
-                header.addEventListener('click', () => {
-                    // Optional: Close all other open items if you want only one open at a time
-                    // accordionItems.forEach(otherItem => {
-                    //     if (otherItem !== item) {
-                    //         otherItem.classList.remove('open');
-                    //         otherItem.querySelector('.sub-skills-content').style.maxHeight = null;
-                    //     }
-                    // });
-
-                    item.classList.toggle('open');
-                    if (item.classList.contains('open')) {
-                        // Temporarily remove transition while calculating height to get an accurate scrollHeight
-                        const originalTransition = content.style.transition;
-                        content.style.transition = 'none';
-
-                        // Set padding before calculating scrollHeight
-                        content.style.paddingTop = '20px'; // Match CSS padding
-                        content.style.paddingBottom = '20px'; // Match CSS padding
-
-                        // Force a reflow. Accessing offsetHeight is a common way to do this.
-                        // This ensures that scrollHeight is calculated after any style changes
-                        // (like padding changes due to the .open class) have been applied and rendered.
-                        content.offsetHeight; // This line forces the browser to recalculate layout.
-                        content.style.maxHeight = content.scrollHeight + "px";
-                        content.style.transition = originalTransition; // Restore transition
+    // Footer accordion for mobile
+    const footerAccordionHeaders = document.querySelectorAll('.footer-accordion-header');
+    
+    if (footerAccordionHeaders.length > 0) {
+        footerAccordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    const parent = this.parentElement;
+                    const content = parent.querySelector('ul');
+                    
+                    // Toggle current item
+                    const isOpen = parent.classList.toggle('open');
+                    
+                    // Set appropriate max-height
+                    if (isOpen) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
                     } else {
-                        // When closing:
-                        // 1. Remove inline padding styles set during opening, so CSS can take over.
-                        content.style.paddingTop = '';
-                        content.style.paddingBottom = '';
-                        // 2. Set maxHeight to 0px to trigger collapse. CSS handles padding transition.
-                        content.style.maxHeight = "0px";
+                        content.style.maxHeight = '0';
                     }
-                });
-            }
+                }
+            });
         });
     }
 
-    // Typing JS (moved from inline script in index.html)
-    const typedTextElement = document.getElementById("typed-text");
-    if (typedTextElement) {
-        const textArray = ["Suraj", "Software Engineer", "Machine Learning Engineer"]; // Corrected "Machine Learning Engineer"
-        let textIndex = 0;
-        let letterIndex = 0; // Represents the number of characters of currentFullString currently displayed
-        let isDeleting = false;
-
-        function type() {
-            const currentFullString = textArray[textIndex];
-            let typeSpeed;
-
-            if (isDeleting) {
-                // Deleting
-                typedTextElement.textContent = "I am " + currentFullString.substring(0, letterIndex);
-                letterIndex--;
-                typeSpeed = 100; // Deleting speed
-
-                if (letterIndex < 0) { // Finished deleting
-                    isDeleting = false;
-                    letterIndex = 0; // Reset for typing next word
-                    textIndex = (textIndex + 1) % textArray.length;
-                    typeSpeed = 500; // Pause slightly before starting next word
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    const responseMessage = document.getElementById('responseMessage');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            
+            // Send form data to Formspree
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
                 }
-            } else {
-                // Typing
-                typedTextElement.textContent = "I am " + currentFullString.substring(0, letterIndex + 1);
-                letterIndex++;
-                typeSpeed = 150; // Typing speed
-
-                if (letterIndex > currentFullString.length) { // Finished typing current word
-                    isDeleting = true;
-                    letterIndex = currentFullString.length; // Set letterIndex to start deleting from the end
-                    typeSpeed = 1000; // Pause at the end of the word
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    responseMessage.textContent = "Thank you for your message! I'll get back to you soon.";
+                    responseMessage.style.color = "#4ecdc4";
+                    contactForm.reset();
+                } else {
+                    responseMessage.textContent = "Oops! There was a problem submitting your form.";
+                    responseMessage.style.color = "#ff6b6b";
                 }
-            }
-            setTimeout(type, typeSpeed); // Fixed: Changed from 'typingSpeed' to 'typeSpeed'
+            })
+            .catch(error => {
+                responseMessage.textContent = "Oops! There was a problem submitting your form.";
+                responseMessage.style.color = "#ff6b6b";
+                console.error('Error:', error);
+            });
+        });
+    }
+
+    // Initialize Neural Network Background
+    function createNeuralNetwork() {
+        const neural = document.querySelector('.neural-bg');
+        if (!neural) return;
+        
+        const nodeCount = 15;
+        const nodes = [];
+
+        // Create nodes
+        for (let i = 0; i < nodeCount; i++) {
+            const node = document.createElement('div');
+            node.className = 'neural-node';
+            node.style.left = Math.random() * 100 + '%';
+            node.style.top = Math.random() * 100 + '%';
+            node.style.animationDelay = Math.random() * 2 + 's';
+            neural.appendChild(node);
+            nodes.push(node);
         }
-        type(); // Start the typing animation
+
+        // Create connections
+        for (let i = 0; i < nodeCount; i++) {
+            for (let j = i + 1; j < nodeCount; j++) {
+                if (Math.random() < 0.3) { // 30% chance of connection
+                    const line = document.createElement('div');
+                    line.className = 'neural-line';
+                    
+                    const node1 = nodes[i];
+                    const node2 = nodes[j];
+                    
+                    const x1 = parseFloat(node1.style.left);
+                    const y1 = parseFloat(node1.style.top);
+                    const x2 = parseFloat(node2.style.left);
+                    const y2 = parseFloat(node2.style.top);
+                    
+                    const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                    
+                    line.style.width = distance + 'vw';
+                    line.style.left = x1 + '%';
+                    line.style.top = y1 + '%';
+                    line.style.transformOrigin = '0 0';
+                    line.style.transform = `rotate(${angle}deg)`;
+                    line.style.animationDelay = Math.random() * 3 + 's';
+                    
+                    neural.appendChild(line);
+                }
+            }
+        }
     }
 
-    // Footer Accordion Functionality (Mobile)
-    const footerAccordionItems = document.querySelectorAll('#Footer .general, #Footer .important-links-certificates');
+    // Background switcher functionality
+    function switchBackground(type) {
+        // Hide all backgrounds
+        document.querySelector('.gradient-animation').classList.remove('active-bg');
+        document.querySelector('.gradient-stars').classList.remove('active-bg');
+        document.querySelector('.geometric-bg').classList.remove('active-bg');
+        document.querySelector('.wave-bg').classList.remove('active-bg');
+        document.querySelector('.dots-bg').classList.remove('active-bg');
+        document.querySelector('.neural-bg').classList.remove('active-bg');
+        
+        // Remove active class from all buttons
+        document.querySelectorAll('.switch-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Activate selected background
+        document.querySelector('.' + type).classList.add('active-bg');
+        document.querySelector('[data-bg="' + type + '"]').classList.add('active');
+        
+        // Save preference to localStorage
+        localStorage.setItem('preferredBackground', type);
+    }
 
-    if (footerAccordionItems.length > 0) {
-        footerAccordionItems.forEach(item => {
-            const header = item.querySelector('.footer-accordion-header');
-            const content = item.querySelector('ul');
+    // Add background switcher buttons
+    function addBackgroundSwitcher() {
+        // Create background switcher container
+        const bgSwitcher = document.createElement('div');
+        bgSwitcher.className = 'bg-switcher';
+        
+        // Create buttons
+        const buttons = [
+            { name: 'Gradient', type: 'gradient-animation' },
+            { name: 'Stars', type: 'gradient-stars' },
+            { name: 'Shapes', type: 'geometric-bg' },
+            { name: 'Waves', type: 'wave-bg' },
+            { name: 'Dots', type: 'dots-bg' },
+            { name: 'Neural', type: 'neural-bg' }
+        ];
+        
+        buttons.forEach(button => {
+            const btn = document.createElement('button');
+            btn.className = 'switch-btn';
+            btn.textContent = button.name;
+            btn.setAttribute('data-bg', button.type);
+            btn.addEventListener('click', () => switchBackground(button.type));
+            bgSwitcher.appendChild(btn);
+        });
+        
+        // Add to body
+        document.body.appendChild(bgSwitcher);
+    }
 
-            if (header && content) {
-                console.log("Footer accordion header found for:", item.firstElementChild.textContent.trim()); // Log which header is being processed
-                header.addEventListener('click', () => {
-                    console.log("Header clicked:", header.textContent.trim(), "Window width:", window.innerWidth);
-                    if (window.innerWidth <= 768) { // Only enable accordion on mobile
-                        console.log("Mobile view detected for accordion.");
-                        
-                        item.classList.toggle('open');
-                        console.log("Item classList after toggle:", item.classList.toString());
-
-                        if (item.classList.contains('open')) {
-                            // OPENING
-                            console.log("Attempting to open accordion content.");
-                            // Use double requestAnimationFrame to ensure styles (padding) are applied before measuring scrollHeight
-                            requestAnimationFrame(() => { // First frame: browser processes style changes from .open class
-                                requestAnimationFrame(() => { // Second frame: measure after styles are applied
-                                    const currentScrollHeight = content.scrollHeight;
-                                    console.log("Calculated scrollHeight for content (rAF):", currentScrollHeight);
-                                    if (currentScrollHeight > 0) {
-                                        content.style.maxHeight = currentScrollHeight + "px";
-                                        console.log("maxHeight set to (rAF):", content.style.maxHeight);
-                                    } else {
-                                        console.warn("scrollHeight (rAF) is 0 or less. Check content and CSS padding on .open ul.");
-                                        // If scrollHeight is still 0, it means the content (li) isn't rendering with height
-                                        // or padding isn't effectively applied before measurement.
-                                    }
-                                });
-                            });
-                        } else {
-                            // CLOSING
-                            console.log("Attempting to close accordion content.");
-                            // CSS transition will handle collapsing from its current maxHeight to 0
-                            // when the .open class is removed and padding is reset by CSS.
-                            content.style.maxHeight = "0px";
-                            console.log("maxHeight set to 0px for closing.");
-                        }
-                    }
-                });
+    // Initialize background effects
+    function initBackgroundEffects() {
+        // Create wave background if it doesn't exist
+        if (!document.querySelector('.wave-bg')) {
+            const waveContainer = document.createElement('div');
+            waveContainer.className = 'wave-bg';
+            
+            for (let i = 0; i < 3; i++) {
+                const wave = document.createElement('div');
+                wave.className = 'wave';
+                waveContainer.appendChild(wave);
+            }
+            
+            document.querySelector('.gradient-bg').appendChild(waveContainer);
+        }
+        
+        // Create dots background if it doesn't exist
+        if (!document.querySelector('.dots-bg')) {
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'dots-bg';
+            document.querySelector('.gradient-bg').appendChild(dotsContainer);
+        }
+        
+        // Create neural background if it doesn't exist
+        if (!document.querySelector('.neural-bg')) {
+            const neuralContainer = document.createElement('div');
+            neuralContainer.className = 'neural-bg';
+            document.querySelector('.gradient-bg').appendChild(neuralContainer);
+            createNeuralNetwork();
+        }
+        
+        // Add background switcher
+        addBackgroundSwitcher();
+        
+        // Set default or saved background
+        const savedBg = localStorage.getItem('preferredBackground') || 'gradient-stars';
+        switchBackground(savedBg);
+    }
+    
+    // Initialize background effects
+    initBackgroundEffects();
+});
+// Update active navigation link based on current page or section
+function updateActiveNavLink() {
+    const navLinks = document.querySelectorAll('.sidebar-nav-links .nav-link');
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // First, remove active class from all links
+    navLinks.forEach(link => link.classList.remove('active'));
+    
+    // For index.html, handle section-based navigation
+    if (currentPath === 'index.html' || currentPath === '') {
+        // Get current section based on scroll position
+        const sections = document.querySelectorAll('section[id]');
+        let currentSection = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                currentSection = section.getAttribute('id');
             }
         });
+        
+        // Set active class for current section
+        if (currentSection) {
+            const activeLink = document.querySelector(`.sidebar-nav-links .nav-link[href="#${currentSection}"]`);
+            if (activeLink) activeLink.classList.add('active');
+        }
+    } else {
+        // For other pages, highlight based on current page
+        const activeLink = document.querySelector(`.sidebar-nav-links .nav-link[href="${currentPath}"]`);
+        if (activeLink) activeLink.classList.add('active');
     }
+}
+
+// Update breadcrumbs based on current page
+function updateBreadcrumbs() {
+    const breadcrumbs = document.querySelector('.breadcrumbs');
+    if (!breadcrumbs) return;
+    
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Clear existing breadcrumbs
+    breadcrumbs.innerHTML = '';
+    
+    // Always add Home link
+    const homeLink = document.createElement('a');
+    homeLink.href = 'index.html';
+    homeLink.textContent = 'Home';
+    breadcrumbs.appendChild(homeLink);
+    
+    // If not on home page, add current page
+    if (currentPath !== 'index.html' && currentPath !== '') {
+        const separator = document.createElement('span');
+        separator.className = 'breadcrumb-separator';
+        separator.textContent = ' / ';
+        breadcrumbs.appendChild(separator);
+        
+        const pageName = currentPath.replace('.html', '');
+        const currentPageSpan = document.createElement('span');
+        currentPageSpan.className = 'current-page';
+        currentPageSpan.textContent = pageName.charAt(0).toUpperCase() + pageName.slice(1);
+        breadcrumbs.appendChild(currentPageSpan);
+    } else {
+        // On home page, check for active section
+        const activeSection = document.querySelector('section[id].active');
+        if (activeSection) {
+            const separator = document.createElement('span');
+            separator.className = 'breadcrumb-separator';
+            separator.textContent = ' / ';
+            breadcrumbs.appendChild(separator);
+            
+            const sectionName = activeSection.getAttribute('id');
+            const sectionSpan = document.createElement('span');
+            sectionSpan.className = 'current-page';
+            sectionSpan.textContent = sectionName.charAt(0).toUpperCase() + sectionName.slice(1);
+            breadcrumbs.appendChild(sectionSpan);
+        }
+    }
+}
+
+// Initialize navigation enhancements
+document.addEventListener('DOMContentLoaded', function() {
+    // Initial update
+    updateActiveNavLink();
+    updateBreadcrumbs();
+    
+    // Update on scroll for section-based navigation
+    window.addEventListener('scroll', function() {
+        updateActiveNavLink();
+        updateBreadcrumbs();
+    });
 });
