@@ -129,7 +129,7 @@
 /* Body styles */
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-poppins);
     background-color: var(--primary-dark); /* Using CSS variable */
     color: var(--primary-light); /* Default text color */
 }
@@ -774,6 +774,7 @@ main > section::before {
 }
 
 .contact-details h3 {
+    font-family: var(--font-savate);
     font-size: 1.2rem;
     color: var(--accent-primary);
     margin-bottom: 8px;
@@ -876,7 +877,8 @@ main > section::before {
 }
 
 .form-header h3 {
-    font-size: 1.4rem;
+    font-family: var(--font-moon-dance);
+    font-size: 2rem; /* Larger for the cursive font */
     color: var(--accent-primary);
     margin-bottom: 5px;
     font-weight: 600;
@@ -1688,7 +1690,7 @@ section p {
 }
 
 .project-content h3 {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-savate);
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--accent-primary);
@@ -1696,6 +1698,7 @@ section p {
 }
 
 .project-content p {
+    font-family: var(--font-playfair);
     color: #b0b8c4;
     font-size: 0.95rem;
     line-height: 1.5;
@@ -1810,8 +1813,8 @@ section p {
 }
 
 .footer-accordion-header { /* Changed from .general h2, .important-links-certificates h2 */
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px; /* Smaller font size */
+    font-family: var(--font-moon-dance);
+    font-size: 24px; /* Larger for the cursive font */
     font-weight: 600; /* Semi-bold weight */
     margin-bottom: 12px; /* Reduced margin */
     color: #00A9FF; /* Accent color */
@@ -1957,6 +1960,7 @@ ul li a:hover::before {
 
 /* Styling for the .footer-bottom div */
 .footer-bottom {
+    font-family: var(--font-savate);
     background-color: #0D1117; /* Primary dark, distinct from main footer area */
     flex-basis: 100%; /* Makes it take the full width */
     text-align: center;
@@ -2273,7 +2277,7 @@ a:hover {
 }
 
 .certificate-card h3 {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-emilys-candy);
     font-size: 1.4em;
     font-weight: 700;
     color: var(--accent-primary);
@@ -2282,6 +2286,7 @@ a:hover {
 }
 
 .certificate-card .instructors {
+    font-family: var(--font-playfair);
     font-size: 0.9em;
     color: #c0c0c0;
     margin-bottom: 20px;
@@ -2719,6 +2724,7 @@ main {
 }
 
 .game-card .game-tagline {
+    font-family: var(--font-playfair);
     font-size: 0.95em;
     color: #b0b8c4;
     line-height: 1.5;
@@ -2749,12 +2755,14 @@ main {
 }
 
 .play-button {
+    font-family: var(--font-moon-dance);
     display: inline-block;
     padding: 10px 25px;
     background: linear-gradient(90deg, #007bff, #00A9FF);
     color: #ffffff;
     border-radius: 25px;
     font-weight: 500;
+    font-size: 1.2rem; /* Larger size for the cursive font */
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 169, 255, 0.3);
     cursor: pointer;
@@ -2825,7 +2833,7 @@ main {
 
 /* Applying Playfair Display to Footer Quotes */
 #Footer .footer-quotes ul li {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-playfair);
   font-weight: 400; /* Regular weight */
   font-style: italic;
   font-size: 0.9em; /* Smaller font size */
@@ -2836,7 +2844,7 @@ main {
 /* Style for the quote author */
 .quote-author {
   color: rgb(223, 69, 69);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-emilys-candy);
   font-style: normal;
   font-weight: 500; /* Medium weight */
   margin-left: 8px;
