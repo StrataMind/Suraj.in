@@ -1,9 +1,5 @@
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
-    // Hide page loader when page is loaded
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-    });
 
     // Sidebar toggle functionality
     const sidebarToggle = document.querySelector('.sidebar-toggle');

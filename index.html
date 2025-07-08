@@ -11,6 +11,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script>
+        // Hide loader after 4 seconds
+        setTimeout(() => {
+            const loader = document.getElementById('page-loader');
+            if (loader) loader.style.display = 'none';
+        }, 4000);
+    </script>
+    <!-- Loading Screen -->
+    <div id="page-loader">
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+    </div>
+
     <!-- Background Elements -->
     <div class="gradient-bg" id="gradient"></div>
     <div class="gradient-stars" id="stars"></div>
