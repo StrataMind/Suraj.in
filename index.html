@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Suraj Kumar - Portfolio</title>
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Scripts -->
+    <script src="cyberpunk.js"></script>
+    <script src="ghibli.js"></script>
+    <script src="space.js"></script>
+    <script src="city.js"></script>
+    <script src="peace.js"></script>
+    <script src="anime.js"></script>
+    
+    <!-- Google Fonts - Consolidated -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="images/profile_picture.jpeg" as="image">
 </head>
+
 <body>
-    <script>
-        // Hide loader after 4 seconds
-        setTimeout(() => {
-            const loader = document.getElementById('page-loader');
-            if (loader) loader.style.display = 'none';
-        }, 1500);
-    </script>
-    <!-- Loading Screen -->
+    <!-- ==========================================
+         LOADING SCREEN
+         ========================================== -->
     <div id="page-loader">
+        <div class="rain-loading-bg">
+            <div class="rain-overlay"></div>
+            <div class="fog"></div>
+            <div class="wet-ground"></div>
+            <div class="lightning"></div>
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div id="loading-raindrops"></div>
+            <div id="loading-puddles"></div>
+        </div>
         <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
             <div class="wheel"></div>
             <div class="hamster">
@@ -44,61 +66,144 @@
         <div class="loading-text">loading...</div>
     </div>
 
-    <!-- Background Elements -->
-    <div class="gradient-bg" id="gradient"></div>
-    <div class="gradient-stars" id="stars"></div>
-    
-    <div class="geometric-bg" id="geometric">
-        <div class="shape"></div>
-        
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    
-    <div class="wave-bg" id="waves">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
-    
-    <div class="dots-bg" id="dots"></div>
-    
-    <div class="neural-bg" id="neural"></div>
-    
+    <!-- ==========================================
+         BACKGROUND SYSTEMS
+         ========================================== -->
     <div class="flashlight-bg" id="flashlight"></div>
+    <div class="cyberpunk-bg" id="cyberpunk">
+        <div class="grid-bg"></div>
+        <div class="scanlines"></div>
+        <div id="particles"></div>
+        <div id="codeRain"></div>
+        <div id="orbs"></div>
+        <div id="shapes"></div>
+        <div id="pulses"></div>
+        <div id="dataStreams"></div>
+    </div>
+    <div class="ghibli-bg" id="ghibli">
+        <div class="grass">
+            <div id="grassBlades"></div>
+        </div>
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div id="sootSprites"></div>
+        <div id="petals"></div>
+        <div id="fireflies"></div>
+        <div id="sparkles"></div>
+        <div id="seeds"></div>
+        <div id="auras"></div>
+    </div>
+    <div class="space-bg" id="space">
+        <div id="stars"></div>
+        <div id="shootingStars"></div>
+        <div id="planets"></div>
+        <div id="nebulae"></div>
+        <div id="galaxies"></div>
+        <div id="spaceDust"></div>
+        <div id="pulsars"></div>
+        <div id="blackHoles"></div>
+        <div id="cosmicRays"></div>
+        <div id="asteroids"></div>
+        <div id="comets"></div>
+    </div>
+    <div class="city-bg" id="city">
+        <div class="building building-1" id="building1"></div>
+        <div class="building building-2" id="building2"></div>
+        <div class="building building-3" id="building3"></div>
+        <div class="building building-4" id="building4"></div>
+        <div class="building building-5" id="building5"></div>
+        <div class="building building-6" id="building6"></div>
+        <div class="reflection"></div>
+        <div id="cityStars"></div>
+        <div id="neonSigns"></div>
+        <div id="trafficLights"></div>
+        <div id="streetLights"></div>
+        <div id="helicopters"></div>
+        <div id="searchlights"></div>
+        <div id="citySmoke"></div>
+        <div id="billboards"></div>
+        <div id="rainDrops"></div>
+        <div id="vehicles"></div>
+        <div id="airTraffic"></div>
+    </div>
+    <div class="peace-bg" id="peace">
+        <div class="gentle-glow"></div>
+        <div id="lotusPetals"></div>
+        <div id="waterRipples"></div>
+        <div id="peaceOrbs"></div>
+        <div id="omSymbols"></div>
+        <div id="zenCircles"></div>
+        <div id="leaves"></div>
+        <div id="lightRays"></div>
+        <div id="mandalas"></div>
+        <div id="butterflies"></div>
+        <div id="breathCircles"></div>
+        <div id="peacefulClouds"></div>
+        <div id="meditationParticles"></div>
+    </div>
+    <div class="anime-bg" id="anime">
+        <div class="shimmer"></div>
+        <div id="sakuraPetals"></div>
+        <div id="spiritLights"></div>
+        <div id="animeSparkles"></div>
+        <div id="bubbles"></div>
+        <div id="cloudHearts"></div>
+        <div id="magicCircles"></div>
+        <div id="speedLines"></div>
+        <div id="kawaiiCats"></div>
+        <div id="energyAuras"></div>
+    </div>
 
-    <!-- Sidebar Navigation (Replaces old Header) -->
-    <nav class="sidebar">
+    <!-- ==========================================
+         NAVIGATION & CONTROLS
+         ========================================== -->
+    <!-- Main Sidebar Navigation -->
+    <nav class="sidebar" role="navigation" aria-label="Main navigation">
         <div class="sidebar-header">
-            <a href="#home" class="sidebar-logo-link">
+            <a href="#home" class="sidebar-logo-link" aria-label="Go to home section">
                 <img src="images/profile_picture.jpeg" alt="Suraj Kumar" class="sidebar-logo">
                 <span>Suraj Kumar</span>
             </a>
         </div>
+        
         <ul class="sidebar-nav-links">
-            <li><a href="#home" class="nav-link active"><span class="nav-icon home-icon"></span>Home</a></li>
-            <li><a href="#about" class="nav-link"><span class="nav-icon about-icon"></span>About</a></li>
-            <li><a href="#skills" class="nav-link"><span class="nav-icon skills-icon"></span>Skills</a></li>
-            <li><a href="https://surajsk2003.github.io/Game-Zone/" target="_blank" class="nav-link"><span class="nav-icon games-icon"></span>Game Zone</a></li>
-            <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank" class="nav-link"><span class="nav-icon blog-icon"></span>Blog</a></li>
-            <li><a href="projects.html" class="nav-link"><span class="nav-icon projects-icon"></span>Projects</a></li>
-            <li><a href="contact.html" class="nav-link"><span class="nav-icon contact-icon"></span>Contact</a></li>
+            <li><a href="#home" class="nav-link active" aria-current="page">
+                <span class="nav-icon home-icon" aria-hidden="true"></span>Home
+            </a></li>
+            <li><a href="#about" class="nav-link">
+                <span class="nav-icon about-icon" aria-hidden="true"></span>About
+            </a></li>
+            <li><a href="#skills" class="nav-link">
+                <span class="nav-icon skills-icon" aria-hidden="true"></span>Skills
+            </a></li>
+            <li><a href="https://surajsk2003.github.io/Game-Zone/" target="_blank" class="nav-link" rel="noopener">
+                <span class="nav-icon games-icon" aria-hidden="true"></span>Game Zone
+            </a></li>
+            <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank" class="nav-link" rel="noopener">
+                <span class="nav-icon blog-icon" aria-hidden="true"></span>Blog
+            </a></li>
+            <li><a href="projects.html" class="nav-link">
+                <span class="nav-icon projects-icon" aria-hidden="true"></span>Projects
+            </a></li>
+            <li><a href="contact.html" class="nav-link">
+                <span class="nav-icon contact-icon" aria-hidden="true"></span>Contact
+            </a></li>
         </ul>
+        
         <div class="sidebar-social-icons">
-            <a href="https://github.com/surajsk2003" target="_blank">
+            <a href="https://github.com/surajsk2003" target="_blank" rel="noopener" aria-label="GitHub Profile">
                 <img src="images/github.png" alt="GitHub">
             </a>
-            <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">
+            <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
                 <img src="images/linkedin.png" alt="LinkedIn">
             </a>
         </div>
     </nav>
 
-    <button class="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
         </svg>
@@ -106,98 +211,54 @@
     
     <!-- Background Switcher -->
     <div class="bg-switcher-container">
-        <button class="bg-menu-button" id="bgMenuButton">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button class="bg-menu-button" id="bgMenuButton" aria-label="Change background theme" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
         </button>
-        <div class="bg-dropdown" id="bgDropdown">
-            <div class="bg-option" data-bg="gradient">Gradient</div>
-            <div class="bg-option" data-bg="stars">Stars</div>
-            <div class="bg-option" data-bg="waves">Waves</div>
-            <div class="bg-option" data-bg="dots">Dots</div>
-            <div class="bg-option" data-bg="neural">Neural</div>
-            <div class="bg-option" data-bg="flashlight">Flashlight</div>
+        <div class="bg-dropdown" id="bgDropdown" role="menu" aria-hidden="true">
+            <div class="bg-option" data-bg="flashlight" role="menuitem">Flashlight</div>
+            <div class="bg-option" data-bg="cyberpunk" role="menuitem">Cyberpunk</div>
+            <div class="bg-option" data-bg="ghibli" role="menuitem">Ghibli</div>
+            <div class="bg-option" data-bg="space" role="menuitem">Space</div>
+            <div class="bg-option" data-bg="city" role="menuitem">City</div>
+            <div class="bg-option" data-bg="peace" role="menuitem">Peace</div>
+            <div class="bg-option" data-bg="anime" role="menuitem">Anime</div>
         </div>
     </div>
 
-    <!-- Vanta.js FOG background container -->
-    <div id="vanta-background-index"></div>
-
-    <main>
-        
+    <!-- ==========================================
+         MAIN CONTENT
+         ========================================== -->
+    <main role="main">
         <!-- Home Section -->
-        <section id="home" class="intro-container">
+        <section id="home" class="intro-container" aria-label="Introduction">
             <h1 id="typed-text">Suraj Kumar</h1>
             <p class="tagline">ML Engineer & AI Solutions Developer</p>
-            <p class="value-prop">Transforming complex data into intelligent solutions with expertise in TensorFlow, NLP, and RAG systems</p>
-            <div class="achievements">
-                <span class="achievement-badge">NITK Surathkal</span>
-                <span class="achievement-badge">Computer Vision</span>
-                <span class="achievement-badge">LLM Applications</span>
+            <p class="value-prop">Building impactful AI solutions with a focus on computer vision, LLMs, and real-world ML applications.</p>
+            <div class="achievements" role="list" aria-label="Key achievements">
+                <span class="achievement-badge" role="listitem">NITK Surathkal</span>
+                <span class="achievement-badge" role="listitem">Computer Vision</span>
+                <span class="achievement-badge" role="listitem">LLM Applications</span>
             </div>
         </section>
 
         <!-- Social Links Carousel Section -->
-        <section id="social-carousel" class="social-carousel-section">
-            <h2 class="section-title pacifico-regular">Connect With Me</h2>
+        <section id="social-carousel" class="social-carousel-section" aria-label="Social media links">
+            <h2 class="section-title">Connect With Me</h2>
             <p class="social-subtitle">Follow my journey and let's collaborate on exciting projects!</p>
+            
             <div class="social-logos-container">
-                <div class="social-logos-track">
-                    <!-- Resume -->
-                    <a href="https://drive.google.com/file/d/1XixBxAh00Y827PAbBQPIwGz7wXCSDcej/view?usp=drive_link" target="_blank" title="My Resume">
-                        <img src="images/resume-icon.png" alt="Resume">
-                        <span class="social-label">Resume</span>
-                    </a>
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" title="LinkedIn">
-                        <img src="images/linkedin.png" alt="LinkedIn">
-                        <span class="social-label">LinkedIn</span>
-                    </a>
-                    <!-- Kaggle -->
-                    <a href="https://www.kaggle.com/surajnitk2021" target="_blank" title="Kaggle">
-                        <img src="images/kaggle-icon.png" alt="Kaggle">
-                        <span class="social-label">Kaggle</span>
-                    </a>
-                    <!-- Twitter -->
-                    <a href="https://x.com/SurajSinghNITK" target="_blank" title="Twitter">
-                        <img src="images/twitter-icon.png" alt="Twitter">
-                        <span class="social-label">Twitter</span>
-                    </a>
-                    <!-- GitHub -->
-                    <a href="https://github.com/surajsk2003" target="_blank" title="GitHub">
-                        <img src="images/github.png" alt="GitHub">
-                        <span class="social-label">GitHub</span>
-                    </a>
-                    <!-- Duplicate set for seamless scrolling effect -->
-                    <a href="https://drive.google.com/file/d/1XixBxAh00Y827PAbBQPIwGz7wXCSDcej/view?usp=drive_link" target="_blank" title="My Resume">
-                        <img src="images/resume-icon.png" alt="Resume">
-                        <span class="social-label">Resume</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" title="LinkedIn">
-                        <img src="images/linkedin.png" alt="LinkedIn">
-                        <span class="social-label">LinkedIn</span>
-                    </a>
-                    <a href="https://www.kaggle.com/surajnitk2021" target="_blank" title="Kaggle">
-                        <img src="images/kaggle-icon.png" alt="Kaggle">
-                        <span class="social-label">Kaggle</span>
-                    </a>
-                    <a href="https://x.com/SurajSinghNITK" target="_blank" title="Twitter">
-                        <img src="images/twitter-icon.png" alt="Twitter">
-                        <span class="social-label">Twitter</span>
-                    </a>
-                    <a href="https://github.com/surajsk2003" target="_blank" title="GitHub">
-                        <img src="images/github.png" alt="GitHub">
-                        <span class="social-label">GitHub</span>
-                    </a>
+                <div class="social-logos-track" id="socialTrack">
+                    <!-- Social links will be generated by JavaScript -->
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about">
+        <section id="about" aria-label="About me">
             <div class="about-content-wrapper">
                 <h2 class="section-title">About Me</h2>
                 
@@ -236,22 +297,23 @@
                     <a href="contact.html" class="btn">Discuss Opportunities</a>
                 </div>
             </div>
+            
             <div class="about-rest">
                 <h3 class="subsection-title">Professional Focus</h3>
                 <div class="focus-container">
                     <div class="focus-card">
-                        <div class="focus-icon research-icon"></div>
-                        <h3>AI Research</h3>
+                        <div class="focus-icon research-icon" aria-hidden="true"></div>
+                        <h4>AI Research</h4>
                         <p>Exploring cutting-edge techniques in machine learning and natural language processing to solve complex data challenges and create intelligent systems that deliver real-world impact.</p>
                     </div>
                     <div class="focus-card">
-                        <div class="focus-icon technical-icon"></div>
-                        <h3>Technical Expertise</h3>
+                        <div class="focus-icon technical-icon" aria-hidden="true"></div>
+                        <h4>Technical Expertise</h4>
                         <p>Specialized in TensorFlow, scikit-learn, and Hugging Face transformers with strong foundations in Python development, data structures, and algorithms for efficient solution design.</p>
                     </div>
                     <div class="focus-card">
-                        <div class="focus-icon mission-icon"></div>
-                        <h3>Mission-Driven</h3>
+                        <div class="focus-icon mission-icon" aria-hidden="true"></div>
+                        <h4>Mission-Driven</h4>
                         <p>Committed to developing AI solutions that enhance human capabilities, improve decision-making processes, and create meaningful technological advancements in high-impact domains.</p>
                     </div>
                 </div>
@@ -259,128 +321,132 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills">
+        <section id="skills" aria-label="Technical skills">
             <h2 class="section-title">Skills</h2>
             <p>Click on a category to expand its skills.</p>
 
             <div class="skills-accordion-container">
+                <!-- Machine Learning -->
                 <div class="skill-accordion-item">
-                    <div class="skill-accordion-header">
+                    <div class="skill-accordion-header" role="button" tabindex="0" aria-expanded="false">
                         <div class="skill-header-content">
-                            <div class="skill-icon ml-icon"></div>
+                            <div class="skill-icon ml-icon" aria-hidden="true"></div>
                             <h3>Machine Learning</h3>
                         </div>
-                        <span class="accordion-arrow"></span>
+                        <span class="accordion-arrow" aria-hidden="true"></span>
                     </div>
                     <div class="sub-skills-content">
                         <div class="skill-progress-container">
                             <div class="skill-with-progress">
                                 <div class="skill-label">TensorFlow</div>
-                                <div class="progress-bar-container">
+                                <div class="progress-bar-container" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar" style="width: 85%"></div>
                                 </div>
                             </div>
                             <div class="skill-with-progress">
                                 <div class="skill-label">scikit-learn</div>
-                                <div class="progress-bar-container">
+                                <div class="progress-bar-container" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar" style="width: 90%"></div>
                                 </div>
                             </div>
                             <div class="skill-with-progress">
                                 <div class="skill-label">Hugging Face</div>
-                                <div class="progress-bar-container">
+                                <div class="progress-bar-container" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar" style="width: 80%"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="sub-skills-row">
-                            <div class="sub-skill-box">spaCy</div>
-                            <div class="sub-skill-box">RAG</div>
-                            <div class="sub-skill-box">Transformers</div>
-                            <div class="sub-skill-box">NLTK</div>
-                            <div class="sub-skill-box">Pandas & NumPy</div>
-                            <div class="sub-skill-box">Matplotlib</div>
+                        <div class="sub-skills-row" role="list" aria-label="Additional machine learning skills">
+                            <div class="sub-skill-box" role="listitem">spaCy</div>
+                            <div class="sub-skill-box" role="listitem">RAG</div>
+                            <div class="sub-skill-box" role="listitem">Transformers</div>
+                            <div class="sub-skill-box" role="listitem">NLTK</div>
+                            <div class="sub-skill-box" role="listitem">Pandas & NumPy</div>
+                            <div class="sub-skill-box" role="listitem">Matplotlib</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Software & Web Development -->
                 <div class="skill-accordion-item">
-                    <div class="skill-accordion-header">
+                    <div class="skill-accordion-header" role="button" tabindex="0" aria-expanded="false">
                         <div class="skill-header-content">
-                            <div class="skill-icon dev-icon"></div>
+                            <div class="skill-icon dev-icon" aria-hidden="true"></div>
                             <h3>Software & Web Development</h3>
                         </div>
-                        <span class="accordion-arrow"></span>
+                        <span class="accordion-arrow" aria-hidden="true"></span>
                     </div>
                     <div class="sub-skills-content">
                         <div class="skill-progress-container">
                             <div class="skill-with-progress">
                                 <div class="skill-label">Python</div>
-                                <div class="progress-bar-container">
+                                <div class="progress-bar-container" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar" style="width: 95%"></div>
                                 </div>
                             </div>
                             <div class="skill-with-progress">
                                 <div class="skill-label">Django</div>
-                                <div class="progress-bar-container">
+                                <div class="progress-bar-container" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar" style="width: 75%"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="sub-skills-row">
-                            <div class="sub-skill-box">HTML</div>
-                            <div class="sub-skill-box">CSS</div>
-                            <div class="sub-skill-box">C++</div>
-                            <div class="sub-skill-box">SQL</div>
+                        <div class="sub-skills-row" role="list" aria-label="Additional development skills">
+                            <div class="sub-skill-box" role="listitem">HTML</div>
+                            <div class="sub-skill-box" role="listitem">CSS</div>
+                            <div class="sub-skill-box" role="listitem">C++</div>
+                            <div class="sub-skill-box" role="listitem">SQL</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Tools -->
                 <div class="skill-accordion-item">
-                    <div class="skill-accordion-header">
+                    <div class="skill-accordion-header" role="button" tabindex="0" aria-expanded="false">
                         <div class="skill-header-content">
-                            <div class="skill-icon tools-icon"></div>
+                            <div class="skill-icon tools-icon" aria-hidden="true"></div>
                             <h3>Tools</h3>
                         </div>
-                        <span class="accordion-arrow"></span>
+                        <span class="accordion-arrow" aria-hidden="true"></span>
                     </div>
                     <div class="sub-skills-content">
                         <div class="skill-progress-container">
                             <div class="skill-with-progress">
                                 <div class="skill-label">Git & GitHub</div>
-                                <div class="progress-bar-container">
+                                <div class="progress-bar-container" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar" style="width: 85%"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="sub-skills-row">
-                            <div class="sub-skill-box">AWS</div>
-                            <div class="sub-skill-box">VS Code</div>
+                        <div class="sub-skills-row" role="list" aria-label="Additional tools">
+                            <div class="sub-skill-box" role="listitem">AWS</div>
+                            <div class="sub-skill-box" role="listitem">VS Code</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Core Computer Science -->
                 <div class="skill-accordion-item">
-                    <div class="skill-accordion-header">
+                    <div class="skill-accordion-header" role="button" tabindex="0" aria-expanded="false">
                         <div class="skill-header-content">
-                            <div class="skill-icon cs-icon"></div>
+                            <div class="skill-icon cs-icon" aria-hidden="true"></div>
                             <h3>Core Computer Science</h3>
                         </div>
-                        <span class="accordion-arrow"></span>
+                        <span class="accordion-arrow" aria-hidden="true"></span>
                     </div>
                     <div class="sub-skills-content">
                         <div class="skill-progress-container">
                             <div class="skill-with-progress">
                                 <div class="skill-label">DSA</div>
-                                <div class="progress-bar-container">
+                                <div class="progress-bar-container" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar" style="width: 80%"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="sub-skills-row">
-                            <div class="sub-skill-box">Operating Systems</div>
-                            <div class="sub-skill-box">Computer Networks</div>
-                            <div class="sub-skill-box">Database Management (DBMS)</div>
+                        <div class="sub-skills-row" role="list" aria-label="Computer science fundamentals">
+                            <div class="sub-skill-box" role="listitem">Operating Systems</div>
+                            <div class="sub-skill-box" role="listitem">Computer Networks</div>
+                            <div class="sub-skill-box" role="listitem">Database Management (DBMS)</div>
                         </div>
                     </div>
                 </div>
@@ -388,207 +454,645 @@
         </section>
     </main>
 
-    <!-- Footer Section -->
-    <footer id="Footer">
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="Footer" role="contentinfo">
+        <!-- Inspirational Quotes -->
         <div class="footer-quotes">
-            <ul>
-                <li><em>"The best way to predict the future is to invent it." <span class="quote-author">- Alan Kay</span></em></li>
-                <li><em>"Innovation distinguishes between a leader and a follower." <span class="quote-author">- Steve Jobs</span></em></li>
-                <li><em>"Strive not to be a success, but rather to be of value." <span class="quote-author">- Albert Einstein</span></em></li>
+            <h2>Inspiration</h2>
+            <ul role="list">
+                <li role="listitem">
+                    <em>"The best way to predict the future is to invent it." 
+                    <span class="quote-author">- Alan Kay</span></em>
+                </li>
+                <li role="listitem">
+                    <em>"Innovation distinguishes between a leader and a follower." 
+                    <span class="quote-author">- Steve Jobs</span></em>
+                </li>
+                <li role="listitem">
+                    <em>"Strive not to be a success, but rather to be of value." 
+                    <span class="quote-author">- Albert Einstein</span></em>
+                </li>
             </ul>
         </div>
-        <div class="general emilys-candy">
+
+        <!-- General Links -->
+        <div class="general">
             <h2 class="footer-accordion-header">
                 General
-                <span class="footer-accordion-arrow"></span>
+                <span class="footer-accordion-arrow" aria-hidden="true"></span>
             </h2>
             <ul>
-                <li><a href="contact.html" class="nav-link">Contact Me</a></li>
-                <li><a href="#about" class="nav-link">My Life & Journey</a></li>
-                <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank">My Blog</a></li>
-                <li><a href="https://surajsinghnitk.medium.com/" target="_blank">Medium</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="#about">My Life & Journey</a></li>
+                <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank" rel="noopener">My Blog</a></li>
+                <li><a href="https://surajsinghnitk.medium.com/" target="_blank" rel="noopener">Medium</a></li>
                 <li>BTech | EEE | NITK</li>
             </ul>
         </div>
 
-        <div class="important-links-certificates emilys-candy">
+        <!-- Important Links -->
+        <div class="important-links-certificates">
             <h2 class="footer-accordion-header">
                 Important Links
-                <span class="footer-accordion-arrow"></span>
+                <span class="footer-accordion-arrow" aria-hidden="true"></span>
             </h2>
             <ul>
-                <li><a href="https://drive.google.com/file/d/14exYOJ13zG1fBMpTuI_yj5qQfPdaRNIZ/view?usp=drive_link" target="_blank">My Resume</a></li>
-                <li><a href="https://github.com/surajsk2003" target="_blank">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">LinkedIn</a></li>
-                <li><a href="https://www.kaggle.com/surajnitk2021" target="_blank">Kaggle</a></li>
-                <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">View Certifications on LinkedIn</a></li>
+                <li><a href="https://drive.google.com/file/d/1XixBxAh00Y827PAbBQPIwGz7wXCSDcej/view?usp=drive_link" target="_blank" rel="noopener">My Resume</a></li>
+                <li><a href="https://github.com/surajsk2003" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://www.kaggle.com/surajnitk2021" target="_blank" rel="noopener">Kaggle</a></li>
+                <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener">View Certifications on LinkedIn</a></li>
             </ul>
         </div>
-        <div class="footer-bottom emilys-candy">
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
             <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
             <p>Designed by Suraj Kumar</p>
         </div>
     </footer>
 
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
     <script>
-        // Initialize neural network background
-        function createNeuralNetwork() {
-            const neural = document.getElementById('neural');
-            const nodeCount = 12;
-            const nodes = [];
+        'use strict';
 
-            // Create nodes
-            for (let i = 0; i < nodeCount; i++) {
-                const node = document.createElement('div');
-                node.className = 'neural-node';
-                node.style.left = Math.random() * 100 + '%';
-                node.style.top = Math.random() * 100 + '%';
-                node.style.animationDelay = Math.random() * 2 + 's';
-                neural.appendChild(node);
-                nodes.push(node);
+        /**
+         * Portfolio App - Main JavaScript Module
+         * Handles all interactive functionality for the portfolio website
+         */
+        class PortfolioApp {
+            constructor() {
+                this.init();
             }
 
-            // Create connections
-            for (let i = 0; i < nodeCount; i++) {
-                for (let j = i + 1; j < nodeCount; j++) {
-                    if (Math.random() < 0.25) { // 25% chance of connection
-                        const line = document.createElement('div');
-                        line.className = 'neural-line';
-                        
-                        const node1 = nodes[i];
-                        const node2 = nodes[j];
-                        
-                        const x1 = parseFloat(node1.style.left);
-                        const y1 = parseFloat(node1.style.top);
-                        const x2 = parseFloat(node2.style.left);
-                        const y2 = parseFloat(node2.style.top);
-                        
-                        const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-                        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-                        
-                        line.style.width = distance + 'vw';
-                        line.style.left = x1 + '%';
-                        line.style.top = y1 + '%';
-                        line.style.transformOrigin = '0 0';
-                        line.style.transform = `rotate(${angle}deg)`;
-                        line.style.animationDelay = Math.random() * 3 + 's';
-                        
-                        neural.appendChild(line);
+            /**
+             * Initialize the application
+             */
+            init() {
+                this.setupEventListeners();
+                this.initializeComponents();
+                this.handlePageLoad();
+            }
+
+            /**
+             * Set up all event listeners
+             */
+            setupEventListeners() {
+                // DOM Content Loaded
+                document.addEventListener('DOMContentLoaded', () => {
+                    this.onDOMReady();
+                });
+
+                // Window events
+                window.addEventListener('resize', () => {
+                    this.handleResize();
+                });
+
+                window.addEventListener('load', () => {
+                    this.handleWindowLoad();
+                });
+            }
+
+            /**
+             * Handle DOM ready event
+             */
+            onDOMReady() {
+                this.generateSocialLinks();
+                this.setupNavigation();
+                this.setupAccordions();
+                this.setupBackgroundSwitcher();
+                this.optimizeForMobile();
+            }
+
+            /**
+             * Handle page load completion
+             */
+            handlePageLoad() {
+                // Initialize loading rain effects
+                this.initLoadingRain();
+                
+                // Hide loader after content loads and animations complete
+                setTimeout(() => {
+                    const loader = document.getElementById('page-loader');
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                        }, 500);
                     }
+                }, 4000); // Updated to 4 seconds
+            }
+
+            /**
+             * Initialize loading screen rain effects
+             */
+            initLoadingRain() {
+                this.createLoadingRaindrops();
+                this.createLoadingPuddles();
+            }
+
+            /**
+             * Create raindrops for loading screen
+             */
+            createLoadingRaindrops() {
+                const container = document.getElementById('loading-raindrops');
+                if (!container) return;
+                
+                for (let i = 0; i < 50; i++) {
+                    const drop = document.createElement('div');
+                    drop.className = 'loading-raindrop';
+                    drop.style.left = Math.random() * 100 + '%';
+                    drop.style.animationDelay = Math.random() * 1.5 + 's';
+                    drop.style.animationDuration = (Math.random() * 0.5 + 1) + 's';
+                    container.appendChild(drop);
                 }
             }
-        }
 
-        // Mobile background optimization
-        function optimizeBackgroundForMobile() {
-            const isMobile = window.innerWidth <= 768;
-            
-            if (isMobile) {
-                // If on mobile, switch to flashlight background
-                switchBackground('flashlight');
+            /**
+             * Create puddles with ripples for loading screen
+             */
+            createLoadingPuddles() {
+                const container = document.getElementById('loading-puddles');
+                if (!container) return;
                 
-                // Hide complex background options on mobile
-                const complexOptions = document.querySelectorAll('.bg-option[data-bg="neural"], .bg-option[data-bg="waves"], .bg-option[data-bg="dots"], .bg-option[data-bg="geometric"]');
-                complexOptions.forEach(option => {
-                    option.style.display = 'none';
-                });
+                for (let i = 0; i < 3; i++) {
+                    const puddle = document.createElement('div');
+                    puddle.className = 'loading-puddle';
+                    puddle.style.left = Math.random() * 80 + 10 + '%';
+                    puddle.style.width = (Math.random() * 40 + 60) + 'px';
+                    
+                    // Add ripples to puddle
+                    for (let j = 0; j < 2; j++) {
+                        const ripple = document.createElement('div');
+                        ripple.className = 'loading-ripple';
+                        ripple.style.animationDelay = (j * 1 + Math.random() * 2) + 's';
+                        puddle.appendChild(ripple);
+                    }
+                    
+                    container.appendChild(puddle);
+                }
+            }
+
+            /**
+             * Handle window load event
+             */
+            handleWindowLoad() {
+                // Initialize default background
+                this.switchBackground('flashlight');
+            }
+
+            /**
+             * Handle window resize
+             */
+            handleResize() {
+                this.optimizeForMobile();
+            }
+
+
+
+            /**
+             * Generate social links dynamically
+             */
+            generateSocialLinks() {
+                const socialTrack = document.getElementById('socialTrack');
+                if (!socialTrack) return;
+
+                const socialLinks = [
+                    {
+                        href: "https://drive.google.com/file/d/1XixBxAh00Y827PAbBQPIwGz7wXCSDcej/view?usp=drive_link",
+                        img: "images/resume-icon.png",
+                        alt: "Resume",
+                        label: "Resume"
+                    },
+                    {
+                        href: "https://www.linkedin.com/in/suraj-singh-96b45220a/",
+                        img: "images/linkedin.png",
+                        alt: "LinkedIn",
+                        label: "LinkedIn"
+                    },
+                    {
+                        href: "https://www.kaggle.com/surajnitk2021",
+                        img: "images/kaggle-icon.png",
+                        alt: "Kaggle",
+                        label: "Kaggle"
+                    },
+                    {
+                        href: "https://x.com/SurajSinghNITK",
+                        img: "images/twitter-icon.png",
+                        alt: "Twitter",
+                        label: "Twitter"
+                    },
+                    {
+                        href: "https://github.com/surajsk2003",
+                        img: "images/github.png",
+                        alt: "GitHub",
+                        label: "GitHub"
+                    }
+                ];
+
+                // Generate HTML for social links (duplicate for seamless scrolling)
+                const generateLinks = (links) => {
+                    return links.map(link => `
+                        <a href="${link.href}" target="_blank" rel="noopener" title="${link.label}">
+                            <img src="${link.img}" alt="${link.alt}" loading="lazy">
+                            <span class="social-label">${link.label}</span>
+                        </a>
+                    `).join('');
+                };
+
+                socialTrack.innerHTML = generateLinks(socialLinks) + generateLinks(socialLinks);
+            }
+
+            /**
+             * Setup navigation functionality
+             */
+            setupNavigation() {
+                const sidebarToggle = document.querySelector('.sidebar-toggle');
+                const sidebar = document.querySelector('.sidebar');
                 
-                // Only show gradient, stars and flashlight options
-                const allowedOptions = document.querySelectorAll('.bg-option[data-bg="gradient"], .bg-option[data-bg="stars"], .bg-option[data-bg="flashlight"]');
-                allowedOptions.forEach(option => {
-                    option.style.display = 'block';
+                if (sidebarToggle && sidebar) {
+                    sidebarToggle.addEventListener('click', () => {
+                        const isOpen = sidebar.classList.toggle('open');
+                        sidebarToggle.classList.toggle('active', isOpen);
+                        sidebarToggle.setAttribute('aria-expanded', isOpen);
+                    });
+                }
+
+                // Active navigation highlighting
+                this.updateActiveNavigation();
+                window.addEventListener('hashchange', () => {
+                    this.updateActiveNavigation();
                 });
             }
-        }
 
-        // Background switcher functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            createNeuralNetwork();
-            
-            // Set default background
-            switchBackground('flashlight');
-            
-            // Optimize for mobile
-            optimizeBackgroundForMobile();
-            window.addEventListener('resize', optimizeBackgroundForMobile);
-            
-            // Toggle dropdown
-            const bgMenuButton = document.getElementById('bgMenuButton');
-            const bgDropdown = document.getElementById('bgDropdown');
-            
-            bgMenuButton.addEventListener('click', function() {
-                bgDropdown.classList.toggle('show');
-            });
-            
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!bgMenuButton.contains(event.target) && !bgDropdown.contains(event.target)) {
-                    bgDropdown.classList.remove('show');
-                }
-            });
-            
-            // Background switching
-            const bgOptions = document.querySelectorAll('.bg-option');
-            bgOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const bgType = this.getAttribute('data-bg');
-                    switchBackground(bgType);
-                    bgDropdown.classList.remove('show');
-                });
-            });
-            
-            // Sidebar toggle functionality
-            const sidebarToggle = document.querySelector('.sidebar-toggle');
-            const sidebar = document.querySelector('.sidebar');
-            
-            sidebarToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('open');
-                this.classList.toggle('active');
-            });
-
-            // Initialize accordion functionality for skills
-            const accordionHeaders = document.querySelectorAll('.skill-accordion-header');
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    const item = this.parentElement;
-                    const content = this.nextElementSibling;
+            /**
+             * Update active navigation state
+             */
+            updateActiveNavigation() {
+                const currentHash = window.location.hash || '#home';
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    const isActive = href === currentHash || 
+                                   (currentHash === '#home' && href === '#home');
                     
-                    // Toggle active class
-                    item.classList.toggle('open');
-                    
-                    // Set max-height for animation
-                    if (item.classList.contains('open')) {
-                        content.style.maxHeight = content.scrollHeight + 'px';
+                    link.classList.toggle('active', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'page');
                     } else {
-                        content.style.maxHeight = 0;
+                        link.removeAttribute('aria-current');
                     }
                 });
-            });
-        });
+            }
 
-        function switchBackground(type) {
-            // Remove active class from all backgrounds
-            const backgrounds = ['gradient', 'stars', 'geometric', 'waves', 'dots', 'neural', 'flashlight'];
-            backgrounds.forEach(bg => {
-                document.getElementById(bg).classList.remove('active-bg');
-            });
+            /**
+             * Setup accordion functionality for skills
+             */
+            setupAccordions() {
+                const accordionHeaders = document.querySelectorAll('.skill-accordion-header');
+                
+                accordionHeaders.forEach(header => {
+                    header.addEventListener('click', () => {
+                        this.toggleAccordion(header);
+                    });
 
-            // Remove active class from all options
-            document.querySelectorAll('.bg-option').forEach(option => {
-                option.classList.remove('active');
-            });
+                    // Keyboard support
+                    header.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.toggleAccordion(header);
+                        }
+                    });
+                });
 
-            // Activate selected background
-            document.getElementById(type).classList.add('active-bg');
-            document.querySelector(`.bg-option[data-bg="${type}"]`).classList.add('active');
-            
-            // Show gradient stars with gradient background
-            if (type === 'gradient') {
-                document.querySelector('.gradient-stars').classList.add('active-bg');
-            } else {
-                document.querySelector('.gradient-stars').classList.remove('active-bg');
+                // Footer accordions for mobile
+                this.setupFooterAccordions();
+            }
+
+            /**
+             * Toggle accordion item
+             */
+            toggleAccordion(header) {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const isOpen = item.classList.contains('open');
+                
+                // Toggle state
+                item.classList.toggle('open');
+                header.setAttribute('aria-expanded', !isOpen);
+                
+                // Animate content
+                if (!isOpen) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = '0';
+                }
+            }
+
+            /**
+             * Setup footer accordions for mobile
+             */
+            setupFooterAccordions() {
+                const footerHeaders = document.querySelectorAll('.footer-accordion-header');
+                
+                footerHeaders.forEach(header => {
+                    header.addEventListener('click', () => {
+                        if (window.innerWidth <= 768) {
+                            const section = header.parentElement;
+                            const content = section.querySelector('ul');
+                            
+                            section.classList.toggle('open');
+                            
+                            if (section.classList.contains('open')) {
+                                content.style.maxHeight = content.scrollHeight + 'px';
+                            } else {
+                                content.style.maxHeight = '0';
+                            }
+                        }
+                    });
+                });
+            }
+
+            /**
+             * Setup background switcher functionality
+             */
+            setupBackgroundSwitcher() {
+                const bgMenuButton = document.getElementById('bgMenuButton');
+                const bgDropdown = document.getElementById('bgDropdown');
+                const bgOptions = document.querySelectorAll('.bg-option');
+                
+                if (!bgMenuButton || !bgDropdown) return;
+
+                // Toggle dropdown
+                bgMenuButton.addEventListener('click', () => {
+                    const isOpen = bgDropdown.classList.toggle('show');
+                    bgMenuButton.setAttribute('aria-expanded', isOpen);
+                    bgDropdown.setAttribute('aria-hidden', !isOpen);
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!bgMenuButton.contains(event.target) && 
+                        !bgDropdown.contains(event.target)) {
+                        bgDropdown.classList.remove('show');
+                        bgMenuButton.setAttribute('aria-expanded', 'false');
+                        bgDropdown.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                // Background switching
+                bgOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const bgType = option.getAttribute('data-bg');
+                        this.switchBackground(bgType);
+                        bgDropdown.classList.remove('show');
+                        bgMenuButton.setAttribute('aria-expanded', 'false');
+                        bgDropdown.setAttribute('aria-hidden', 'true');
+                    });
+                });
+            }
+
+            /**
+             * Switch background theme
+             */
+            switchBackground(type) {
+                const backgrounds = ['flashlight', 'cyberpunk', 'ghibli', 'space', 'city', 'peace', 'anime'];
+                
+                // Remove active class from all backgrounds
+                backgrounds.forEach(bg => {
+                    const element = document.getElementById(bg);
+                    if (element) {
+                        element.classList.remove('active-bg');
+                    }
+                });
+
+                // Remove active class from all options
+                document.querySelectorAll('.bg-option').forEach(option => {
+                    option.classList.remove('active');
+                });
+
+                // Activate selected background
+                const selectedBg = document.getElementById(type);
+                const selectedOption = document.querySelector(`.bg-option[data-bg="${type}"]`);
+                
+                if (selectedBg) {
+                    selectedBg.classList.add('active-bg');
+                    
+                    // Initialize backgrounds if selected
+                    if (type === 'cyberpunk') {
+                        this.initCyberpunk();
+                    } else if (type === 'ghibli') {
+                        this.initGhibli();
+                    } else if (type === 'space') {
+                        this.initSpace();
+                    } else if (type === 'city') {
+                        this.initCity();
+                    } else if (type === 'peace') {
+                        this.initPeace();
+                    } else if (type === 'anime') {
+                        this.initAnime();
+                    }
+                }
+                
+                if (selectedOption) {
+                    selectedOption.classList.add('active');
+                }
+            }
+
+            /**
+             * Optimize experience for mobile devices
+             */
+            optimizeForMobile() {
+                // Only flashlight background is available, no mobile optimization needed
+            }
+
+            /**
+             * Initialize cyberpunk background
+             */
+            initCyberpunk() {
+                if (document.getElementById('cyberpunk').classList.contains('initialized')) return;
+                
+                this.createParticles();
+                this.createCodeRain();
+                this.createOrbs();
+                this.createShapes();
+                this.createPulses();
+                this.createDataStreams();
+                
+                document.getElementById('cyberpunk').classList.add('initialized');
+            }
+
+            createParticles() {
+                const container = document.querySelector('#cyberpunk #particles');
+                container.innerHTML = '';
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * window.innerWidth + 'px';
+                    particle.style.top = Math.random() * window.innerHeight + 'px';
+                    particle.style.animationDelay = Math.random() * 8 + 's';
+                    particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                    container.appendChild(particle);
+                }
+            }
+
+            createCodeRain() {
+                const container = document.querySelector('#cyberpunk #codeRain');
+                container.innerHTML = '';
+                const codeChars = '01アイウエオabcdefghijklmnopqrstuvwxyz0123456789';
+                
+                for (let i = 0; i < 15; i++) {
+                    const codeString = document.createElement('div');
+                    codeString.className = 'code-rain';
+                    codeString.style.left = Math.random() * window.innerWidth + 'px';
+                    codeString.style.animationDelay = Math.random() * 10 + 's';
+                    codeString.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                    
+                    let text = '';
+                    for (let j = 0; j < 15; j++) {
+                        text += codeChars[Math.floor(Math.random() * codeChars.length)] + '<br>';
+                    }
+                    codeString.innerHTML = text;
+                    container.appendChild(codeString);
+                }
+            }
+
+            createOrbs() {
+                const container = document.querySelector('#cyberpunk #orbs');
+                container.innerHTML = '';
+                for (let i = 0; i < 3; i++) {
+                    const orb = document.createElement('div');
+                    orb.className = 'orb';
+                    orb.style.width = (Math.random() * 80 + 40) + 'px';
+                    orb.style.height = orb.style.width;
+                    orb.style.left = Math.random() * window.innerWidth + 'px';
+                    orb.style.top = Math.random() * window.innerHeight + 'px';
+                    orb.style.animationDelay = Math.random() * 15 + 's';
+                    container.appendChild(orb);
+                }
+            }
+
+            createShapes() {
+                const container = document.querySelector('#cyberpunk #shapes');
+                container.innerHTML = '';
+                const shapeTypes = ['triangle', 'square', 'circle'];
+                
+                for (let i = 0; i < 6; i++) {
+                    const shape = document.createElement('div');
+                    shape.className = 'shape ' + shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+                    shape.style.left = Math.random() * window.innerWidth + 'px';
+                    shape.style.top = Math.random() * window.innerHeight + 'px';
+                    shape.style.animationDelay = Math.random() * 20 + 's';
+                    container.appendChild(shape);
+                }
+            }
+
+            createPulses() {
+                const container = document.querySelector('#cyberpunk #pulses');
+                container.innerHTML = '';
+                for (let i = 0; i < 2; i++) {
+                    const pulse = document.createElement('div');
+                    pulse.className = 'pulse';
+                    pulse.style.left = Math.random() * window.innerWidth + 'px';
+                    pulse.style.top = Math.random() * window.innerHeight + 'px';
+                    pulse.style.animationDelay = Math.random() * 3 + 's';
+                    container.appendChild(pulse);
+                }
+            }
+
+            createDataStreams() {
+                const container = document.querySelector('#cyberpunk #dataStreams');
+                container.innerHTML = '';
+                for (let i = 0; i < 10; i++) {
+                    const stream = document.createElement('div');
+                    stream.className = 'data-stream';
+                    stream.style.left = Math.random() * window.innerWidth + 'px';
+                    stream.style.animationDelay = Math.random() * 4 + 's';
+                    container.appendChild(stream);
+                }
+            }
+
+            /**
+             * Initialize Ghibli background
+             */
+            initGhibli() {
+                if (window.initGhibli) {
+                    window.initGhibli();
+                }
+            }
+
+            /**
+             * Initialize Space background
+             */
+            initSpace() {
+                if (window.initSpace) {
+                    window.initSpace();
+                }
+            }
+
+            /**
+             * Initialize City background
+             */
+            initCity() {
+                if (window.initCity) {
+                    window.initCity();
+                }
+            }
+
+            /**
+             * Initialize Peace background
+             */
+            initPeace() {
+                if (window.initPeace) {
+                    window.initPeace();
+                }
+            }
+
+            /**
+             * Initialize Anime background
+             */
+            initAnime() {
+                if (window.initAnime) {
+                    window.initAnime();
+                }
+            }
+
+            /**
+             * Initialize other components
+             */
+            initializeComponents() {
+                // Add any additional component initialization here
+                this.initializeProgressBars();
+            }
+
+            /**
+             * Initialize progress bar animations
+             */
+            initializeProgressBars() {
+                const progressBars = document.querySelectorAll('.progress-bar');
+                
+                // Intersection Observer for progress bar animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animationPlayState = 'running';
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                progressBars.forEach(bar => {
+                    observer.observe(bar);
+                });
             }
         }
+
+        // Initialize the application
+        new PortfolioApp();
     </script>
 </body>
 </html>

@@ -1,128 +1,373 @@
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', function() {
+/**
+ * ============================================
+ * PORTFOLIO WEBSITE - MAIN SCRIPTS
+ * ============================================
+ * Organized JavaScript for portfolio functionality
+ * Author: Suraj Kumar
+ * ============================================
+ */
 
-    // Sidebar toggle functionality
-    const sidebarToggle = document.querySelector('.sidebar-toggle');
-    const sidebar = document.querySelector('.sidebar');
-    
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('open');
-            sidebarToggle.classList.toggle('open');
-            sidebarToggle.setAttribute('aria-expanded', 
-                sidebarToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
-            );
+'use strict';
+
+/**
+ * Main Portfolio Application Class
+ * Handles all interactive functionality
+ */
+class PortfolioApp {
+    constructor() {
+        this.isMobile = () => window.innerWidth <= 768;
+        this.currentBackground = 'gradient-stars';
+        this.init();
+    }
+
+    /**
+     * Initialize the application
+     */
+    init() {
+        this.bindEvents();
+        this.initializeComponents();
+    }
+
+    /**
+     * Bind all event listeners
+     */
+    bindEvents() {
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            this.onDOMReady();
+        });
+
+        // Window events
+        window.addEventListener('resize', () => {
+            this.handleResize();
+        });
+
+        window.addEventListener('scroll', () => {
+            this.handleScroll();
+        });
+
+        // Hash change for navigation
+        window.addEventListener('hashchange', () => {
+            this.updateActiveNavLink();
         });
     }
 
-    // Mobile detection for sidebar hover effect
-    function isMobile() {
-        return window.innerWidth <= 768;
+    /**
+     * Handle DOM ready event
+     */
+    onDOMReady() {
+        this.initSidebar();
+        this.initAccordions();
+        this.initBackgroundSystem();
+        this.initContactForm();
+        this.initNavigation();
+        this.updateMobileOptimizations();
+        this.initThemePersistence();
     }
 
-    // Disable hover effect on mobile
-    function updateSidebarHoverEffect() {
-        if (sidebar) {
-            if (isMobile()) {
-                sidebar.classList.add('no-hover-effect');
-            } else {
-                sidebar.classList.remove('no-hover-effect');
-            }
+    /**
+     * Handle window resize
+     */
+    handleResize() {
+        this.updateMobileOptimizations();
+        this.updateSidebarHoverEffect();
+    }
+
+    /**
+     * Handle window scroll
+     */
+    handleScroll() {
+        this.updateActiveNavLink();
+        this.updateBreadcrumbs();
+    }
+
+    /**
+     * ==========================================
+     * SIDEBAR FUNCTIONALITY
+     * ==========================================
+     */
+
+    /**
+     * Initialize sidebar functionality
+     */
+    initSidebar() {
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        if (!sidebarToggle || !sidebar) return;
+
+        // Toggle functionality
+        sidebarToggle.addEventListener('click', () => {
+            const isOpen = sidebar.classList.toggle('open');
+            sidebarToggle.classList.toggle('open', isOpen);
+            sidebarToggle.setAttribute('aria-expanded', isOpen.toString());
+        });
+
+        // Initialize hover effect
+        this.updateSidebarHoverEffect();
+    }
+
+    /**
+     * Update sidebar hover effect based on device type
+     */
+    updateSidebarHoverEffect() {
+        const sidebar = document.querySelector('.sidebar');
+        if (!sidebar) return;
+
+        if (this.isMobile()) {
+            sidebar.classList.add('no-hover-effect');
+        } else {
+            sidebar.classList.remove('no-hover-effect');
         }
     }
 
-    // Initial call and add resize listener
-    updateSidebarHoverEffect();
-    window.addEventListener('resize', updateSidebarHoverEffect);
+    /**
+     * ==========================================
+     * ACCORDION FUNCTIONALITY
+     * ==========================================
+     */
 
-    // Skills accordion functionality
-    const skillAccordionItems = document.querySelectorAll('.skill-accordion-item');
-    
-    if (skillAccordionItems.length > 0) {
+    /**
+     * Initialize all accordion functionality
+     */
+    initAccordions() {
+        this.initSkillsAccordion();
+        this.initFooterAccordion();
+    }
+
+    /**
+     * Initialize skills accordion
+     */
+    initSkillsAccordion() {
+        const skillAccordionItems = document.querySelectorAll('.skill-accordion-item');
+        
         skillAccordionItems.forEach(item => {
             const header = item.querySelector('.skill-accordion-header');
             const content = item.querySelector('.sub-skills-content');
             
+            if (!header || !content) return;
+
             header.addEventListener('click', () => {
-                // Toggle current item
-                const isOpen = item.classList.toggle('open');
-                
-                // Set appropriate max-height
-                if (isOpen) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                } else {
-                    content.style.maxHeight = '0';
+                this.toggleAccordion(item, content);
+            });
+
+            // Keyboard accessibility
+            header.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.toggleAccordion(item, content);
                 }
             });
         });
     }
 
-    // Footer accordion for mobile
-    const footerAccordionHeaders = document.querySelectorAll('.footer-accordion-header');
-    
-    if (footerAccordionHeaders.length > 0) {
-        footerAccordionHeaders.forEach(header => {
-            header.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    const parent = this.parentElement;
+    /**
+     * Initialize footer accordion for mobile
+     */
+    initFooterAccordion() {
+        const footerHeaders = document.querySelectorAll('.footer-accordion-header');
+        
+        footerHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                if (this.isMobile()) {
+                    const parent = header.parentElement;
                     const content = parent.querySelector('ul');
                     
-                    // Toggle current item
-                    const isOpen = parent.classList.toggle('open');
-                    
-                    // Set appropriate max-height
-                    if (isOpen) {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                    } else {
-                        content.style.maxHeight = '0';
+                    if (content) {
+                        this.toggleAccordion(parent, content);
                     }
                 }
             });
         });
     }
 
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    const responseMessage = document.getElementById('responseMessage');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            
-            // Send form data to Formspree
-            fetch(contactForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    responseMessage.textContent = "Thank you for your message! I'll get back to you soon.";
-                    responseMessage.style.color = "#4ecdc4";
-                    contactForm.reset();
-                } else {
-                    responseMessage.textContent = "Oops! There was a problem submitting your form.";
-                    responseMessage.style.color = "#ff6b6b";
-                }
-            })
-            .catch(error => {
-                responseMessage.textContent = "Oops! There was a problem submitting your form.";
-                responseMessage.style.color = "#ff6b6b";
-                console.error('Error:', error);
-            });
+    /**
+     * Toggle accordion item
+     */
+    toggleAccordion(item, content) {
+        const isOpen = item.classList.toggle('open');
+        
+        if (isOpen) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+            content.style.maxHeight = '0';
+        }
+
+        // Update ARIA attributes
+        const header = item.querySelector('.skill-accordion-header, .footer-accordion-header');
+        if (header) {
+            header.setAttribute('aria-expanded', isOpen.toString());
+        }
+    }
+
+    /**
+     * ==========================================
+     * BACKGROUND SYSTEM
+     * ==========================================
+     */
+
+    /**
+     * Initialize background system
+     */
+    initBackgroundSystem() {
+        this.createBackgroundElements();
+        this.initBackgroundSwitcher();
+        this.createNeuralNetwork();
+        
+        // Set theme from sessionStorage (persists until page refresh) or localStorage
+        const sessionTheme = sessionStorage.getItem('currentTheme');
+        const savedBg = sessionTheme || localStorage.getItem('preferredBackground') || 'gradient-stars';
+        this.switchBackground(savedBg);
+        
+        // Listen for theme changes from other pages
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'currentTheme' && e.newValue) {
+                this.switchBackground(e.newValue);
+            }
         });
     }
 
-    // Initialize Neural Network Background
-    function createNeuralNetwork() {
-        const neural = document.querySelector('.neural-bg');
+    /**
+     * Create background elements dynamically
+     */
+    createBackgroundElements() {
+        // Only create if they don't exist
+        this.createElementIfNotExists('wave-bg', () => {
+            const container = document.createElement('div');
+            container.className = 'wave-bg';
+            container.id = 'wave-bg';
+            
+            for (let i = 0; i < 3; i++) {
+                const wave = document.createElement('div');
+                wave.className = 'wave';
+                container.appendChild(wave);
+            }
+            
+            return container;
+        });
+
+        this.createElementIfNotExists('dots-bg', () => {
+            const container = document.createElement('div');
+            container.className = 'dots-bg';
+            container.id = 'dots-bg';
+            return container;
+        });
+
+        this.createElementIfNotExists('neural-bg', () => {
+            const container = document.createElement('div');
+            container.className = 'neural-bg';
+            container.id = 'neural-bg';
+            return container;
+        });
+    }
+
+    /**
+     * Create element if it doesn't exist
+     */
+    createElementIfNotExists(id, createElement) {
+        if (!document.getElementById(id)) {
+            const element = createElement();
+            document.body.appendChild(element);
+        }
+    }
+
+    /**
+     * Initialize background switcher
+     */
+    initBackgroundSwitcher() {
+        // Check if background switcher already exists
+        if (document.querySelector('.bg-switcher')) return;
+
+        const bgSwitcher = document.createElement('div');
+        bgSwitcher.className = 'bg-switcher';
+        
+        const backgrounds = [
+            { name: 'Gradient', type: 'gradient-animation' },
+            { name: 'Stars', type: 'gradient-stars' },
+            { name: 'Shapes', type: 'geometric-bg' },
+            { name: 'Waves', type: 'wave-bg' },
+            { name: 'Dots', type: 'dots-bg' },
+            { name: 'Neural', type: 'neural-bg' },
+            { name: 'Ghibli', type: 'ghibli-bg' },
+            { name: 'Space', type: 'space-bg' },
+            { name: 'City', type: 'city-bg' },
+            { name: 'Peace', type: 'peace-bg' },
+            { name: 'Anime', type: 'anime-bg' }
+        ];
+        
+        backgrounds.forEach(bg => {
+            const btn = document.createElement('button');
+            btn.className = 'switch-btn';
+            btn.textContent = bg.name;
+            btn.setAttribute('data-bg', bg.type);
+            btn.setAttribute('aria-label', `Switch to ${bg.name} background`);
+            
+            btn.addEventListener('click', () => {
+                this.switchBackground(bg.type);
+            });
+            
+            bgSwitcher.appendChild(btn);
+        });
+        
+        document.body.appendChild(bgSwitcher);
+    }
+
+    /**
+     * Switch background theme
+     */
+    switchBackground(type) {
+        try {
+            // Hide all backgrounds
+            const backgrounds = document.querySelectorAll('[id$="-bg"], .flashlight-bg, .cyberpunk-bg, .ghibli-bg, .space-bg, .city-bg, .peace-bg, .anime-bg');
+            backgrounds.forEach(bg => {
+                bg.style.display = 'none';
+                bg.classList.remove('active-bg');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.bg-option, .switch-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Activate selected background
+            const targetBg = document.getElementById(type);
+            if (targetBg) {
+                targetBg.style.display = 'block';
+                targetBg.classList.add('active-bg');
+            }
+            
+            const targetBtn = document.querySelector(`[data-bg="${type}"]`);
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+            }
+            
+            // Handle special cases
+            if (type === 'cyberpunk' && window.initCyberpunk) {
+                window.initCyberpunk();
+            }
+            
+            // Save preference for current session (until refresh)
+            this.currentBackground = type;
+            sessionStorage.setItem('currentTheme', type);
+            localStorage.setItem('preferredBackground', type);
+            
+            // Broadcast theme change to other tabs/pages
+            localStorage.setItem('currentTheme', type);
+            
+        } catch (error) {
+            console.warn('Background switching error:', error);
+        }
+    }
+
+    /**
+     * Create neural network background
+     */
+    createNeuralNetwork() {
+        const neural = document.getElementById('neural-bg');
         if (!neural) return;
+        
+        // Clear existing content
+        neural.innerHTML = '';
         
         const nodeCount = 15;
         const nodes = [];
@@ -169,189 +414,403 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Background switcher functionality
-    function switchBackground(type) {
-        // Hide all backgrounds
-        document.querySelector('.gradient-animation').classList.remove('active-bg');
-        document.querySelector('.gradient-stars').classList.remove('active-bg');
-        document.querySelector('.geometric-bg').classList.remove('active-bg');
-        document.querySelector('.wave-bg').classList.remove('active-bg');
-        document.querySelector('.dots-bg').classList.remove('active-bg');
-        document.querySelector('.neural-bg').classList.remove('active-bg');
+    /**
+     * ==========================================
+     * CONTACT FORM FUNCTIONALITY
+     * ==========================================
+     */
+
+    /**
+     * Initialize contact form
+     */
+    initContactForm() {
+        const contactForm = document.getElementById('contactForm');
+        const responseMessage = document.getElementById('responseMessage');
         
-        // Remove active class from all buttons
-        document.querySelectorAll('.switch-btn').forEach(btn => {
-            btn.classList.remove('active');
+        if (!contactForm) return;
+
+        contactForm.addEventListener('submit', (e) => {
+            this.handleContactSubmission(e, contactForm, responseMessage);
         });
-        
-        // Activate selected background
-        document.querySelector('.' + type).classList.add('active-bg');
-        document.querySelector('[data-bg="' + type + '"]').classList.add('active');
-        
-        // Save preference to localStorage
-        localStorage.setItem('preferredBackground', type);
     }
 
-    // Add background switcher buttons
-    function addBackgroundSwitcher() {
-        // Create background switcher container
-        const bgSwitcher = document.createElement('div');
-        bgSwitcher.className = 'bg-switcher';
+    /**
+     * Handle contact form submission
+     */
+    async handleContactSubmission(e, form, messageElement) {
+        e.preventDefault();
         
-        // Create buttons
-        const buttons = [
-            { name: 'Gradient', type: 'gradient-animation' },
-            { name: 'Stars', type: 'gradient-stars' },
-            { name: 'Shapes', type: 'geometric-bg' },
-            { name: 'Waves', type: 'wave-bg' },
-            { name: 'Dots', type: 'dots-bg' },
-            { name: 'Neural', type: 'neural-bg' }
-        ];
-        
-        buttons.forEach(button => {
-            const btn = document.createElement('button');
-            btn.className = 'switch-btn';
-            btn.textContent = button.name;
-            btn.setAttribute('data-bg', button.type);
-            btn.addEventListener('click', () => switchBackground(button.type));
-            bgSwitcher.appendChild(btn);
-        });
-        
-        // Add to body
-        document.body.appendChild(bgSwitcher);
-    }
+        if (!messageElement) return;
 
-    // Initialize background effects
-    function initBackgroundEffects() {
-        // Create wave background if it doesn't exist
-        if (!document.querySelector('.wave-bg')) {
-            const waveContainer = document.createElement('div');
-            waveContainer.className = 'wave-bg';
+        try {
+            const formData = new FormData(form);
             
-            for (let i = 0; i < 3; i++) {
-                const wave = document.createElement('div');
-                wave.className = 'wave';
-                waveContainer.appendChild(wave);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+            
+            if (data.ok) {
+                this.showMessage(messageElement, "Thank you for your message! I'll get back to you soon.", 'success');
+                form.reset();
+            } else {
+                this.showMessage(messageElement, "Oops! There was a problem submitting your form.", 'error');
             }
             
-            document.querySelector('.gradient-bg').appendChild(waveContainer);
+        } catch (error) {
+            this.showMessage(messageElement, "Oops! There was a problem submitting your form.", 'error');
+            console.error('Contact form error:', error);
         }
-        
-        // Create dots background if it doesn't exist
-        if (!document.querySelector('.dots-bg')) {
-            const dotsContainer = document.createElement('div');
-            dotsContainer.className = 'dots-bg';
-            document.querySelector('.gradient-bg').appendChild(dotsContainer);
-        }
-        
-        // Create neural background if it doesn't exist
-        if (!document.querySelector('.neural-bg')) {
-            const neuralContainer = document.createElement('div');
-            neuralContainer.className = 'neural-bg';
-            document.querySelector('.gradient-bg').appendChild(neuralContainer);
-            createNeuralNetwork();
-        }
-        
-        // Add background switcher
-        addBackgroundSwitcher();
-        
-        // Set default or saved background
-        const savedBg = localStorage.getItem('preferredBackground') || 'gradient-stars';
-        switchBackground(savedBg);
     }
-    
-    // Initialize background effects
-    initBackgroundEffects();
-});
-// Update active navigation link based on current page or section
-function updateActiveNavLink() {
-    const navLinks = document.querySelectorAll('.sidebar-nav-links .nav-link');
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // First, remove active class from all links
-    navLinks.forEach(link => link.classList.remove('active'));
-    
-    // For index.html, handle section-based navigation
-    if (currentPath === 'index.html' || currentPath === '') {
-        // Get current section based on scroll position
+
+    /**
+     * Show message with styling
+     */
+    showMessage(element, message, type) {
+        element.textContent = message;
+        element.style.color = type === 'success' ? '#4ecdc4' : '#ff6b6b';
+        
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+            element.textContent = '';
+        }, 5000);
+    }
+
+    /**
+     * ==========================================
+     * NAVIGATION FUNCTIONALITY
+     * ==========================================
+     */
+
+    /**
+     * Initialize navigation
+     */
+    initNavigation() {
+        this.updateActiveNavLink();
+        this.updateBreadcrumbs();
+    }
+
+    /**
+     * Update active navigation link
+     */
+    updateActiveNavLink() {
+        const navLinks = document.querySelectorAll('.sidebar-nav-links .nav-link');
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        
+        // Remove active class from all links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
+        });
+        
+        // Handle section-based navigation for index page
+        if (currentPath === 'index.html' || currentPath === '') {
+            const currentSection = this.getCurrentSection();
+            
+            if (currentSection) {
+                const activeLink = document.querySelector(`.sidebar-nav-links .nav-link[href="#${currentSection}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    activeLink.setAttribute('aria-current', 'page');
+                }
+            }
+        } else {
+            // Handle page-based navigation
+            const activeLink = document.querySelector(`.sidebar-nav-links .nav-link[href="${currentPath}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+                activeLink.setAttribute('aria-current', 'page');
+            }
+        }
+    }
+
+    /**
+     * Get current section based on scroll position
+     */
+    getCurrentSection() {
         const sections = document.querySelectorAll('section[id]');
         let currentSection = '';
         
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+            const rect = section.getBoundingClientRect();
+            const sectionTop = rect.top + window.pageYOffset;
+            const sectionHeight = rect.height;
+            
+            if (window.pageYOffset >= sectionTop - 100 && 
+                window.pageYOffset < sectionTop + sectionHeight - 100) {
                 currentSection = section.getAttribute('id');
             }
         });
         
-        // Set active class for current section
-        if (currentSection) {
-            const activeLink = document.querySelector(`.sidebar-nav-links .nav-link[href="#${currentSection}"]`);
-            if (activeLink) activeLink.classList.add('active');
-        }
-    } else {
-        // For other pages, highlight based on current page
-        const activeLink = document.querySelector(`.sidebar-nav-links .nav-link[href="${currentPath}"]`);
-        if (activeLink) activeLink.classList.add('active');
+        return currentSection || 'home'; // Default to home if no section detected
     }
-}
 
-// Update breadcrumbs based on current page
-function updateBreadcrumbs() {
-    const breadcrumbs = document.querySelector('.breadcrumbs');
-    if (!breadcrumbs) return;
-    
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // Clear existing breadcrumbs
-    breadcrumbs.innerHTML = '';
-    
-    // Always add Home link
-    const homeLink = document.createElement('a');
-    homeLink.href = 'index.html';
-    homeLink.textContent = 'Home';
-    breadcrumbs.appendChild(homeLink);
-    
-    // If not on home page, add current page
-    if (currentPath !== 'index.html' && currentPath !== '') {
+    /**
+     * Update breadcrumbs
+     */
+    updateBreadcrumbs() {
+        const breadcrumbs = document.querySelector('.breadcrumbs');
+        if (!breadcrumbs) return;
+        
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        
+        // Clear existing breadcrumbs
+        breadcrumbs.innerHTML = '';
+        
+        // Create home link
+        const homeLink = this.createBreadcrumbLink('index.html', 'Home');
+        breadcrumbs.appendChild(homeLink);
+        
+        // Add current page or section
+        if (currentPath !== 'index.html' && currentPath !== '') {
+            this.addBreadcrumbSeparator(breadcrumbs);
+            const pageName = this.formatPageName(currentPath.replace('.html', ''));
+            const currentPageSpan = this.createBreadcrumbSpan(pageName, 'current-page');
+            breadcrumbs.appendChild(currentPageSpan);
+        } else {
+            // On home page, show current section
+            const currentSection = this.getCurrentSection();
+            if (currentSection && currentSection !== 'home') {
+                this.addBreadcrumbSeparator(breadcrumbs);
+                const sectionName = this.formatPageName(currentSection);
+                const sectionSpan = this.createBreadcrumbSpan(sectionName, 'current-page');
+                breadcrumbs.appendChild(sectionSpan);
+            }
+        }
+    }
+
+    /**
+     * Create breadcrumb link element
+     */
+    createBreadcrumbLink(href, text) {
+        const link = document.createElement('a');
+        link.href = href;
+        link.textContent = text;
+        return link;
+    }
+
+    /**
+     * Create breadcrumb span element
+     */
+    createBreadcrumbSpan(text, className) {
+        const span = document.createElement('span');
+        span.className = className;
+        span.textContent = text;
+        return span;
+    }
+
+    /**
+     * Add breadcrumb separator
+     */
+    addBreadcrumbSeparator(container) {
         const separator = document.createElement('span');
         separator.className = 'breadcrumb-separator';
         separator.textContent = ' / ';
-        breadcrumbs.appendChild(separator);
-        
-        const pageName = currentPath.replace('.html', '');
-        const currentPageSpan = document.createElement('span');
-        currentPageSpan.className = 'current-page';
-        currentPageSpan.textContent = pageName.charAt(0).toUpperCase() + pageName.slice(1);
-        breadcrumbs.appendChild(currentPageSpan);
-    } else {
-        // On home page, check for active section
-        const activeSection = document.querySelector('section[id].active');
-        if (activeSection) {
-            const separator = document.createElement('span');
-            separator.className = 'breadcrumb-separator';
-            separator.textContent = ' / ';
-            breadcrumbs.appendChild(separator);
+        container.appendChild(separator);
+    }
+
+    /**
+     * Format page/section name for display
+     */
+    formatPageName(name) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+
+    /**
+     * ==========================================
+     * MOBILE OPTIMIZATIONS
+     * ==========================================
+     */
+
+    /**
+     * Update mobile-specific optimizations
+     */
+    updateMobileOptimizations() {
+        this.updateSidebarHoverEffect();
+        this.optimizeBackgroundsForMobile();
+    }
+
+    /**
+     * Optimize backgrounds for mobile performance
+     */
+    optimizeBackgroundsForMobile() {
+        if (this.isMobile()) {
+            // Disable complex backgrounds on mobile
+            const complexBackgrounds = ['neural-bg', 'cyberpunk-bg'];
             
-            const sectionName = activeSection.getAttribute('id');
-            const sectionSpan = document.createElement('span');
-            sectionSpan.className = 'current-page';
-            sectionSpan.textContent = sectionName.charAt(0).toUpperCase() + sectionName.slice(1);
-            breadcrumbs.appendChild(sectionSpan);
+            if (complexBackgrounds.includes(this.currentBackground)) {
+                this.switchBackground('gradient-stars');
+            }
+            
+            // Hide complex background options
+            const complexButtons = document.querySelectorAll('[data-bg="neural-bg"], [data-bg="cyberpunk-bg"]');
+            complexButtons.forEach(btn => {
+                btn.style.display = 'none';
+            });
+        } else {
+            // Show all background options on desktop
+            const allButtons = document.querySelectorAll('[data-bg]');
+            allButtons.forEach(btn => {
+                btn.style.display = 'block';
+            });
         }
+    }
+
+    /**
+     * ==========================================
+     * THEME PERSISTENCE
+     * ==========================================
+     */
+
+    /**
+     * Initialize theme persistence across pages
+     */
+    initThemePersistence() {
+        // Check for theme from current session
+        const currentTheme = sessionStorage.getItem('currentTheme');
+        if (currentTheme) {
+            this.switchBackground(currentTheme);
+        }
+        
+        // Listen for theme changes from other pages/tabs
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'currentTheme' && e.newValue) {
+                this.switchBackground(e.newValue);
+            }
+        });
+        
+        // Clear session theme on page refresh (F5, Ctrl+R)
+        window.addEventListener('beforeunload', () => {
+            // Only clear if it's a refresh, not navigation
+            if (performance.navigation.type === 1) {
+                sessionStorage.removeItem('currentTheme');
+            }
+        });
+    }
+
+    /**
+     * ==========================================
+     * COMPONENT INITIALIZATION
+     * ==========================================
+     */
+
+    /**
+     * Initialize all components
+     */
+    initializeComponents() {
+        this.initializeProgressBars();
+        this.initializeLazyLoading();
+    }
+
+    /**
+     * Initialize progress bar animations
+     */
+    initializeProgressBars() {
+        const progressBars = document.querySelectorAll('.progress-bar');
+        
+        if (!window.IntersectionObserver) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        progressBars.forEach(bar => {
+            observer.observe(bar);
+        });
+    }
+
+    /**
+     * Initialize lazy loading for images
+     */
+    initializeLazyLoading() {
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        
+        if (!window.IntersectionObserver) return;
+
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('loaded');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
     }
 }
 
-// Initialize navigation enhancements
-document.addEventListener('DOMContentLoaded', function() {
-    // Initial update
-    updateActiveNavLink();
-    updateBreadcrumbs();
-    
-    // Update on scroll for section-based navigation
-    window.addEventListener('scroll', function() {
-        updateActiveNavLink();
-        updateBreadcrumbs();
-    });
+/**
+ * ==========================================
+ * UTILITY FUNCTIONS
+ * ==========================================
+ */
+
+/**
+ * Debounce function for performance optimization
+ */
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+/**
+ * Throttle function for scroll events
+ */
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+/**
+ * ==========================================
+ * APPLICATION INITIALIZATION
+ * ==========================================
+ */
+
+// Initialize the portfolio application
+const portfolioApp = new PortfolioApp();
+
+// Export for potential external use
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = PortfolioApp;
+}
+
+// Global error handling
+window.addEventListener('error', (e) => {
+    console.error('Portfolio App Error:', e.error);
 });
+
+// Performance monitoring
+if ('performance' in window) {
+    window.addEventListener('load', () => {
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        console.log(`Portfolio loaded in ${loadTime}ms`);
+    });
+}

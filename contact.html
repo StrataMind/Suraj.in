@@ -1,394 +1,1255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="styles.css">
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-  <title>Contact | Suraj Kumar</title>
-</head>
-<body>
-
-  <!-- Animated background effects -->
-  <div class="gradient-bg" id="gradient"></div>
-  <div class="gradient-stars" id="stars"></div>
-  
-  <div class="geometric-bg" id="geometric">
-      <div class="shape"></div>
-      <div class="shape"></div>
-      <div class="shape"></div>
-      <div class="shape"></div>
-      <div class="shape"></div>
-      <div class="shape"></div>
-  </div>
-  
-  <div class="wave-bg" id="waves">
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-  </div>
-  
-  <div class="dots-bg" id="dots"></div>
-  
-  <div class="neural-bg" id="neural"></div>
-  
-  <div class="flashlight-bg" id="flashlight"></div>
-
-  <!-- Sidebar Navigation -->
-  <nav class="sidebar">
-      <div class="sidebar-header">
-          <a href="index.html#home" class="sidebar-logo-link">
-              <img src="images/profile_picture.jpeg" alt="Suraj Kumar" class="sidebar-logo">
-              <span>Suraj Kumar</span>
-          </a>
-      </div>
-      <ul class="sidebar-nav-links">
-          <li><a href="index.html#home" class="nav-link"><span class="nav-icon home-icon"></span>Home</a></li>
-          <li><a href="index.html#about" class="nav-link"><span class="nav-icon about-icon"></span>About</a></li>
-          <li><a href="index.html#skills" class="nav-link"><span class="nav-icon skills-icon"></span>Skills</a></li>
-          <li><a href="https://surajsk2003.github.io/Game-Zone/" target="_blank" class="nav-link"><span class="nav-icon games-icon"></span>Game Zone</a></li>
-          <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank" class="nav-link"><span class="nav-icon blog-icon"></span>Blog</a></li>
-          <li><a href="projects.html" class="nav-link"><span class="nav-icon projects-icon"></span>Projects</a></li>
-          <li><a href="contact.html" class="nav-link active"><span class="nav-icon contact-icon"></span>Contact</a></li>
-      </ul>
-      <div class="sidebar-social-icons">
-          <a href="https://github.com/surajsk2003" target="_blank">
-              <img src="images/github.png" alt="GitHub">
-          </a>
-          <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">
-              <img src="images/linkedin.png" alt="LinkedIn">
-          </a>
-      </div>
-  </nav>
-
-  <button class="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-      </svg>
-  </button>
-  
-  <!-- Background Switcher -->
-  <div class="bg-switcher-container">
-      <button class="bg-menu-button" id="bgMenuButton">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-      </button>
-      <div class="bg-dropdown" id="bgDropdown">
-          <div class="bg-option" data-bg="gradient">Gradient</div>
-          <div class="bg-option" data-bg="stars">Stars</div>
-          <div class="bg-option" data-bg="waves">Waves</div>
-          <div class="bg-option" data-bg="dots">Dots</div>
-          <div class="bg-option" data-bg="neural">Neural</div>
-          <div class="bg-option" data-bg="flashlight">Flashlight</div>
-      </div>
-  </div>
-
-<main>
-  <!-- Contact Section -->
-  <section id="contact" class="contact-section">
-    <div class="contact-header">
-      <h2 class="section-title">Let's Connect</h2>
-      <p class="contact-intro">Have a project in mind or want to collaborate? I'd love to hear from you!</p>
-      <div class="contact-divider">
-        <span class="divider-line"></span>
-        <span class="divider-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-          </svg>
-        </span>
-        <span class="divider-line"></span>
-      </div>
-    </div>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Get in touch with Suraj Kumar for collaboration opportunities, project discussions, or professional inquiries. Available for freelance projects.">
+    <meta name="keywords" content="Suraj Kumar, contact, collaboration, freelance, projects, AI developer, machine learning engineer">
+    <meta name="author" content="Suraj Kumar">
     
-    <div class="contact-container">
-      <div class="contact-info">
-        <div class="contact-method">
-          <div class="contact-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-          </div>
-          <div class="contact-details">
-            <h3>Email Me</h3>
-            <p><a href="mailto:surajkumarsksk2003@gmail.com">surajkumarsksk2003@gmail.com</a></p>
-          </div>
-        </div>
-        
-        <div class="contact-method">
-          <div class="contact-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-            </svg>
-          </div>
-          <div class="contact-details">
-            <h3>Follow Me</h3>
-            <div class="social-links">
-              <a href="https://github.com/surajsk2003" target="_blank" class="social-link">
-                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                GitHub
-              </a>
-              <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" class="social-link">
-                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-                LinkedIn
-              </a>
-              <a href="https://www.kaggle.com/surajnitk2021" target="_blank" class="social-link">
-                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M17.5 12.5c0 .828-.56 1.5-1.25 1.5s-1.25-.672-1.25-1.5.56-1.5 1.25-1.5 1.25.672 1.25 1.5zm-7.75-1.5c-.69 0-1.25.672-1.25 1.5s.56 1.5 1.25 1.5 1.25-.672 1.25-1.5-.56-1.5-1.25-1.5zm3.75 3.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                  <path d="M9 2c-1.105 0-2 .9-2 2v5.5h-2c-1.105 0-2 .9-2 2v5c0 1.1.895 2 2 2h2v3.5c0 1.1.895 2 2 2h14c1.105 0 2-.9 2-2v-17c0-1.1-.895-2-2-2h-14zm0 2h14v17h-14v-3.5h-2v-10h2v-3.5z"/>
-                </svg>
-                Kaggle
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="contact-method">
-          <div class="contact-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-          </div>
-          <div class="contact-details">
-            <h3>Find Me</h3>
-            <p>Bangalore, India</p>
-          </div>
-        </div>
-        
-        <div class="contact-availability">
-          <div class="availability-indicator available"></div>
-          <p>Available for freelance projects</p>
-        </div>
-      </div>
-      
-      <div class="contact-form-container">
-        <div class="form-header">
-          <h3>Send a Message</h3>
-          <p>I'll get back to you as soon as possible</p>
-        </div>
-        
-        <form id="contactForm" action="https://formspree.io/f/mzzroqev" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <div class="input-with-icon">
-                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Email</label>
-              <div class="input-with-icon">
-                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-                <input type="email" id="email" name="email" placeholder="Your email address" required>
-              </div>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <div class="input-with-icon">
-              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-1.9.9-1.9 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 6h9v6h-9v-6zm-3 0h2v2H8v-2zm0 4h2v2H8v-2zm-4-4h3v6H4v-6z"/>
-              </svg>
-              <input type="text" id="subject" name="subject" placeholder="What's this about?">
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Message</label>
-            <div class="input-with-icon textarea-container">
-              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
-              </svg>
-              <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
-            </div>
-          </div>
-          
-          <button type="submit" class="submit-btn">
-            <span>Send Message</span>
-            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-            </svg>
-          </button>
-        </form>
-        <div id="responseMessage"></div>
-      </div>
-    </div>
-  </section>
-</main>
-
-  <!-- Footer Section -->
-  <footer id="Footer">
-      <div class="footer-quotes">
-          <ul>
-              <li><em>"The best way to predict the future is to invent it." <span class="quote-author">- Alan Kay</span></em></li>
-              <li><em>"Innovation distinguishes between a leader and a follower." <span class="quote-author">- Steve Jobs</span></em></li>
-              <li><em>"Strive not to be a success, but rather to be of value." <span class="quote-author">- Albert Einstein</span></em></li>
-          </ul>
-      </div>
-      <div class="general">
-          <h2 class="footer-accordion-header">
-              General
-              <span class="footer-accordion-arrow"></span>
-          </h2>
-          <ul>
-              <li><a href="contact.html" class="nav-link">Contact Me</a></li>
-              <li><a href="index.html#about" class="nav-link">My Life & Journey</a></li>
-              <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank">My Blog</a></li>
-              <li><a href="https://surajsinghnitk.medium.com/" target="_blank">Medium</a></li>
-              <li>BTech | EEE | NITK</li>
-          </ul>
-      </div>
-      <div class="important-links-certificates">
-          <h2 class="footer-accordion-header">
-              Important Links
-              <span class="footer-accordion-arrow"></span>
-          </h2>
-          <ul>
-              <li><a href="https://drive.google.com/file/d/1XixBxAh00Y827PAbBQPIwGz7wXCSDcej/view?usp=drive_link" target="_blank">My Resume</a></li>
-              <li><a href="https://github.com/surajsk2003" target="_blank">GitHub</a></li>
-              <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">LinkedIn</a></li>
-              <li><a href="https://www.kaggle.com/surajnitk2021" target="_blank">Kaggle</a></li>
-              <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank">View Certifications on LinkedIn</a></li>
-          </ul>
-      </div>
-      <div class="footer-bottom">
-          <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
-          <p>Designed by Suraj Kumar</p>
-      </div>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Sidebar toggle functionality
-        const sidebarToggle = document.querySelector('.sidebar-toggle');
-        const sidebar = document.querySelector('.sidebar');
-        
-        sidebarToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('open');
-            this.classList.toggle('active');
-        });
-        
-        // Background switcher functionality
-        const bgMenuButton = document.getElementById('bgMenuButton');
-        const bgDropdown = document.getElementById('bgDropdown');
-        
-        bgMenuButton.addEventListener('click', function() {
-            bgDropdown.classList.toggle('show');
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!bgMenuButton.contains(event.target) && !bgDropdown.contains(event.target)) {
-                bgDropdown.classList.remove('show');
-            }
-        });
-        
-        // Background switching
-        const bgOptions = document.querySelectorAll('.bg-option');
-        bgOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                const bgType = this.getAttribute('data-bg');
-                switchBackground(bgType);
-                bgDropdown.classList.remove('show');
-            });
-        });
-        
-        // Set default background
-        switchBackground('flashlight');
-        
-        // Contact form functionality
-        const contactForm = document.getElementById('contactForm');
-        const responseMessage = document.getElementById('responseMessage');
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                
-                // Simple form validation
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                if (!name || !email || !message) {
-                    responseMessage.textContent = 'Please fill in all fields.';
-                    responseMessage.style.color = '#ff6b6b';
-                    return;
-                }
-                
-                // Submit the form using FormSpree
-                const formData = new FormData(contactForm);
-                
-                fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        responseMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-                        responseMessage.style.color = '#4ecdc4';
-                        contactForm.reset();
-                    } else {
-                        responseMessage.textContent = 'Oops! There was a problem submitting your form.';
-                        responseMessage.style.color = '#ff6b6b';
-                    }
-                })
-                .catch(error => {
-                    responseMessage.textContent = 'Oops! There was a problem submitting your form.';
-                    responseMessage.style.color = '#ff6b6b';
-                    console.error('Error:', error);
-                });
-            });
-        }
-    });
-
-    function switchBackground(type) {
-        // Remove active class from all backgrounds
-        const backgrounds = ['gradient', 'stars', 'geometric', 'waves', 'dots', 'neural', 'flashlight'];
-        backgrounds.forEach(bg => {
-            document.getElementById(bg).classList.remove('active-bg');
-        });
-
-        // Remove active class from all options
-        document.querySelectorAll('.bg-option').forEach(option => {
-            option.classList.remove('active');
-        });
-
-        // Activate selected background
-        document.getElementById(type).classList.add('active-bg');
-        document.querySelector(`.bg-option[data-bg="${type}"]`).classList.add('active');
-        
-        // Show gradient stars with gradient background
-        if (type === 'gradient') {
-            document.querySelector('.gradient-stars').classList.add('active-bg');
-        } else {
-            document.querySelector('.gradient-stars').classList.remove('active-bg');
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Contact | Suraj Kumar - Get In Touch">
+    <meta property="og:description" content="Ready to collaborate? Contact Suraj Kumar for AI/ML projects, web development, and innovative solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourportfolio.com/contact.html">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Suraj Kumar",
+        "description": "Contact page for Suraj Kumar - AI/ML Engineer and Developer",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "Suraj Kumar",
+            "email": "surajkumarsksk2003@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Bangalore",
+                "addressCountry": "India"
+            },
+            "sameAs": [
+                "https://github.com/surajsk2003",
+                "https://www.linkedin.com/in/suraj-singh-96b45220a/",
+                "https://www.kaggle.com/surajnitk2021"
+            ]
         }
     }
-  </script>
+    </script>
+    
+    <title>Contact | Suraj Kumar - Let's Connect</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Scripts -->
+    <script src="cyberpunk.js"></script>
+    <script src="ghibli.js"></script>
+    <script src="space.js"></script>
+    <script src="city.js"></script>
+    <script src="peace.js"></script>
+    <script src="anime.js"></script>
+    
+    <!-- Google Fonts - Consolidated -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="images/profile_picture.jpeg" as="image">
+</head>
+
+<body>
+    <!-- ==========================================
+         LOADING SCREEN
+         ========================================== -->
+    <div id="page-loader">
+        <div class="rain-loading-bg">
+            <div class="rain-overlay"></div>
+            <div class="fog"></div>
+            <div class="wet-ground"></div>
+            <div class="lightning"></div>
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div id="loading-raindrops"></div>
+            <div id="loading-puddles"></div>
+        </div>
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+        <div class="loading-container">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-text">loading...</div>
+    </div>
+
+    <!-- ==========================================
+         BACKGROUND SYSTEMS
+         ========================================== -->
+    <div class="flashlight-bg" id="flashlight"></div>
+    <div class="cyberpunk-bg" id="cyberpunk">
+        <div class="grid-bg"></div>
+        <div class="scanlines"></div>
+        <div id="particles"></div>
+        <div id="codeRain"></div>
+        <div id="orbs"></div>
+        <div id="shapes"></div>
+        <div id="pulses"></div>
+        <div id="dataStreams"></div>
+    </div>
+    <div class="ghibli-bg" id="ghibli">
+        <div class="grass">
+            <div id="grassBlades"></div>
+        </div>
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div id="sootSprites"></div>
+        <div id="petals"></div>
+        <div id="fireflies"></div>
+        <div id="sparkles"></div>
+        <div id="seeds"></div>
+        <div id="auras"></div>
+    </div>
+    <div class="space-bg" id="space">
+        <div id="stars"></div>
+        <div id="shootingStars"></div>
+        <div id="planets"></div>
+        <div id="nebulae"></div>
+        <div id="galaxies"></div>
+        <div id="spaceDust"></div>
+        <div id="pulsars"></div>
+        <div id="blackHoles"></div>
+        <div id="cosmicRays"></div>
+        <div id="asteroids"></div>
+        <div id="comets"></div>
+    </div>
+    <div class="city-bg" id="city">
+        <div class="building building-1" id="building1"></div>
+        <div class="building building-2" id="building2"></div>
+        <div class="building building-3" id="building3"></div>
+        <div class="building building-4" id="building4"></div>
+        <div class="building building-5" id="building5"></div>
+        <div class="building building-6" id="building6"></div>
+        <div class="reflection"></div>
+        <div id="cityStars"></div>
+        <div id="neonSigns"></div>
+        <div id="trafficLights"></div>
+        <div id="streetLights"></div>
+        <div id="helicopters"></div>
+        <div id="searchlights"></div>
+        <div id="citySmoke"></div>
+        <div id="billboards"></div>
+        <div id="rainDrops"></div>
+        <div id="vehicles"></div>
+        <div id="airTraffic"></div>
+    </div>
+    <div class="peace-bg" id="peace">
+        <div class="gentle-glow"></div>
+        <div id="lotusPetals"></div>
+        <div id="waterRipples"></div>
+        <div id="peaceOrbs"></div>
+        <div id="omSymbols"></div>
+        <div id="zenCircles"></div>
+        <div id="leaves"></div>
+        <div id="lightRays"></div>
+        <div id="mandalas"></div>
+        <div id="butterflies"></div>
+        <div id="breathCircles"></div>
+        <div id="peacefulClouds"></div>
+        <div id="meditationParticles"></div>
+    </div>
+
+    <!-- ==========================================
+         NAVIGATION & CONTROLS
+         ========================================== -->
+    <!-- Main Sidebar Navigation -->
+    <nav class="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="sidebar-header">
+            <a href="index.html#home" class="sidebar-logo-link" aria-label="Go to home page">
+                <img src="images/profile_picture.jpeg" alt="Suraj Kumar" class="sidebar-logo">
+                <span>Suraj Kumar</span>
+            </a>
+        </div>
+        
+        <ul class="sidebar-nav-links">
+            <li><a href="index.html#home" class="nav-link">
+                <span class="nav-icon home-icon" aria-hidden="true"></span>Home
+            </a></li>
+            <li><a href="index.html#about" class="nav-link">
+                <span class="nav-icon about-icon" aria-hidden="true"></span>About
+            </a></li>
+            <li><a href="index.html#skills" class="nav-link">
+                <span class="nav-icon skills-icon" aria-hidden="true"></span>Skills
+            </a></li>
+            <li><a href="https://surajsk2003.github.io/Game-Zone/" target="_blank" class="nav-link" rel="noopener">
+                <span class="nav-icon games-icon" aria-hidden="true"></span>Game Zone
+            </a></li>
+            <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank" class="nav-link" rel="noopener">
+                <span class="nav-icon blog-icon" aria-hidden="true"></span>Blog
+            </a></li>
+            <li><a href="projects.html" class="nav-link">
+                <span class="nav-icon projects-icon" aria-hidden="true"></span>Projects
+            </a></li>
+            <li><a href="contact.html" class="nav-link active" aria-current="page">
+                <span class="nav-icon contact-icon" aria-hidden="true"></span>Contact
+            </a></li>
+        </ul>
+        
+        <div class="sidebar-social-icons">
+            <a href="https://github.com/surajsk2003" target="_blank" rel="noopener" aria-label="GitHub Profile">
+                <img src="images/github.png" alt="GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+                <img src="images/linkedin.png" alt="LinkedIn">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+    </button>
+    
+    <!-- Background Switcher -->
+    <div class="bg-switcher-container">
+        <button class="bg-menu-button" id="bgMenuButton" aria-label="Change background theme" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="bg-dropdown" id="bgDropdown" role="menu" aria-hidden="true">
+            <div class="bg-option" data-bg="flashlight" role="menuitem">Flashlight</div>
+            <div class="bg-option" data-bg="cyberpunk" role="menuitem">Cyberpunk</div>
+            <div class="bg-option" data-bg="ghibli" role="menuitem">Ghibli</div>
+            <div class="bg-option" data-bg="space" role="menuitem">Space</div>
+            <div class="bg-option" data-bg="city" role="menuitem">City</div>
+            <div class="bg-option" data-bg="peace" role="menuitem">Peace</div>
+            <div class="bg-option" data-bg="anime" role="menuitem">Anime</div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MAIN CONTENT
+         ========================================== -->
+    <main role="main">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separator"> / </span>
+            <span class="current-page">Contact</span>
+        </nav>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section" aria-label="Contact information and form">
+            <!-- Contact Header -->
+            <header class="contact-header">
+                <h1 class="section-title">Let's Connect</h1>
+                <p class="contact-intro">Have a project in mind or want to collaborate? I'd love to hear from you and discuss how we can work together to bring your ideas to life.</p>
+                
+                <div class="contact-divider" role="separator" aria-hidden="true">
+                    <span class="divider-line"></span>
+                    <span class="divider-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </span>
+                    <span class="divider-line"></span>
+                </div>
+            </header>
+            
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <aside class="contact-info" role="complementary" aria-label="Contact information">
+                    <!-- Email Contact -->
+                    <div class="contact-method">
+                        <div class="contact-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h2>Email Me</h2>
+                            <p><a href="mailto:surajkumarsksk2003@gmail.com" aria-label="Send email to Suraj Kumar">surajkumarsksk2003@gmail.com</a></p>
+                            <p class="contact-note">Best for project inquiries and collaborations</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div class="contact-method">
+                        <div class="contact-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h2>Follow Me</h2>
+                            <p>Connect on social platforms</p>
+                            <div class="social-links" role="list" aria-label="Social media links">
+                                <a href="https://github.com/surajsk2003" target="_blank" rel="noopener" class="social-link" role="listitem" aria-label="Follow on GitHub">
+                                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                    GitHub
+                                </a>
+                                <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener" class="social-link" role="listitem" aria-label="Connect on LinkedIn">
+                                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                    LinkedIn
+                                </a>
+                                <a href="https://www.kaggle.com/surajnitk2021" target="_blank" rel="noopener" class="social-link" role="listitem" aria-label="View Kaggle profile">
+                                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.336"/>
+                                    </svg>
+                                    Kaggle
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="contact-method">
+                        <div class="contact-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h2>Find Me</h2>
+                            <p>Bangalore, India</p>
+                            <p class="contact-note">Open to remote collaborations worldwide</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Availability Status -->
+                    <div class="contact-availability">
+                        <div class="availability-indicator available" aria-hidden="true"></div>
+                        <p><strong>Available for freelance projects</strong></p>
+                        <p class="availability-note">Typically respond within 24 hours</p>
+                    </div>
+                </aside>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <header class="form-header">
+                        <h2>Send a Message</h2>
+                        <p>I'll get back to you as soon as possible</p>
+                    </header>
+                    
+                    <form id="contactForm" action="https://formspree.io/f/mzzroqev" method="POST" novalidate aria-label="Contact form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name <span class="required" aria-label="required">*</span></label>
+                                <div class="input-with-icon">
+                                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                    </svg>
+                                    <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true" aria-describedby="name-error">
+                                </div>
+                                <div id="name-error" class="field-error" role="alert" aria-live="polite"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email <span class="required" aria-label="required">*</span></label>
+                                <div class="input-with-icon">
+                                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                    </svg>
+                                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required aria-required="true" aria-describedby="email-error">
+                                </div>
+                                <div id="email-error" class="field-error" role="alert" aria-live="polite"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <div class="input-with-icon">
+                                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20 4H4c-1.1 0-1.9.9-1.9 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 6h9v6h-9v-6zm-3 0h2v2H8v-2zm0 4h2v2H8v-2zm-4-4h3v6H4v-6z"/>
+                                </svg>
+                                <input type="text" id="subject" name="subject" placeholder="What's this about?" aria-describedby="subject-help">
+                            </div>
+                            <div id="subject-help" class="field-help">Optional: Help me understand your inquiry better</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message <span class="required" aria-label="required">*</span></label>
+                            <div class="input-with-icon textarea-container">
+                                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                                </svg>
+                                <textarea id="message" name="message" placeholder="Tell me about your project, ideas, or how we can work together..." required aria-required="true" aria-describedby="message-error message-help" rows="6"></textarea>
+                            </div>
+                            <div id="message-help" class="field-help">Include project details, timeline, budget range, or any specific questions</div>
+                            <div id="message-error" class="field-error" role="alert" aria-live="polite"></div>
+                        </div>
+                        
+                        <!-- Honeypot field for spam protection -->
+                        <div class="honeypot" aria-hidden="true">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" aria-describedby="submit-help">
+                            <span class="btn-text">Send Message</span>
+                            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                            <span class="btn-loading" aria-hidden="true">
+                                <svg class="spinner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"/>
+                                    <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"/>
+                                </svg>
+                                Sending...
+                            </span>
+                        </button>
+                        <div id="submit-help" class="field-help">Your message will be sent securely via Formspree</div>
+                    </form>
+                    
+                    <!-- Response Message -->
+                    <div id="responseMessage" class="response-message" role="status" aria-live="polite" aria-atomic="true"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="Footer" role="contentinfo">
+        <!-- Inspirational Quotes -->
+        <div class="footer-quotes">
+            <h2>Inspiration</h2>
+            <ul role="list">
+                <li role="listitem">
+                    <em>"The best way to predict the future is to invent it." 
+                    <span class="quote-author">- Alan Kay</span></em>
+                </li>
+                <li role="listitem">
+                    <em>"Innovation distinguishes between a leader and a follower." 
+                    <span class="quote-author">- Steve Jobs</span></em>
+                </li>
+                <li role="listitem">
+                    <em>"Strive not to be a success, but rather to be of value." 
+                    <span class="quote-author">- Albert Einstein</span></em>
+                </li>
+            </ul>
+        </div>
+
+        <!-- General Links -->
+        <div class="general">
+            <h2 class="footer-accordion-header">
+                General
+                <span class="footer-accordion-arrow" aria-hidden="true"></span>
+            </h2>
+            <ul>
+                <li><a href="contact.html" aria-current="page">Contact Me</a></li>
+                <li><a href="index.html#about">My Life & Journey</a></li>
+                <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank" rel="noopener">My Blog</a></li>
+                <li><a href="https://surajsinghnitk.medium.com/" target="_blank" rel="noopener">Medium</a></li>
+                <li>BTech | EEE | NITK</li>
+            </ul>
+        </div>
+
+        <!-- Important Links -->
+        <div class="important-links-certificates">
+            <h2 class="footer-accordion-header">
+                Important Links
+                <span class="footer-accordion-arrow" aria-hidden="true"></span>
+            </h2>
+            <ul>
+                <li><a href="https://drive.google.com/file/d/1XixBxAh00Y827PAbBQPIwGz7wXCSDcej/view?usp=drive_link" target="_blank" rel="noopener">My Resume</a></li>
+                <li><a href="https://github.com/surajsk2003" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://www.kaggle.com/surajnitk2021" target="_blank" rel="noopener">Kaggle</a></li>
+                <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener">View Certifications on LinkedIn</a></li>
+            </ul>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
+            <p>Designed by Suraj Kumar</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+    <script>
+        'use strict';
+
+        /**
+         * Contact Page Application
+         * Handles contact form, validation, background switching, and UI interactions
+         */
+        class ContactApp {
+            constructor() {
+                this.formData = {};
+                this.validationRules = {
+                    name: { required: true, minLength: 2 },
+                    email: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
+                    message: { required: true, minLength: 10 }
+                };
+                this.init();
+            }
+
+            /**
+             * Initialize the application
+             */
+            init() {
+                this.bindEvents();
+                this.initializeComponents();
+            }
+
+            /**
+             * Bind all event listeners
+             */
+            bindEvents() {
+                document.addEventListener('DOMContentLoaded', () => {
+                    this.onDOMReady();
+                });
+
+                window.addEventListener('resize', () => {
+                    this.handleResize();
+                });
+            }
+
+            /**
+             * Handle DOM ready event
+             */
+            onDOMReady() {
+                this.initSidebar();
+                this.initBackgroundSwitcher();
+                this.initContactForm();
+                this.setDefaultBackground();
+                this.updateActiveNavigation();
+                this.handlePageLoad();
+            }
+
+            /**
+             * Handle page load completion
+             */
+            handlePageLoad() {
+                // Initialize loading rain effects
+                this.initLoadingRain();
+                
+                // Hide loader after content loads
+                setTimeout(() => {
+                    const loader = document.getElementById('page-loader');
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                        }, 500);
+                    }
+                }, 4000);
+            }
+
+            /**
+             * Initialize loading screen rain effects
+             */
+            initLoadingRain() {
+                this.createLoadingRaindrops();
+                this.createLoadingPuddles();
+            }
+
+            /**
+             * Create raindrops for loading screen
+             */
+            createLoadingRaindrops() {
+                const container = document.getElementById('loading-raindrops');
+                if (!container) return;
+                
+                for (let i = 0; i < 50; i++) {
+                    const drop = document.createElement('div');
+                    drop.className = 'loading-raindrop';
+                    drop.style.left = Math.random() * 100 + '%';
+                    drop.style.animationDelay = Math.random() * 1.5 + 's';
+                    drop.style.animationDuration = (Math.random() * 0.5 + 1) + 's';
+                    container.appendChild(drop);
+                }
+            }
+
+            /**
+             * Create puddles with ripples for loading screen
+             */
+            createLoadingPuddles() {
+                const container = document.getElementById('loading-puddles');
+                if (!container) return;
+                
+                for (let i = 0; i < 3; i++) {
+                    const puddle = document.createElement('div');
+                    puddle.className = 'loading-puddle';
+                    puddle.style.left = Math.random() * 80 + 10 + '%';
+                    puddle.style.width = (Math.random() * 40 + 60) + 'px';
+                    
+                    // Add ripples to puddle
+                    for (let j = 0; j < 2; j++) {
+                        const ripple = document.createElement('div');
+                        ripple.className = 'loading-ripple';
+                        ripple.style.animationDelay = (j * 1 + Math.random() * 2) + 's';
+                        puddle.appendChild(ripple);
+                    }
+                    
+                    container.appendChild(puddle);
+                }
+            }
+
+            /**
+             * Handle window resize
+             */
+            handleResize() {
+                // Add any resize-specific logic here
+            }
+
+            /**
+             * Initialize sidebar functionality
+             */
+            initSidebar() {
+                const sidebarToggle = document.querySelector('.sidebar-toggle');
+                const sidebar = document.querySelector('.sidebar');
+                
+                if (!sidebarToggle || !sidebar) return;
+
+                sidebarToggle.addEventListener('click', () => {
+                    const isOpen = sidebar.classList.toggle('open');
+                    sidebarToggle.classList.toggle('active', isOpen);
+                    sidebarToggle.setAttribute('aria-expanded', isOpen.toString());
+                });
+            }
+
+            /**
+             * Initialize background switcher
+             */
+            initBackgroundSwitcher() {
+                const bgMenuButton = document.getElementById('bgMenuButton');
+                const bgDropdown = document.getElementById('bgDropdown');
+                
+                if (!bgMenuButton || !bgDropdown) return;
+
+                // Toggle dropdown
+                bgMenuButton.addEventListener('click', () => {
+                    const isOpen = bgDropdown.classList.toggle('show');
+                    bgMenuButton.setAttribute('aria-expanded', isOpen.toString());
+                    bgDropdown.setAttribute('aria-hidden', (!isOpen).toString());
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!bgMenuButton.contains(event.target) && 
+                        !bgDropdown.contains(event.target)) {
+                        bgDropdown.classList.remove('show');
+                        bgMenuButton.setAttribute('aria-expanded', 'false');
+                        bgDropdown.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                // Background switching
+                const bgOptions = document.querySelectorAll('.bg-option');
+                bgOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const bgType = option.getAttribute('data-bg');
+                        this.switchBackground(bgType);
+                        bgDropdown.classList.remove('show');
+                        bgMenuButton.setAttribute('aria-expanded', 'false');
+                        bgDropdown.setAttribute('aria-hidden', 'true');
+                    });
+                });
+            }
+
+            /**
+             * Initialize contact form with enhanced validation and UX
+             */
+            initContactForm() {
+                const form = document.getElementById('contactForm');
+                const responseMessage = document.getElementById('responseMessage');
+                
+                if (!form) return;
+
+                // Real-time validation
+                this.setupRealTimeValidation(form);
+                
+                // Form submission
+                form.addEventListener('submit', (e) => {
+                    this.handleFormSubmission(e, form, responseMessage);
+                });
+
+                // Auto-save form data
+                this.setupAutoSave(form);
+                
+                // Load saved form data
+                this.loadSavedFormData(form);
+            }
+
+            /**
+             * Setup real-time validation
+             */
+            setupRealTimeValidation(form) {
+                const fields = form.querySelectorAll('input[required], textarea[required]');
+                
+                fields.forEach(field => {
+                    // Validate on blur
+                    field.addEventListener('blur', () => {
+                        this.validateField(field);
+                    });
+
+                    // Clear errors on focus
+                    field.addEventListener('focus', () => {
+                        this.clearFieldError(field);
+                    });
+
+                    // Validate on input (debounced)
+                    field.addEventListener('input', this.debounce(() => {
+                        if (field.value.length > 0) {
+                            this.validateField(field);
+                        }
+                    }, 500));
+                });
+            }
+
+            /**
+             * Validate individual field
+             */
+            validateField(field) {
+                const fieldName = field.name;
+                const value = field.value.trim();
+                const rules = this.validationRules[fieldName];
+                
+                if (!rules) return true;
+
+                let isValid = true;
+                let errorMessage = '';
+
+                // Required validation
+                if (rules.required && !value) {
+                    isValid = false;
+                    errorMessage = `${this.getFieldLabel(fieldName)} is required`;
+                }
+
+                // Pattern validation (email)
+                if (isValid && rules.pattern && value && !rules.pattern.test(value)) {
+                    isValid = false;
+                    errorMessage = `Please enter a valid ${fieldName}`;
+                }
+
+                // Length validation
+                if (isValid && rules.minLength && value.length < rules.minLength) {
+                    isValid = false;
+                    errorMessage = `${this.getFieldLabel(fieldName)} must be at least ${rules.minLength} characters`;
+                }
+
+                // Update UI
+                this.updateFieldValidation(field, isValid, errorMessage);
+                
+                return isValid;
+            }
+
+            /**
+             * Update field validation UI
+             */
+            updateFieldValidation(field, isValid, errorMessage) {
+                const errorElement = document.getElementById(`${field.name}-error`);
+                const inputContainer = field.closest('.input-with-icon') || field.parentElement;
+                
+                if (isValid) {
+                    field.classList.remove('error');
+                    field.classList.add('valid');
+                    if (errorElement) {
+                        errorElement.textContent = '';
+                        errorElement.style.display = 'none';
+                    }
+                } else {
+                    field.classList.remove('valid');
+                    field.classList.add('error');
+                    if (errorElement) {
+                        errorElement.textContent = errorMessage;
+                        errorElement.style.display = 'block';
+                    }
+                }
+            }
+
+            /**
+             * Clear field error
+             */
+            clearFieldError(field) {
+                field.classList.remove('error');
+                const errorElement = document.getElementById(`${field.name}-error`);
+                if (errorElement) {
+                    errorElement.textContent = '';
+                    errorElement.style.display = 'none';
+                }
+            }
+
+            /**
+             * Get field label for error messages
+             */
+            getFieldLabel(fieldName) {
+                const labels = {
+                    name: 'Name',
+                    email: 'Email',
+                    message: 'Message',
+                    subject: 'Subject'
+                };
+                return labels[fieldName] || fieldName;
+            }
+
+            /**
+             * Handle form submission with enhanced UX
+             */
+            async handleFormSubmission(e, form, responseMessage) {
+                e.preventDefault();
+                
+                // Validate all fields
+                const isFormValid = this.validateForm(form);
+                if (!isFormValid) {
+                    this.showMessage(responseMessage, 'Please fix the errors above before submitting.', 'error');
+                    return;
+                }
+
+                // Check honeypot for spam
+                const honeypot = form.querySelector('input[name="website"]');
+                if (honeypot && honeypot.value) {
+                    this.showMessage(responseMessage, 'Spam detected. Please try again.', 'error');
+                    return;
+                }
+
+                // Show loading state
+                this.setSubmitButtonState(form, 'loading');
+                
+                try {
+                    const formData = new FormData(form);
+                    
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    const data = await response.json();
+                    
+                    if (data.ok) {
+                        this.handleSuccessfulSubmission(form, responseMessage);
+                    } else {
+                        this.handleFailedSubmission(responseMessage, data.errors);
+                    }
+                    
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    this.showMessage(responseMessage, 'Network error. Please check your connection and try again.', 'error');
+                } finally {
+                    this.setSubmitButtonState(form, 'default');
+                }
+            }
+
+            /**
+             * Validate entire form
+             */
+            validateForm(form) {
+                const requiredFields = form.querySelectorAll('input[required], textarea[required]');
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!this.validateField(field)) {
+                        isValid = false;
+                    }
+                });
+
+                return isValid;
+            }
+
+            /**
+             * Handle successful form submission
+             */
+            handleSuccessfulSubmission(form, responseMessage) {
+                this.showMessage(responseMessage, 'Thank you for your message! I will get back to you within 24 hours.', 'success');
+                form.reset();
+                this.clearAllFieldValidation(form);
+                this.clearSavedFormData();
+                
+                // Focus on success message for screen readers
+                responseMessage.focus();
+                
+                // Analytics tracking (if implemented)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        event_category: 'Contact',
+                        event_label: 'Contact Form Submission'
+                    });
+                }
+            }
+
+            /**
+             * Handle failed form submission
+             */
+            handleFailedSubmission(responseMessage, errors) {
+                let errorMessage = 'There was a problem submitting your form. Please try again.';
+                
+                if (errors && errors.length > 0) {
+                    errorMessage = errors.map(error => error.message).join(', ');
+                }
+                
+                this.showMessage(responseMessage, errorMessage, 'error');
+            }
+
+            /**
+             * Clear all field validation states
+             */
+            clearAllFieldValidation(form) {
+                const fields = form.querySelectorAll('input, textarea');
+                fields.forEach(field => {
+                    field.classList.remove('valid', 'error');
+                    this.clearFieldError(field);
+                });
+            }
+
+            /**
+             * Set submit button state
+             */
+            setSubmitButtonState(form, state) {
+                const submitBtn = form.querySelector('.submit-btn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnLoading = submitBtn.querySelector('.btn-loading');
+                
+                switch (state) {
+                    case 'loading':
+                        submitBtn.disabled = true;
+                        btnText.style.display = 'none';
+                        btnLoading.style.display = 'flex';
+                        submitBtn.setAttribute('aria-describedby', 'submit-loading');
+                        break;
+                    case 'default':
+                    default:
+                        submitBtn.disabled = false;
+                        btnText.style.display = 'flex';
+                        btnLoading.style.display = 'none';
+                        submitBtn.removeAttribute('aria-describedby');
+                        break;
+                }
+            }
+
+            /**
+             * Show response message with enhanced UX
+             */
+            showMessage(element, message, type) {
+                element.textContent = message;
+                element.className = `response-message ${type}`;
+                element.style.display = 'block';
+                
+                // Auto-hide after 8 seconds for success messages
+                if (type === 'success') {
+                    setTimeout(() => {
+                        element.style.display = 'none';
+                    }, 8000);
+                }
+            }
+
+            /**
+             * Setup auto-save functionality
+             */
+            setupAutoSave(form) {
+                const fields = form.querySelectorAll('input, textarea');
+                fields.forEach(field => {
+                    if (field.name !== 'website') { // Skip honeypot
+                        field.addEventListener('input', this.debounce(() => {
+                            this.saveFormData(form);
+                        }, 1000));
+                    }
+                });
+            }
+
+            /**
+             * Save form data to localStorage
+             */
+            saveFormData(form) {
+                const formData = new FormData(form);
+                const data = {};
+                
+                for (let [key, value] of formData.entries()) {
+                    if (key !== 'website') { // Skip honeypot
+                        data[key] = value;
+                    }
+                }
+                
+                try {
+                    localStorage.setItem('contactFormData', JSON.stringify(data));
+                } catch (error) {
+                    console.warn('Could not save form data:', error);
+                }
+            }
+
+            /**
+             * Load saved form data
+             */
+            loadSavedFormData(form) {
+                try {
+                    const savedData = localStorage.getItem('contactFormData');
+                    if (savedData) {
+                        const data = JSON.parse(savedData);
+                        
+                        Object.keys(data).forEach(key => {
+                            const field = form.querySelector(`[name="${key}"]`);
+                            if (field && data[key]) {
+                                field.value = data[key];
+                            }
+                        });
+                    }
+                } catch (error) {
+                    console.warn('Could not load saved form data:', error);
+                }
+            }
+
+            /**
+             * Clear saved form data
+             */
+            clearSavedFormData() {
+                try {
+                    localStorage.removeItem('contactFormData');
+                } catch (error) {
+                    console.warn('Could not clear saved form data:', error);
+                }
+            }
+
+            /**
+             * Switch background theme
+             */
+            switchBackground(type) {
+                try {
+                    const backgrounds = ['flashlight', 'cyberpunk', 'ghibli', 'space', 'city', 'peace', 'anime'];
+                    
+                    // Remove active class from all backgrounds
+                    backgrounds.forEach(bg => {
+                        const element = document.getElementById(bg);
+                        if (element) {
+                            element.classList.remove('active-bg');
+                        }
+                    });
+
+                    // Remove active class from all options
+                    document.querySelectorAll('.bg-option').forEach(option => {
+                        option.classList.remove('active');
+                    });
+
+                    // Activate selected background
+                    const selectedBg = document.getElementById(type);
+                    const selectedOption = document.querySelector(`.bg-option[data-bg="${type}"]`);
+                    
+                    if (selectedBg) {
+                        selectedBg.classList.add('active-bg');
+                        
+                        // Initialize backgrounds if selected
+                        if (type === 'cyberpunk' && window.initCyberpunk) {
+                            window.initCyberpunk();
+                        } else if (type === 'ghibli' && window.initGhibli) {
+                            window.initGhibli();
+                        } else if (type === 'space' && window.initSpace) {
+                            window.initSpace();
+                        } else if (type === 'city' && window.initCity) {
+                            window.initCity();
+                        } else if (type === 'peace' && window.initPeace) {
+                            window.initPeace();
+                        } else if (type === 'anime' && window.initAnime) {
+                            window.initAnime();
+                        }
+                    }
+                    
+                    if (selectedOption) {
+                        selectedOption.classList.add('active');
+                    }
+                    
+                } catch (error) {
+                    console.warn('Background switching error:', error);
+                }
+            }
+
+            /**
+             * Set default background
+             */
+            setDefaultBackground() {
+                this.switchBackground('flashlight');
+            }
+
+            /**
+             * Update active navigation
+             */
+            updateActiveNavigation() {
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.removeAttribute('aria-current');
+                });
+
+                const activeLink = document.querySelector('.nav-link[href="contact.html"]');
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    activeLink.setAttribute('aria-current', 'page');
+                }
+            }
+
+            /**
+             * Initialize other components
+             */
+            initializeComponents() {
+                this.addFormFieldFocusHandling();
+            }
+
+            /**
+             * Add enhanced focus handling for form fields
+             */
+            addFormFieldFocusHandling() {
+                const inputContainers = document.querySelectorAll('.input-with-icon');
+                
+                inputContainers.forEach(container => {
+                    const input = container.querySelector('input, textarea');
+                    
+                    if (input) {
+                        input.addEventListener('focus', () => {
+                            container.classList.add('focused');
+                        });
+                        
+                        input.addEventListener('blur', () => {
+                            container.classList.remove('focused');
+                        });
+                    }
+                });
+            }
+
+            /**
+             * Debounce utility function
+             */
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+        }
+
+        // Initialize the contact application
+        const contactApp = new ContactApp();
+
+        // Global error handling
+        window.addEventListener('error', (e) => {
+            console.error('Contact Page Error:', e.error);
+        });
+
+        // Add required CSS for form validation and loading states
+        const style = document.createElement('style');
+        style.textContent = `
+            .honeypot {
+                position: absolute;
+                left: -9999px;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+            }
+            
+            .field-error {
+                display: none;
+                color: #ff6b6b;
+                font-size: 0.85rem;
+                margin-top: 5px;
+            }
+            
+            .field-help {
+                color: #b0b8c4;
+                font-size: 0.85rem;
+                margin-top: 5px;
+            }
+            
+            .required {
+                color: #ff6b6b;
+            }
+            
+            input.error, textarea.error {
+                border-color: #ff6b6b;
+                box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+            }
+            
+            input.valid, textarea.valid {
+                border-color: #4ecdc4;
+            }
+            
+            .input-with-icon.focused {
+                transform: scale(1.02);
+                transition: transform 0.2s ease;
+            }
+            
+            .btn-loading {
+                display: none;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .spinner {
+                width: 18px;
+                height: 18px;
+                animation: spin 1s linear infinite;
+            }
+            
+            .response-message {
+                margin-top: 20px;
+                padding: 15px;
+                border-radius: 8px;
+                font-weight: 500;
+                display: none;
+            }
+            
+            .response-message.success {
+                background-color: rgba(78, 205, 196, 0.1);
+                color: #4ecdc4;
+                border: 1px solid rgba(78, 205, 196, 0.3);
+            }
+            
+            .response-message.error {
+                background-color: rgba(255, 107, 107, 0.1);
+                color: #ff6b6b;
+                border: 1px solid rgba(255, 107, 107, 0.3);
+            }
+            
+            .contact-note, .availability-note {
+                font-size: 0.9rem;
+                color: #8B949E;
+                margin-top: 5px;
+            }
+            
+            @keyframes spin {
+                to { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
