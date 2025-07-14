@@ -142,6 +142,6 @@ If you have any questions or want to connect, feel free to reach out!
 *   **LinkedIn:** [suraj-singh-96b45220a](https://www.linkedin.com/in/suraj-singh-96b45220a/)
 *   **GitHub:** [surajsk2003](https://github.com/surajsk2003)
 *   **Email:** surajkumarsksk2000@gmail.com
-*   **Medium:** [surajsinghnitk.medium.com](https://surajsinghnitk.medium.com/)
+*   **Blog:** [my-blog-lemon-mu-45.vercel.app/](https://my-blog-lemon-mu-45.vercel.app/)
 
 ---
