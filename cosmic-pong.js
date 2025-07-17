@@ -163,12 +163,24 @@ class CosmicPong {
      */
     bindEvents() {
         // Main menu buttons
-        this.elements.singlePlayerBtn?.addEventListener('click', () => this.startSinglePlayer());
-        this.elements.multiPlayerBtn?.addEventListener('click', () => this.startMultiPlayer());
-        this.elements.tournamentBtn?.addEventListener('click', () => this.showTournamentMenu());
-        this.elements.practiceBtn?.addEventListener('click', () => this.startPracticeMode());
-        this.elements.achievementsBtn?.addEventListener('click', () => this.showAchievements());
-        this.elements.leaderboardBtn?.addEventListener('click', () => this.showLeaderboard());
+        if (this.elements.singlePlayerBtn) {
+            this.elements.singlePlayerBtn.addEventListener('click', () => this.startSinglePlayer());
+        }
+        if (this.elements.multiPlayerBtn) {
+            this.elements.multiPlayerBtn.addEventListener('click', () => this.startMultiPlayer());
+        }
+        if (this.elements.tournamentBtn) {
+            this.elements.tournamentBtn.addEventListener('click', () => this.showTournamentMenu());
+        }
+        if (this.elements.practiceBtn) {
+            this.elements.practiceBtn.addEventListener('click', () => this.startPracticeMode());
+        }
+        if (this.elements.achievementsBtn) {
+            this.elements.achievementsBtn.addEventListener('click', () => this.showAchievements());
+        }
+        if (this.elements.leaderboardBtn) {
+            this.elements.leaderboardBtn.addEventListener('click', () => this.showLeaderboard());
+        }
         
         // Game controls
         this.elements.resumeBtn?.addEventListener('click', () => this.resumeGame());
@@ -281,6 +293,7 @@ class CosmicPong {
      * Game mode starters
      */
     startSinglePlayer() {
+        console.log('Starting single player game');
         this.audio.playSound('gameStart');
         this.core.startGame('singlePlayer');
         this.hideMainMenu();
