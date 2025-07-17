@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cosmic Pong - An enhanced space-themed Pong game with advanced particle effects and AI">
+    <title>Cosmic Pong | Suraj Kumar Portfolio</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cosmic-pong.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="game-loader" class="game-loader">
+        <div class="cosmic-loader">
+            <div class="planet"></div>
+            <div class="orbit"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+        </div>
+        <div class="loading-text">Initializing Cosmic Pong...</div>
+        <div class="loading-progress">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+
+    <!-- Background Systems -->
+    <div class="cosmic-background" id="cosmicBackground">
+        <div id="starfield"></div>
+        <div id="nebulae"></div>
+        <div id="cosmicParticles"></div>
+        <div id="enhancedParticles"></div>
+        <div id="galaxySpiral"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="game-nav">
+        <a href="index.html" class="back-button" aria-label="Back to Portfolio">
+            <span class="back-icon">←</span>
+            <span>Back to Portfolio</span>
+        </a>
+        <h1 class="game-title">Cosmic Pong</h1>
+        <button class="settings-button" id="settingsButton" aria-label="Game Settings">
+            <span class="settings-icon">⚙</span>
+        </button>
+    </nav>
+
+    <!-- Main Menu -->
+    <div id="mainMenu" class="main-menu active">
+        <div class="menu-container">
+            <div class="game-logo">
+                <h1>COSMIC PONG</h1>
+                <p class="subtitle">Enhanced Space-Themed Experience</p>
+            </div>
+            
+            <div class="menu-buttons">
+                <button class="menu-btn primary" id="singlePlayerBtn">
+                    <span class="btn-icon">🚀</span>
+                    <span class="btn-text">Single Player</span>
+                </button>
+                
+                <button class="menu-btn" id="multiPlayerBtn">
+                    <span class="btn-icon">👥</span>
+                    <span class="btn-text">Two Players</span>
+                </button>
+                
+                <button class="menu-btn" id="tournamentBtn">
+                    <span class="btn-icon">🏆</span>
+                    <span class="btn-text">Tournament</span>
+                </button>
+                
+                <button class="menu-btn" id="practiceBtn">
+                    <span class="btn-icon">🎯</span>
+                    <span class="btn-text">Practice Mode</span>
+                </button>
+                
+                <button class="menu-btn" id="achievementsBtn">
+                    <span class="btn-icon">⭐</span>
+                    <span class="btn-text">Achievements</span>
+                </button>
+                
+                <button class="menu-btn" id="leaderboardBtn">
+                    <span class="btn-icon">📊</span>
+                    <span class="btn-text">Leaderboard</span>
+                </button>
+            </div>
+            
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">High Score</span>
+                    <span class="stat-value" id="highScore">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Games Played</span>
+                    <span class="stat-value" id="gamesPlayed">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Win Rate</span>
+                    <span class="stat-value" id="winRate">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Container -->
+    <div id="gameContainer" class="game-container">
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="1200" height="800"></canvas>
+        
+        <!-- Game Overlay -->
+        <div class="game-overlay">
+            <!-- Score Display -->
+            <div class="score-display">
+                <div class="player-score">
+                    <span class="player-name" id="player1Name">Player 1</span>
+                    <span class="score" id="player1Score">0</span>
+                </div>
+                <div class="game-timer" id="gameTimer">00:00</div>
+                <div class="player-score">
+                    <span class="player-name" id="player2Name">CPU</span>
+                    <span class="score" id="player2Score">0</span>
+                </div>
+            </div>
+            
+            <!-- Power-ups Display -->
+            <div class="powerups-display" id="powerupsDisplay">
+                <div class="powerup-slot" id="powerup1"></div>
+                <div class="powerup-slot" id="powerup2"></div>
+                <div class="powerup-slot" id="powerup3"></div>
+            </div>
+            
+            <!-- Game Status -->
+            <div class="game-status" id="gameStatus"></div>
+        </div>
+        
+        <!-- Pause Menu -->
+        <div id="pauseMenu" class="pause-menu">
+            <div class="pause-content">
+                <h2>Game Paused</h2>
+                <button class="menu-btn" id="resumeBtn">Resume</button>
+                <button class="menu-btn" id="restartBtn">Restart</button>
+                <button class="menu-btn" id="mainMenuBtn">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Game Settings</h2>
+                <button class="close-btn" id="closeSettings">&times;</button>
+            </div>
+            
+            <div class="settings-content">
+                <div class="setting-group">
+                    <label for="volumeSlider">Master Volume</label>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="75">
+                    <span id="volumeValue">75%</span>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="sfxVolumeSlider">Sound Effects</label>
+                    <input type="range" id="sfxVolumeSlider" min="0" max="100" value="80">
+                    <span id="sfxVolumeValue">80%</span>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="musicVolumeSlider">Background Music</label>
+                    <input type="range" id="musicVolumeSlider" min="0" max="100" value="60">
+                    <span id="musicVolumeValue">60%</span>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="difficultySelect">AI Difficulty</label>
+                    <select id="difficultySelect">
+                        <option value="easy">Easy</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="hard">Hard</option>
+                        <option value="insane">Insane</option>
+                    </select>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="particleQuality">Particle Effects</label>
+                    <select id="particleQuality">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                        <option value="ultra">Ultra</option>
+                    </select>
+                </div>
+                
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="enableShake" checked>
+                        Screen Shake Effects
+                    </label>
+                </div>
+                
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="enableTrails" checked>
+                        Ball Trails
+                    </label>
+                </div>
+                
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="enablePowerups" checked>
+                        Power-ups
+                    </label>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="menu-btn" id="resetSettings">Reset to Default</button>
+                <button class="menu-btn primary" id="saveSettings">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keyboard Controls Help -->
+    <div id="controlsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Controls & Shortcuts</h2>
+                <button class="close-btn" id="closeControls">&times;</button>
+            </div>
+            
+            <div class="controls-content">
+                <div class="control-section">
+                    <h3>Player 1 Controls</h3>
+                    <div class="control-item">
+                        <span class="key">W / ↑</span>
+                        <span class="description">Move paddle up</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">S / ↓</span>
+                        <span class="description">Move paddle down</span>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Player 2 Controls</h3>
+                    <div class="control-item">
+                        <span class="key">I</span>
+                        <span class="description">Move paddle up</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">K</span>
+                        <span class="description">Move paddle down</span>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Game Controls</h3>
+                    <div class="control-item">
+                        <span class="key">SPACE</span>
+                        <span class="description">Pause/Resume game</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">R</span>
+                        <span class="description">Restart game</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">ESC</span>
+                        <span class="description">Return to main menu</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">F</span>
+                        <span class="description">Toggle fullscreen</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">H</span>
+                        <span class="description">Show/hide this help</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Scripts -->
+    <script src="cosmic-pong-core.js"></script>
+    <script src="cosmic-pong-audio.js"></script>
+    <script src="cosmic-pong-particles.js"></script>
+    <script src="cosmic-pong-ai.js"></script>
+    <script src="cosmic-pong-tournament.js"></script>
+    <script src="cosmic-pong.js"></script>
+</body>
+</html>
