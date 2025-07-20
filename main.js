@@ -1508,6 +1508,86 @@ window.portfolioApp = portfolioApp;
 window.portfolioAppReady = true;
 console.log('PortfolioApp initialized and ready');
 
+// Back to Top Button Functionality
+class BackToTopButton {
+  constructor() {
+    this.button = null;
+    this.scrollThreshold = 300;
+    this.init();
+  }
+
+  init() {
+    document.addEventListener('DOMContentLoaded', () => {
+      this.button = document.getElementById('backToTopBtn');
+      if (this.button) {
+        this.setupEventListeners();
+        this.handleInitialScroll();
+      }
+    });
+  }
+
+  setupEventListeners() {
+    // Show/hide button on scroll
+    window.addEventListener('scroll', this.throttle(() => {
+      this.toggleButtonVisibility();
+    }, 100));
+
+    // Smooth scroll to top on click
+    this.button.addEventListener('click', () => {
+      this.scrollToTop();
+    });
+
+    // Keyboard support
+    this.button.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.scrollToTop();
+      }
+    });
+  }
+
+  toggleButtonVisibility() {
+    if (!this.button) return;
+
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollPosition > this.scrollThreshold) {
+      this.button.classList.add('show');
+    } else {
+      this.button.classList.remove('show');
+    }
+  }
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  handleInitialScroll() {
+    // Check initial scroll position
+    this.toggleButtonVisibility();
+  }
+
+  // Throttle function to improve performance
+  throttle(func, limit) {
+    let inThrottle;
+    return function() {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    }
+  }
+}
+
+// Initialize Back to Top Button
+const backToTopButton = new BackToTopButton();
+
 // Cleanup on page unload
 window.addEventListener('beforeunload', () => {
   portfolioApp.cleanup();
