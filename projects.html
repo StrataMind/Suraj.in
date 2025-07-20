@@ -195,6 +195,32 @@
         <div id="energyAuras"></div>
     </div>
 
+    <!-- Neural Network Background -->
+    <div class="neural-bg" id="neural">
+        <div id="neuralNodes"></div>
+        <div id="neuralConnections"></div>
+        <div id="dataPackets"></div>
+        <div id="neuralPulses"></div>
+        <div id="brainWaves"></div>
+    </div>
+
+    <!-- Minimalist Professional Background -->
+    <div class="minimal-bg" id="minimal">
+        <div id="geometricShapes"></div>
+        <div id="subtleGradients"></div>
+        <div id="professionalGrid"></div>
+        <div id="cleanLines"></div>
+    </div>
+
+    <!-- Data Visualization Background -->
+    <div class="dataviz-bg" id="dataviz">
+        <div id="floatingCharts"></div>
+        <div id="animatedGraphs"></div>
+        <div id="codeSnippets"></div>
+        <div id="statisticsDisplay"></div>
+        <div id="dataStreams"></div>
+    </div>
+
     <!-- ==========================================
          NAVIGATION & CONTROLS
          ========================================== -->
@@ -244,8 +270,9 @@
     <!-- Sidebar Toggle Button -->
     <button class="sidebar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="5"></circle>
-            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
     </button>
 
@@ -279,6 +306,9 @@
             <div class="bg-option" data-bg="city" role="menuitem">City</div>
             <div class="bg-option" data-bg="peace" role="menuitem">Peace</div>
             <div class="bg-option" data-bg="anime" role="menuitem">Anime</div>
+            <div class="bg-option" data-bg="neural" role="menuitem">Neural Network</div>
+            <div class="bg-option" data-bg="minimal" role="menuitem">Minimal Pro</div>
+            <div class="bg-option" data-bg="dataviz" role="menuitem">Data Viz</div>
         </div>
     </div>
 
@@ -722,7 +752,7 @@
             onDOMReady() {
                 this.initProjectFiltering();
                 this.cacheProjectCards();
-                this.setDefaultBackground();
+                // Background initialization handled by main.js PortfolioApp
                 this.updateActiveNavigation();
                 this.handlePageLoad();
             }
@@ -957,62 +987,39 @@
             }
 
             /**
-             * Switch background theme
+             * Switch background theme - delegate to main.js PortfolioApp
              */
             switchBackground(type) {
-                try {
-                    const backgrounds = ['flashlight', 'cyberpunk', 'ghibli', 'space', 'city', 'peace', 'anime'];
-                    
-                    // Remove active class from all backgrounds
-                    backgrounds.forEach(bg => {
-                        const element = document.getElementById(bg);
-                        if (element) {
-                            element.classList.remove('active-bg');
-                        }
-                    });
-
-                    // Remove active class from all options
-                    document.querySelectorAll('.bg-option').forEach(option => {
-                        option.classList.remove('active');
-                    });
-
-                    // Activate selected background
-                    const selectedBg = document.getElementById(type);
-                    const selectedOption = document.querySelector(`.bg-option[data-bg="${type}"]`);
-                    
-                    if (selectedBg) {
-                        selectedBg.classList.add('active-bg');
-                        
-                        // Initialize backgrounds if selected
-                        if (type === 'cyberpunk' && window.initCyberpunk) {
-                            window.initCyberpunk();
-                        } else if (type === 'ghibli' && window.initGhibli) {
-                            window.initGhibli();
-                        } else if (type === 'space' && window.initSpace) {
-                            window.initSpace();
-                        } else if (type === 'city' && window.initCity) {
-                            window.initCity();
-                        } else if (type === 'peace' && window.initPeace) {
-                            window.initPeace();
-                        } else if (type === 'anime' && window.initAnime) {
-                            window.initAnime();
-                        }
+                // Robust waiting for PortfolioApp with retries
+                let attempts = 0;
+                const maxAttempts = 20; // 2 seconds total
+                
+                const attemptSwitch = () => {
+                    attempts++;
+                    if (window.portfolioAppReady && window.portfolioApp && window.portfolioApp.switchBackground) {
+                        console.log(`ProjectsApp: Delegating background switch to PortfolioApp for "${type}"`);
+                        window.portfolioApp.switchBackground(type);
+                        return true;
+                    } else if (attempts < maxAttempts) {
+                        console.log(`ProjectsApp: Waiting for PortfolioApp... (attempt ${attempts}/${maxAttempts})`);
+                        setTimeout(attemptSwitch, 100);
+                        return false;
+                    } else {
+                        console.error('ProjectsApp: PortfolioApp not available after maximum attempts');
+                        return false;
                     }
-                    
-                    if (selectedOption) {
-                        selectedOption.classList.add('active');
-                    }
-                    
-                } catch (error) {
-                    console.warn('Background switching error:', error);
-                }
+                };
+
+                attemptSwitch();
             }
 
             /**
              * Set default background
              */
             setDefaultBackground() {
-                this.switchBackground('flashlight');
+                // Restore from localStorage or use default
+                const savedBackground = localStorage.getItem('selectedBackground') || 'flashlight';
+                this.switchBackground(savedBackground);
             }
 
             /**

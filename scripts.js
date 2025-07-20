@@ -91,19 +91,8 @@ class PortfolioApp {
      * Initialize sidebar functionality
      */
     initSidebar() {
-        const sidebarToggle = document.querySelector('.sidebar-toggle');
-        const sidebar = document.querySelector('.sidebar');
-        
-        if (!sidebarToggle || !sidebar) return;
-
-        // Toggle functionality
-        sidebarToggle.addEventListener('click', () => {
-            const isOpen = sidebar.classList.toggle('open');
-            sidebarToggle.classList.toggle('open', isOpen);
-            sidebarToggle.setAttribute('aria-expanded', isOpen.toString());
-        });
-
-        // Initialize hover effect
+        // Sidebar functionality is now handled by main.js to avoid conflicts
+        // Only initialize hover effect here
         this.updateSidebarHoverEffect();
     }
 

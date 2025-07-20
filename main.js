@@ -70,6 +70,8 @@ class PortfolioApp {
     this.initTypingAnimation();
     this.createParticleSystem();
     this.enhanceProjectCards();
+    this.initScrollAnimations();
+    this.enhanceSkillBars();
   }
 
   /**
@@ -156,6 +158,15 @@ class PortfolioApp {
       case 'anime':
         this.initAnime();
         break;
+      case 'neural':
+        this.initNeural();
+        break;
+      case 'minimal':
+        this.initMinimal();
+        break;
+      case 'dataviz':
+        this.initDataViz();
+        break;
     }
 
     this.backgroundsInitialized.add(bgType);
@@ -215,8 +226,14 @@ class PortfolioApp {
    * Handle window load event
    */
   handleWindowLoad() {
-    // Initialize default background
-    this.switchBackground("flashlight");
+    // Initialize background - restore from localStorage or use default
+    const savedBackground = localStorage.getItem('selectedBackground') || 'flashlight';
+    console.log(`PortfolioApp: Loading saved background "${savedBackground}" from localStorage`);
+    
+    // Add a small delay to ensure DOM is fully ready
+    setTimeout(() => {
+      this.switchBackground(savedBackground);
+    }, 100);
   }
 
   /**
@@ -292,10 +309,38 @@ class PortfolioApp {
     const sidebar = document.querySelector(".sidebar");
 
     if (sidebarToggle && sidebar) {
-      sidebarToggle.addEventListener("click", () => {
+      // Remove any existing event listeners
+      sidebarToggle.removeEventListener("click", this.handleSidebarToggle);
+      
+      // Create a bound handler for proper removal
+      this.handleSidebarToggle = (e) => {
+        e.stopPropagation();
         const isOpen = sidebar.classList.toggle("open");
         sidebarToggle.classList.toggle("active", isOpen);
         sidebarToggle.setAttribute("aria-expanded", isOpen);
+      };
+      
+      sidebarToggle.addEventListener("click", this.handleSidebarToggle);
+      
+      // Close sidebar when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+          if (sidebar.classList.contains("open")) {
+            sidebar.classList.remove("open");
+            sidebarToggle.classList.remove("active");
+            sidebarToggle.setAttribute("aria-expanded", "false");
+          }
+        }
+      });
+      
+      // Close sidebar on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && sidebar.classList.contains("open")) {
+          sidebar.classList.remove("open");
+          sidebarToggle.classList.remove("active");
+          sidebarToggle.setAttribute("aria-expanded", "false");
+          sidebarToggle.focus(); // Return focus to toggle button
+        }
       });
     }
 
@@ -506,6 +551,8 @@ class PortfolioApp {
    * Switch background theme
    */
   switchBackground(type) {
+    console.log(`PortfolioApp: Switching background to "${type}"`);
+    
     const backgrounds = [
       "flashlight",
       "cyberpunk",
@@ -514,7 +561,16 @@ class PortfolioApp {
       "city",
       "peace",
       "anime",
+      "neural",
+      "minimal",
+      "dataviz",
     ];
+
+    // Validate the background type
+    if (!backgrounds.includes(type)) {
+      console.error(`PortfolioApp: Invalid background type "${type}". Using flashlight as fallback.`);
+      type = "flashlight";
+    }
 
     // Remove active class from all backgrounds
     backgrounds.forEach((bg) => {
@@ -545,6 +601,9 @@ class PortfolioApp {
     if (selectedOption) {
       selectedOption.classList.add("active");
     }
+
+    // Save the selected background to localStorage for persistence across pages
+    localStorage.setItem('selectedBackground', type);
   }
 
   /**
@@ -1067,11 +1126,362 @@ class PortfolioApp {
   }
 
   /**
+   * Initialize scroll animations
+   */
+  initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          
+          // Add stagger delay for children if they exist
+          const children = entry.target.querySelectorAll('.stagger-children > *');
+          children.forEach((child, index) => {
+            child.style.setProperty('--stagger-delay', index);
+          });
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '50px'
+    });
+
+    animatedElements.forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  /**
+   * Enhance skill progress bars
+   */
+  enhanceSkillBars() {
+    const skillBars = document.querySelectorAll('.progress-bar');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const progressFill = entry.target.querySelector('.skill-progress-fill');
+          if (progressFill) {
+            setTimeout(() => {
+              progressFill.classList.add('animate');
+            }, 200);
+          }
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    skillBars.forEach((bar) => {
+      observer.observe(bar);
+    });
+  }
+
+  /**
+   * Initialize Neural Network background
+   */
+  initNeural() {
+    try {
+      this.createNeuralNodes();
+      this.createNeuralConnections();
+      this.createDataPackets();
+      this.createBrainWaves();
+    } catch (error) {
+      console.warn('Error initializing Neural Network background:', error);
+    }
+  }
+
+  /**
+   * Create neural network nodes
+   */
+  createNeuralNodes() {
+    const container = document.querySelector("#neural #neuralNodes");
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    // Create different types of nodes
+    const nodeTypes = [
+      { count: 20, class: 'neural-node', size: 'small' },
+      { count: 8, class: 'neural-node large', size: 'medium' },
+      { count: 3, class: 'neural-node hub', size: 'large' }
+    ];
+    
+    nodeTypes.forEach(nodeType => {
+      for (let i = 0; i < nodeType.count; i++) {
+        const node = document.createElement("div");
+        node.className = nodeType.class;
+        node.style.left = Math.random() * 90 + 5 + "%";
+        node.style.top = Math.random() * 90 + 5 + "%";
+        node.style.animationDelay = Math.random() * 3 + "s";
+        node.dataset.nodeId = `node-${Date.now()}-${i}`;
+        container.appendChild(node);
+      }
+    });
+  }
+
+  /**
+   * Create neural network connections
+   */
+  createNeuralConnections() {
+    const container = document.querySelector("#neural #neuralConnections");
+    const nodes = document.querySelectorAll("#neural .neural-node");
+    if (!container || nodes.length === 0) return;
+    
+    container.innerHTML = "";
+    
+    // Create connections between nearby nodes
+    const nodePositions = Array.from(nodes).map(node => ({
+      x: parseFloat(node.style.left),
+      y: parseFloat(node.style.top),
+      element: node
+    }));
+    
+    for (let i = 0; i < nodePositions.length; i++) {
+      for (let j = i + 1; j < nodePositions.length; j++) {
+        const distance = Math.sqrt(
+          Math.pow(nodePositions[i].x - nodePositions[j].x, 2) +
+          Math.pow(nodePositions[i].y - nodePositions[j].y, 2)
+        );
+        
+        // Only connect nodes that are close enough
+        if (distance < 30) {
+          const connection = document.createElement("div");
+          connection.className = "neural-connection";
+          
+          const angle = Math.atan2(
+            nodePositions[j].y - nodePositions[i].y,
+            nodePositions[j].x - nodePositions[i].x
+          );
+          
+          connection.style.left = nodePositions[i].x + "%";
+          connection.style.top = nodePositions[i].y + "%";
+          connection.style.width = distance + "%";
+          connection.style.transform = `rotate(${angle}rad)`;
+          connection.style.animationDelay = Math.random() * 2 + "s";
+          
+          container.appendChild(connection);
+        }
+      }
+    }
+  }
+
+  /**
+   * Create data packets
+   */
+  createDataPackets() {
+    const container = document.querySelector("#neural #dataPackets");
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    for (let i = 0; i < 12; i++) {
+      const packet = document.createElement("div");
+      packet.className = "data-packet";
+      packet.style.left = Math.random() * 100 + "%";
+      packet.style.top = Math.random() * 100 + "%";
+      packet.style.animationDelay = Math.random() * 4 + "s";
+      container.appendChild(packet);
+    }
+  }
+
+  /**
+   * Create brain waves
+   */
+  createBrainWaves() {
+    const container = document.querySelector("#neural #brainWaves");
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    for (let i = 0; i < 5; i++) {
+      const wave = document.createElement("div");
+      wave.className = "brain-wave";
+      wave.style.top = (i * 20 + 10) + "%";
+      wave.style.animationDelay = i * 1.2 + "s";
+      container.appendChild(wave);
+    }
+  }
+
+  /**
+   * Initialize Minimalist Professional background
+   */
+  initMinimal() {
+    try {
+      this.createGeometricShapes();
+      this.createCleanLines();
+    } catch (error) {
+      console.warn('Error initializing Minimalist background:', error);
+    }
+  }
+
+  /**
+   * Create geometric shapes
+   */
+  createGeometricShapes() {
+    const container = document.querySelector("#minimal #geometricShapes");
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    const shapes = ['circle', 'square', 'triangle'];
+    
+    for (let i = 0; i < 8; i++) {
+      const shape = document.createElement("div");
+      const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+      shape.className = `geometric-shape ${shapeType}`;
+      shape.style.left = Math.random() * 90 + 5 + "%";
+      shape.style.top = Math.random() * 90 + 5 + "%";
+      shape.style.animationDelay = Math.random() * 4 + "s";
+      container.appendChild(shape);
+    }
+  }
+
+  /**
+   * Create clean lines
+   */
+  createCleanLines() {
+    const container = document.querySelector("#minimal #cleanLines");
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    for (let i = 0; i < 6; i++) {
+      const line = document.createElement("div");
+      line.className = "clean-line";
+      line.style.top = Math.random() * 80 + 10 + "%";
+      line.style.width = Math.random() * 40 + 30 + "%";
+      line.style.animationDelay = Math.random() * 6 + "s";
+      container.appendChild(line);
+    }
+  }
+
+  /**
+   * Initialize Data Visualization background
+   */
+  initDataViz() {
+    try {
+      this.createFloatingCharts();
+      this.createCodeSnippets();
+      this.createStatisticsDisplay();
+    } catch (error) {
+      console.warn('Error initializing Data Visualization background:', error);
+    }
+  }
+
+  /**
+   * Create floating charts
+   */
+  createFloatingCharts() {
+    const container = document.querySelector("#dataviz #floatingCharts");
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    for (let i = 0; i < 4; i++) {
+      const chart = document.createElement("div");
+      chart.className = "floating-chart";
+      chart.style.left = Math.random() * 70 + 15 + "%";
+      chart.style.top = Math.random() * 70 + 15 + "%";
+      chart.style.width = "60px";
+      chart.style.height = "40px";
+      chart.style.animationDelay = Math.random() * 3 + "s";
+      
+      // Create chart bars
+      for (let j = 0; j < 6; j++) {
+        const bar = document.createElement("div");
+        bar.className = "chart-bar";
+        bar.style.height = Math.random() * 25 + 10 + "px";
+        bar.style.display = "inline-block";
+        bar.style.animationDelay = j * 0.2 + "s";
+        chart.appendChild(bar);
+      }
+      
+      container.appendChild(chart);
+    }
+  }
+
+  /**
+   * Create code snippets
+   */
+  createCodeSnippets() {
+    const container = document.querySelector("#dataviz #codeSnippets");
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    const codeExamples = [
+      "const ai = new ML();",
+      "model.fit(X, y);",
+      "predict(data);",
+      "accuracy: 94.2%",
+      "epoch 50/100",
+      "loss: 0.0234"
+    ];
+    
+    for (let i = 0; i < 6; i++) {
+      const snippet = document.createElement("div");
+      snippet.className = "code-snippet";
+      snippet.textContent = codeExamples[i];
+      snippet.style.left = Math.random() * 80 + 10 + "%";
+      snippet.style.top = Math.random() * 80 + 10 + "%";
+      snippet.style.animationDelay = Math.random() * 4 + "s";
+      container.appendChild(snippet);
+    }
+  }
+
+  /**
+   * Create statistics display
+   */
+  createStatisticsDisplay() {
+    const container = document.querySelector("#dataviz #statisticsDisplay");
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    const stats = [
+      { label: "Accuracy", value: "94.2%" },
+      { label: "Models", value: "12" },
+      { label: "Data Points", value: "10K+" },
+      { label: "Projects", value: "25+" }
+    ];
+    
+    stats.forEach((stat, index) => {
+      const statElement = document.createElement("div");
+      statElement.className = "statistic-element";
+      statElement.innerHTML = `
+        <div style="font-size: 12px; opacity: 0.8;">${stat.label}</div>
+        <div style="font-size: 16px; font-weight: bold;">${stat.value}</div>
+      `;
+      statElement.style.left = (index * 20 + 10) + "%";
+      statElement.style.top = Math.random() * 60 + 20 + "%";
+      statElement.style.animationDelay = index * 0.5 + "s";
+      container.appendChild(statElement);
+    });
+  }
+
+  /**
    * Initialize other components
    */
   initializeComponents() {
     this.initializeProgressBars();
     this.enhanceBackgrounds();
+    this.optimizePerformance();
+  }
+
+  /**
+   * Optimize performance based on device capabilities
+   */
+  optimizePerformance() {
+    const isMobile = window.innerWidth <= 768;
+    const isLowEnd = navigator.hardwareConcurrency <= 4;
+    
+    if (isMobile || isLowEnd) {
+      document.body.classList.add('performance-mode');
+      console.log('Performance mode enabled for better experience');
+    }
   }
 
   /**
@@ -1090,8 +1500,13 @@ class PortfolioApp {
   }
 }
 
-// Initialize the application
+// Initialize the application and make it globally accessible
 const portfolioApp = new PortfolioApp();
+window.portfolioApp = portfolioApp;
+
+// Signal that PortfolioApp is ready
+window.portfolioAppReady = true;
+console.log('PortfolioApp initialized and ready');
 
 // Cleanup on page unload
 window.addEventListener('beforeunload', () => {
