@@ -8,6 +8,17 @@ class PortfolioApp {
   constructor() {
     this.backgroundsInitialized = new Set();
     this.intersectionObserver = null;
+    this.currentTheme = 'dark';
+    this.typingTexts = [
+      'ML Engineer & AI Solutions Developer',
+      'Building Intelligent Systems',
+      'Deep Learning Enthusiast',
+      'Data Science Professional',
+      'AI Research Passionate'
+    ];
+    this.currentTextIndex = 0;
+    this.currentCharIndex = 0;
+    this.isDeleting = false;
     this.init();
   }
 
@@ -54,6 +65,11 @@ class PortfolioApp {
     this.setupBackgroundSwitcher();
     this.optimizeForMobile();
     this.setupLazyLoading();
+    this.setupThemeToggle();
+    this.setupScrollProgress();
+    this.initTypingAnimation();
+    this.createParticleSystem();
+    this.enhanceProjectCards();
   }
 
   /**
@@ -767,11 +783,309 @@ class PortfolioApp {
   }
 
   /**
+   * Setup theme toggle functionality
+   */
+  setupThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+
+    // Load saved theme or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    this.setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+      this.setTheme(this.currentTheme);
+      localStorage.setItem('theme', this.currentTheme);
+    });
+  }
+
+  /**
+   * Set the current theme
+   */
+  setTheme(theme) {
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (theme === 'light') {
+      root.classList.add('light-theme');
+      themeToggle.classList.remove('dark-mode');
+      themeToggle.classList.add('light-mode');
+    } else {
+      root.classList.remove('light-theme');
+      themeToggle.classList.remove('light-mode');
+      themeToggle.classList.add('dark-mode');
+    }
+    
+    this.currentTheme = theme;
+  }
+
+  /**
+   * Setup scroll progress indicator
+   */
+  setupScrollProgress() {
+    const scrollProgress = document.getElementById('scrollProgress');
+    if (!scrollProgress) return;
+
+    const updateScrollProgress = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      
+      scrollProgress.style.width = Math.min(progress, 100) + '%';
+    };
+
+    window.addEventListener('scroll', updateScrollProgress);
+    updateScrollProgress(); // Initial call
+  }
+
+  /**
+   * Initialize typing animation
+   */
+  initTypingAnimation() {
+    const typingElement = document.getElementById('typing-animation');
+    if (!typingElement) return;
+
+    const typeCharacter = () => {
+      const currentText = this.typingTexts[this.currentTextIndex];
+      
+      if (this.isDeleting) {
+        typingElement.textContent = currentText.substring(0, this.currentCharIndex - 1);
+        this.currentCharIndex--;
+        
+        if (this.currentCharIndex === 0) {
+          this.isDeleting = false;
+          this.currentTextIndex = (this.currentTextIndex + 1) % this.typingTexts.length;
+          setTimeout(typeCharacter, 500); // Pause before typing next text
+          return;
+        }
+      } else {
+        typingElement.textContent = currentText.substring(0, this.currentCharIndex + 1);
+        this.currentCharIndex++;
+        
+        if (this.currentCharIndex === currentText.length) {
+          setTimeout(() => {
+            this.isDeleting = true;
+            typeCharacter();
+          }, 2000); // Pause when text is complete
+          return;
+        }
+      }
+      
+      const speed = this.isDeleting ? 50 : 100;
+      setTimeout(typeCharacter, speed);
+    };
+
+    // Start typing animation after a short delay
+    setTimeout(typeCharacter, 1000);
+  }
+
+  /**
+   * Create particle system
+   */
+  createParticleSystem() {
+    // Check if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    // Create particle container
+    const particleContainer = document.createElement('div');
+    particleContainer.className = 'particle-system';
+    document.body.appendChild(particleContainer);
+
+    const createParticle = () => {
+      const particle = document.createElement('div');
+      const size = Math.random();
+      
+      if (size < 0.3) {
+        particle.className = 'particle small';
+      } else if (size > 0.7) {
+        particle.className = 'particle large';
+      } else {
+        particle.className = 'particle';
+      }
+      
+      // Random starting position
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDelay = Math.random() * 20 + 's';
+      
+      particleContainer.appendChild(particle);
+      
+      // Remove particle after animation
+      setTimeout(() => {
+        if (particleContainer.contains(particle)) {
+          particleContainer.removeChild(particle);
+        }
+      }, 30000);
+    };
+
+    // Create initial particles
+    for (let i = 0; i < 15; i++) {
+      setTimeout(() => createParticle(), i * 1000);
+    }
+
+    // Continue creating particles
+    setInterval(createParticle, 2000);
+  }
+
+  /**
+   * Enhance project cards with better hover effects
+   */
+  enhanceProjectCards() {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+      // Add magnetic cursor effect
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const deltaX = (x - centerX) / centerX;
+        const deltaY = (y - centerY) / centerY;
+        
+        const rotateX = deltaY * 5;
+        const rotateY = deltaX * 5;
+        
+        card.style.transform = `
+          perspective(1000px)
+          rotateX(${-rotateX}deg)
+          rotateY(${rotateY}deg)
+          translateY(-10px)
+          scale(1.02)
+        `;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+
+      // Add click ripple effect
+      card.addEventListener('click', (e) => {
+        const ripple = document.createElement('div');
+        const rect = card.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(0, 169, 255, 0.3);
+          transform: scale(0);
+          animation: ripple 0.6s linear;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${e.clientX - rect.left - size / 2}px;
+          top: ${e.clientY - rect.top - size / 2}px;
+          pointer-events: none;
+          z-index: 1000;
+        `;
+        
+        card.style.position = 'relative';
+        card.appendChild(ripple);
+        
+        setTimeout(() => {
+          if (card.contains(ripple)) {
+            card.removeChild(ripple);
+          }
+        }, 600);
+      });
+    });
+    
+    // Add ripple animation styles
+    if (!document.getElementById('ripple-styles')) {
+      const style = document.createElement('style');
+      style.id = 'ripple-styles';
+      style.textContent = `
+        @keyframes ripple {
+          to {
+            transform: scale(2);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
+  /**
+   * Add Three.js-like background enhancement
+   */
+  enhanceBackgrounds() {
+    const activeBackground = document.querySelector('.active-bg');
+    if (activeBackground) {
+      activeBackground.classList.add('enhanced');
+      
+      // Add floating orbs
+      this.createFloatingOrbs(activeBackground);
+    }
+  }
+
+  /**
+   * Create floating orbs for enhanced backgrounds
+   */
+  createFloatingOrbs(container) {
+    for (let i = 0; i < 3; i++) {
+      const orb = document.createElement('div');
+      orb.style.cssText = `
+        position: absolute;
+        width: ${Math.random() * 100 + 50}px;
+        height: ${Math.random() * 100 + 50}px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0, 169, 255, 0.1), transparent);
+        animation: floatOrb ${Math.random() * 10 + 10}s infinite ease-in-out;
+        top: ${Math.random() * 100}%;
+        left: ${Math.random() * 100}%;
+        pointer-events: none;
+        z-index: 1;
+      `;
+      
+      container.appendChild(orb);
+    }
+    
+    // Add orb animation if not exists
+    if (!document.getElementById('orb-styles')) {
+      const style = document.createElement('style');
+      style.id = 'orb-styles';
+      style.textContent = `
+        @keyframes floatOrb {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+            opacity: 0.3;
+          }
+          50% {
+            transform: translateY(-20px) rotate(180deg);
+            opacity: 0.6;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
+  /**
+   * Initialize other components
+   */
+  initializeComponents() {
+    this.initializeProgressBars();
+    this.enhanceBackgrounds();
+  }
+
+  /**
    * Cleanup method for proper resource management
    */
   cleanup() {
     if (this.intersectionObserver) {
       this.intersectionObserver.disconnect();
+    }
+    
+    // Clean up particle system
+    const particleSystem = document.querySelector('.particle-system');
+    if (particleSystem) {
+      particleSystem.remove();
     }
   }
 }
