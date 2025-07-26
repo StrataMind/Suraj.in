@@ -1,1174 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Explore Suraj Kumar's portfolio of innovative projects spanning web development, AI, machine learning, and more. View live demos and source code.">
-    <meta name="keywords" content="Suraj Kumar, projects, portfolio, web development, AI, machine learning, Django, Python, React">
-    <meta name="author" content="Suraj Kumar">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Projects | Suraj Kumar - Portfolio">
-    <meta property="og:description" content="Explore innovative projects in web development, AI, and machine learning by Suraj Kumar.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourportfolio.com/projects.html">
-    
-    <title>Projects | Suraj Kumar - Portfolio</title>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css" onerror="console.warn('Main stylesheet failed to load')">
-    
-    <!-- Scripts -->
-    <script src="cyberpunk.js" onerror="console.warn('Cyberpunk script failed to load')"></script>
-    <script src="ghibli.js" onerror="console.warn('Ghibli script failed to load')"></script>
-    <script src="space.js" onerror="console.warn('Space script failed to load')"></script>
-    <script src="city.js" onerror="console.warn('City script failed to load')"></script>
-    <script src="peace.js" onerror="console.warn('Peace script failed to load')"></script>
-    <script src="anime.js" onerror="console.warn('Anime script failed to load')"></script>
-    <script src="main.js" defer onerror="console.warn('Main script failed to load')"></script>
-    
-    <!-- Google Fonts - Consolidated -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="images/profile_picture.jpeg" as="image">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Portfolio",
-        "name": "Suraj Kumar Projects",
-        "description": "Portfolio of projects by Suraj Kumar",
-        "author": {
-            "@type": "Person",
-            "name": "Suraj Kumar"
-        }
-    }
-    </script>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-X3XEGEKNQD"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-X3XEGEKNQD");
-    </script>
+    <title>Projects - Suraj Kumar</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <!-- ==========================================
-         LOADING SCREEN
-         ========================================== -->
-    <div id="page-loader">
-        <div class="rain-loading-bg">
-            <div class="rain-overlay"></div>
-            <div class="fog"></div>
-            <div class="wet-ground"></div>
-            <div class="lightning"></div>
-            <div class="cloud cloud1"></div>
-            <div class="cloud cloud2"></div>
-            <div class="cloud cloud3"></div>
-            <div id="loading-raindrops"></div>
-            <div id="loading-puddles"></div>
-        </div>
-        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
-            <div class="wheel"></div>
-            <div class="hamster">
-                <div class="hamster__body">
-                    <div class="hamster__head">
-                        <div class="hamster__ear"></div>
-                        <div class="hamster__eye"></div>
-                        <div class="hamster__nose"></div>
-                    </div>
-                    <div class="hamster__limb hamster__limb--fr"></div>
-                    <div class="hamster__limb hamster__limb--fl"></div>
-                    <div class="hamster__limb hamster__limb--br"></div>
-                    <div class="hamster__limb hamster__limb--bl"></div>
-                    <div class="hamster__tail"></div>
-                </div>
+<body class="loading">
+    <!-- Loading Screen -->
+    <div class="terminal-loader" id="loader">
+        <div class="terminal-header">
+            <div class="terminal-title">Status</div>
+            <div class="terminal-controls">
+                <div class="control close"></div>
+                <div class="control minimize"></div>
+                <div class="control maximize"></div>
             </div>
-            <div class="spoke"></div>
         </div>
-        <div class="loading-container">
-            <div class="loading-bar"></div>
-        </div>
-        <div class="loading-text">loading...</div>
+        <div class="text">Loading...</div>
     </div>
 
-    <!-- ==========================================
-         BACKGROUND SYSTEMS
-         ========================================== -->
-    <div class="flashlight-bg" id="flashlight"></div>
-    <div class="cyberpunk-bg" id="cyberpunk">
-        <div class="grid-bg"></div>
-        <div class="scanlines"></div>
-        <div id="particles"></div>
-        <div id="codeRain"></div>
-        <div id="orbs"></div>
-        <div id="shapes"></div>
-        <div id="pulses"></div>
-        <div id="dataStreams"></div>
-    </div>
-    <div class="ghibli-bg" id="ghibli">
-        <div class="grass">
-            <div id="grassBlades"></div>
-        </div>
-        <div class="cloud cloud1"></div>
-        <div class="cloud cloud2"></div>
-        <div class="cloud cloud3"></div>
-        <div id="sootSprites"></div>
-        <div id="petals"></div>
-        <div id="fireflies"></div>
-        <div id="sparkles"></div>
-        <div id="seeds"></div>
-        <div id="auras"></div>
-    </div>
-    <div class="space-bg" id="space">
-        <div id="stars"></div>
-        <div id="shootingStars"></div>
-        <div id="planets"></div>
-        <div id="nebulae"></div>
-        <div id="galaxies"></div>
-        <div id="spaceDust"></div>
-        <div id="pulsars"></div>
-        <div id="blackHoles"></div>
-        <div id="cosmicRays"></div>
-        <div id="asteroids"></div>
-        <div id="comets"></div>
-    </div>
-    <div class="city-bg" id="city">
-        <div class="building building-1" id="building1"></div>
-        <div class="building building-2" id="building2"></div>
-        <div class="building building-3" id="building3"></div>
-        <div class="building building-4" id="building4"></div>
-        <div class="building building-5" id="building5"></div>
-        <div class="building building-6" id="building6"></div>
-        <div class="reflection"></div>
-        <div id="cityStars"></div>
-        <div id="neonSigns"></div>
-        <div id="trafficLights"></div>
-        <div id="streetLights"></div>
-        <div id="helicopters"></div>
-        <div id="searchlights"></div>
-        <div id="citySmoke"></div>
-        <div id="billboards"></div>
-        <div id="rainDrops"></div>
-        <div id="vehicles"></div>
-        <div id="airTraffic"></div>
-    </div>
-    <div class="peace-bg" id="peace">
-        <div class="gentle-glow"></div>
-        <div id="lotusPetals"></div>
-        <div id="waterRipples"></div>
-        <div id="peaceOrbs"></div>
-        <div id="omSymbols"></div>
-        <div id="zenCircles"></div>
-        <div id="leaves"></div>
-        <div id="lightRays"></div>
-        <div id="mandalas"></div>
-        <div id="butterflies"></div>
-        <div id="breathCircles"></div>
-        <div id="peacefulClouds"></div>
-        <div id="meditationParticles"></div>
-    </div>
-    <div class="anime-bg" id="anime">
-        <div class="shimmer"></div>
-        <div id="sakuraPetals"></div>
-        <div id="spiritLights"></div>
-        <div id="animeSparkles"></div>
-        <div id="bubbles"></div>
-        <div id="cloudHearts"></div>
-        <div id="magicCircles"></div>
-        <div id="speedLines"></div>
-        <div id="kawaiiCats"></div>
-        <div id="energyAuras"></div>
-    </div>
-
-    <!-- Neural Network Background -->
-    <div class="neural-bg" id="neural">
-        <div id="neuralNodes"></div>
-        <div id="neuralConnections"></div>
-        <div id="dataPackets"></div>
-        <div id="neuralPulses"></div>
-        <div id="brainWaves"></div>
-    </div>
-
-    <!-- Minimalist Professional Background -->
-    <div class="minimal-bg" id="minimal">
-        <div id="geometricShapes"></div>
-        <div id="subtleGradients"></div>
-        <div id="professionalGrid"></div>
-        <div id="cleanLines"></div>
-    </div>
-
-    <!-- Data Visualization Background -->
-    <div class="dataviz-bg" id="dataviz">
-        <div id="floatingCharts"></div>
-        <div id="animatedGraphs"></div>
-        <div id="codeSnippets"></div>
-        <div id="statisticsDisplay"></div>
-        <div id="dataStreams"></div>
-    </div>
-
-    <!-- ==========================================
-         NAVIGATION & CONTROLS
-         ========================================== -->
-    <!-- Main Sidebar Navigation -->
-    <nav class="sidebar" role="navigation" aria-label="Main navigation">
-        <div class="sidebar-header">
-            <a href="index.html#home" class="sidebar-logo-link" aria-label="Go to home page">
-                <img src="images/profile_picture.jpeg" alt="Suraj Kumar" class="sidebar-logo">
-                <span>Suraj Kumar</span>
-            </a>
-        </div>
-        
-        <ul class="sidebar-nav-links">
-            <li><a href="index.html#home" class="nav-link">
-                <span class="nav-icon home-icon" aria-hidden="true"></span>Home
-            </a></li>
-            <li><a href="index.html#about" class="nav-link">
-                <span class="nav-icon about-icon" aria-hidden="true"></span>About
-            </a></li>
-            <li><a href="index.html#skills" class="nav-link">
-                <span class="nav-icon skills-icon" aria-hidden="true"></span>Skills
-            </a></li>
-            <li><a href="https://surajsk2003.github.io/Game-Zone/" target="_blank" class="nav-link" rel="noopener">
-                <span class="nav-icon games-icon" aria-hidden="true"></span>Game Zone
-            </a></li>
-            <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank" class="nav-link" rel="noopener">
-                <span class="nav-icon blog-icon" aria-hidden="true"></span>Blog
-            </a></li>
-            <li><a href="projects.html" class="nav-link active" aria-current="page">
-                <span class="nav-icon projects-icon" aria-hidden="true"></span>Projects
-            </a></li>
-            <li><a href="contact.html" class="nav-link">
-                <span class="nav-icon contact-icon" aria-hidden="true"></span>Contact
-            </a></li>
-        </ul>
-        
-        <div class="sidebar-social-icons">
-            <a href="https://github.com/surajsk2003" target="_blank" rel="noopener" aria-label="GitHub Profile">
-                <img src="images/github.png" alt="GitHub">
-            </a>
-            <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
-                <img src="images/linkedin.png" alt="LinkedIn">
-            </a>
+    <div class="main-content" id="mainContent">
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Suraj Kumar</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <label class="switch-button" for="switch-projects">
+                <div class="switch-outer">
+                    <input id="switch-projects" type="checkbox">
+                    <div class="button">
+                        <span class="button-toggle"></span>
+                        <span class="button-indicator"></span>
+                    </div>
+                </div>
+            </label>
         </div>
     </nav>
 
-    <!-- Sidebar Toggle Button -->
-    <button class="sidebar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </button>
-
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" aria-label="Toggle dark/light mode" id="themeToggle">
-      <div class="theme-toggle-inner">
-        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-        </svg>
-        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </div>
-    </button>
-    
-    <!-- Background Switcher -->
-    <div class="bg-switcher-container">
-        <button class="bg-menu-button" id="bgMenuButton" aria-label="Change background theme" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-        </button>
-        <div class="bg-dropdown" id="bgDropdown" role="menu" aria-hidden="true">
-            <div class="bg-option" data-bg="flashlight" role="menuitem">Flashlight</div>
-            <div class="bg-option" data-bg="cyberpunk" role="menuitem">Cyberpunk</div>
-            <div class="bg-option" data-bg="ghibli" role="menuitem">Ghibli</div>
-            <div class="bg-option" data-bg="space" role="menuitem">Space</div>
-            <div class="bg-option" data-bg="city" role="menuitem">City</div>
-            <div class="bg-option" data-bg="peace" role="menuitem">Peace</div>
-            <div class="bg-option" data-bg="anime" role="menuitem">Anime</div>
-            <div class="bg-option" data-bg="neural" role="menuitem">Neural Network</div>
-            <div class="bg-option" data-bg="minimal" role="menuitem">Minimal Pro</div>
-            <div class="bg-option" data-bg="dataviz" role="menuitem">Data Viz</div>
-        </div>
-    </div>
-
-    <!-- ==========================================
-         MAIN CONTENT
-         ========================================== -->
-    <main role="main">
-        <!-- Breadcrumbs -->
-
-        <!-- Projects Section -->
-        <section id="projects-page" aria-label="Projects portfolio">
-            <header class="projects-header">
-                <h1 class="section-title">My Projects</h1>
-                <p class="projects-intro">Explore my portfolio of innovative projects spanning web development, AI, machine learning, and more. Each project demonstrates practical applications of cutting-edge technologies.</p>
-                
-                <!-- Modern Gradient Cards Showcase -->
-                <div class="modern-cards-showcase" style="display: flex; gap: 1.5rem; margin: 2rem 0; flex-wrap: wrap; justify-content: center;">
-                  <div class="center">
-                    <div class="modern-card-design gradient-cyan" style="height: 150px; width: 150px;">
-                      <div class="circle-1 center color-border" style="height: 170px; width: 170px;">
-                        <div class="circle-2 center color-border" style="height: 130px; width: 130px;">
-                          <div class="circle-3 center color-border" style="height: 90px; width: 90px;">
-                            <div class="circle-4 center color-border" style="height: 55px; width: 55px;">
-                              <div class="circle-5" style="height: 35px; width: 35px;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mountain-1 shape shadow" style="height: 150px; width: 150px;"></div>
-                      <div class="mountain-2 shape" style="height: 150px; width: 150px;"></div>
-                      <div class="mountain-3 shape shadow" style="height: 150px; width: 150px;"></div>
+    <!-- Projects Hero -->
+    <section class="projects-hero">
+        <div class="container">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-close"></span>
+                        <span class="btn-minimize"></span>
+                        <span class="btn-maximize"></span>
                     </div>
-                  </div>
-                  
-                  <div class="center">
-                    <div class="modern-card-design gradient-emerald" style="height: 150px; width: 150px;">
-                      <div class="circle-1 center color-border" style="height: 170px; width: 170px;">
-                        <div class="circle-2 center color-border" style="height: 130px; width: 130px;">
-                          <div class="circle-3 center color-border" style="height: 90px; width: 90px;">
-                            <div class="circle-4 center color-border" style="height: 55px; width: 55px;">
-                              <div class="circle-5" style="height: 35px; width: 35px;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mountain-1 shape shadow" style="height: 150px; width: 150px;"></div>
-                      <div class="mountain-2 shape" style="height: 150px; width: 150px;"></div>
-                      <div class="mountain-3 shape shadow" style="height: 150px; width: 150px;"></div>
-                    </div>
-                  </div>
-                  
-                  <div class="center">
-                    <div class="modern-card-design gradient-secondary" style="height: 150px; width: 150px;">
-                      <div class="circle-1 center color-border" style="height: 170px; width: 170px;">
-                        <div class="circle-2 center color-border" style="height: 130px; width: 130px;">
-                          <div class="circle-3 center color-border" style="height: 90px; width: 90px;">
-                            <div class="circle-4 center color-border" style="height: 55px; width: 55px;">
-                              <div class="circle-5" style="height: 35px; width: 35px;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mountain-1 shape shadow" style="height: 150px; width: 150px;"></div>
-                      <div class="mountain-2 shape" style="height: 150px; width: 150px;"></div>
-                      <div class="mountain-3 shape shadow" style="height: 150px; width: 150px;"></div>
-                    </div>
-                  </div>
+                    <div class="terminal-title">suraj@projects:~$</div>
                 </div>
-            </header>
-            
-            <!-- Project Filters -->
-            <div class="project-filters" role="tablist" aria-label="Project category filters">
-                <button class="project-filter active" data-filter="all" role="tab" aria-selected="true" aria-controls="projects-grid">
-                    All Projects
-                </button>
-                <button class="project-filter" data-filter="web" role="tab" aria-selected="false" aria-controls="projects-grid">
-                    Web Development
-                </button>
-                <button class="project-filter" data-filter="ai" role="tab" aria-selected="false" aria-controls="projects-grid">
-                    AI & Machine Learning
-                </button>
-                <button class="project-filter" data-filter="other" role="tab" aria-selected="false" aria-controls="projects-grid">
-                    Other Projects
-                </button>
+                <div class="terminal-body">
+                    <div class="code-line"><span class="prompt">$</span> ls -la projects/</div>
+                    <div class="output">total 15</div>
+                    <div class="output">drwxr-xr-x 15 suraj suraj 4096 Dec 2024 .</div>
+                    <div class="output">-rw-r--r--  1 suraj suraj 2048 Dec 2024 ai_projects</div>
+                    <div class="output">-rw-r--r--  1 suraj suraj 1024 Dec 2024 web_apps</div>
+                    <div class="output">-rw-r--r--  1 suraj suraj  512 Dec 2024 research</div>
+                    <div class="code-line"><span class="prompt">$</span> echo "Building the future with code"</div>
+                    <div class="output">Building the future with code</div>
+                </div>
             </div>
-
-            <!-- Projects Grid -->
-            <div class="projects-container" id="projects-grid" role="tabpanel" aria-live="polite">
-                <!-- Project 1: E-commerce Recommendation Engine -->
-                <article class="modern-project-card" data-category="ai" role="article">
-                    <div class="modern-card-design gradient-primary">
-                        <div class="circle-1 center color-border">
-                            <div class="circle-2 center color-border">
-                                <div class="circle-3 center color-border">
-                                    <div class="circle-4 center color-border">
-                                        <div class="circle-5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mountain-1 shape shadow"></div>
-                        <div class="mountain-2 shape"></div>
-                        <div class="mountain-3 shape shadow"></div>
-                    </div>
-                    
-                    <div class="modern-project-content">
-                        <header>
-                            <h2 class="modern-project-title">E-commerce Recommendation Engine</h2>
-                            <p class="modern-project-description">Advanced machine learning recommendation system implementing collaborative filtering and content-based algorithms to provide personalized product recommendations for e-commerce platforms.</p>
-                        </header>
-                        
-                        <div class="modern-tech-stack">
-                            <span class="modern-tech-tag">Python</span>
-                            <span class="modern-tech-tag">Machine Learning</span>
-                            <span class="modern-tech-tag">Pandas</span>
-                            <span class="modern-tech-tag">Scikit-learn</span>
-                        </div>
-                        
-                        <footer class="modern-project-links">
-                            <a href="https://github.com/surajsk2003/ecommerce-recommendation-engine" class="modern-btn modern-btn-primary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                                GitHub
-                            </a>
-                            <a href="#" class="modern-btn modern-btn-secondary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                                </svg>
-                                Docs
-                            </a>
-                        </footer>
-                    </div>
-                </article>
-
-                <!-- Project 2: HireNet -->
-                <article class="modern-project-card" data-category="ai" role="article">
-                    <div class="modern-card-design gradient-success">
-                        <div class="circle-1 center color-border">
-                            <div class="circle-2 center color-border">
-                                <div class="circle-3 center color-border">
-                                    <div class="circle-4 center color-border">
-                                        <div class="circle-5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mountain-1 shape shadow"></div>
-                        <div class="mountain-2 shape"></div>
-                        <div class="mountain-3 shape shadow"></div>
-                    </div>
-                    
-                    <div class="modern-project-content">
-                        <header>
-                            <h2 class="modern-project-title">HireNet - AI Recruitment Platform</h2>
-                            <p class="modern-project-description">Intelligent recruitment platform leveraging machine learning and natural language processing to match candidates with job opportunities through automated resume analysis and skill assessment.</p>
-                        </header>
-                        
-                        <div class="modern-tech-stack">
-                            <span class="modern-tech-tag">Python</span>
-                            <span class="modern-tech-tag">Machine Learning</span>
-                            <span class="modern-tech-tag">NLP</span>
-                            <span class="modern-tech-tag">Django</span>
-                            <span class="modern-tech-tag">AI</span>
-                        </div>
-                        
-                        <footer class="modern-project-links">
-                            <a href="https://github.com/surajsk2003/HireNet" class="modern-btn modern-btn-primary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                                GitHub
-                            </a>
-                            <a href="#" class="modern-btn modern-btn-secondary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 11h8v2H8v-2zm0 4h8v2H8v-2z"/>
-                                </svg>
-                                Live Demo
-                            </a>
-                        </footer>
-                    </div>
-                </article>
-
-                <!-- Project 3: FitMind -->
-                <article class="modern-project-card" data-category="web" role="article">
-                    <div class="modern-card-design gradient-warning">
-                        <div class="circle-1 center color-border">
-                            <div class="circle-2 center color-border">
-                                <div class="circle-3 center color-border">
-                                    <div class="circle-4 center color-border">
-                                        <div class="circle-5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mountain-1 shape shadow"></div>
-                        <div class="mountain-2 shape"></div>
-                        <div class="mountain-3 shape shadow"></div>
-                    </div>
-                    
-                    <div class="modern-project-content">
-                        <header>
-                            <h2 class="modern-project-title">FitMind - Health & Wellness Platform</h2>
-                            <p class="modern-project-description">Comprehensive health and wellness platform combining fitness tracking, mental health resources, and personalized wellness plans to promote holistic well-being.</p>
-                        </header>
-                        
-                        <div class="modern-tech-stack">
-                            <span class="modern-tech-tag">React</span>
-                            <span class="modern-tech-tag">Node.js</span>
-                            <span class="modern-tech-tag">MongoDB</span>
-                            <span class="modern-tech-tag">Express</span>
-                            <span class="modern-tech-tag">Health Tech</span>
-                        </div>
-                        
-                        <footer class="modern-project-links">
-                            <a href="https://github.com/surajsk2003/FitMind" class="modern-btn modern-btn-primary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                                GitHub
-                            </a>
-                            <a href="#" class="modern-btn modern-btn-secondary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 11h8v2H8v-2zm0 4h8v2H8v-2z"/>
-                                </svg>
-                                Live Demo
-                            </a>
-                        </footer>
-                    </div>
-                </article>
-
-                <!-- Project 4: NewsScope AI -->
-                <article class="modern-project-card" data-category="ai" role="article">
-                    <div class="modern-card-design gradient-danger">
-                        <div class="circle-1 center color-border">
-                            <div class="circle-2 center color-border">
-                                <div class="circle-3 center color-border">
-                                    <div class="circle-4 center color-border">
-                                        <div class="circle-5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mountain-1 shape shadow"></div>
-                        <div class="mountain-2 shape"></div>
-                        <div class="mountain-3 shape shadow"></div>
-                    </div>
-                    
-                    <div class="modern-project-content">
-                        <header>
-                            <h2 class="modern-project-title">NewsScope AI - Intelligent News Analysis</h2>
-                            <p class="modern-project-description">AI-powered news aggregation and analysis platform that provides intelligent news categorization, sentiment analysis, and personalized content recommendations.</p>
-                        </header>
-                        
-                        <div class="modern-tech-stack">
-                            <span class="modern-tech-tag">Python</span>
-                            <span class="modern-tech-tag">AI</span>
-                            <span class="modern-tech-tag">NLP</span>
-                            <span class="modern-tech-tag">News API</span>
-                            <span class="modern-tech-tag">Sentiment Analysis</span>
-                        </div>
-                        
-                        <footer class="modern-project-links">
-                            <a href="https://github.com/surajsk2003/NewsScope-AI" class="modern-btn modern-btn-primary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                                GitHub
-                            </a>
-                            <a href="#" class="modern-btn modern-btn-secondary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 11h8v2H8v-2zm0 4h8v2H8v-2z"/>
-                                </svg>
-                                Live Demo
-                            </a>
-                        </footer>
-                    </div>
-                </article>
-
-                <!-- Project 5: Talendy Website Design -->
-                <article class="modern-project-card" data-category="web" role="article">
-                    <div class="modern-card-design gradient-info">
-                        <div class="circle-1 center color-border">
-                            <div class="circle-2 center color-border">
-                                <div class="circle-3 center color-border">
-                                    <div class="circle-4 center color-border">
-                                        <div class="circle-5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mountain-1 shape shadow"></div>
-                        <div class="mountain-2 shape"></div>
-                        <div class="mountain-3 shape shadow"></div>
-                    </div>
-                    
-                    <div class="modern-project-content">
-                        <header>
-                            <h2 class="modern-project-title">Talendy - Modern Website Design</h2>
-                            <p class="modern-project-description">Professional website design and development for talent management platform, featuring modern UI/UX principles, responsive design, and interactive user experiences.</p>
-                        </header>
-                        
-                        <div class="modern-tech-stack">
-                            <span class="modern-tech-tag">HTML5</span>
-                            <span class="modern-tech-tag">CSS3</span>
-                            <span class="modern-tech-tag">JavaScript</span>
-                            <span class="modern-tech-tag">UI/UX</span>
-                            <span class="modern-tech-tag">Responsive</span>
-                        </div>
-                        
-                        <footer class="modern-project-links">
-                            <a href="https://github.com/surajsk2003/talendy-website-design" class="modern-btn modern-btn-primary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                                GitHub
-                            </a>
-                            <a href="#" class="modern-btn modern-btn-secondary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 11h8v2H8v-2zm0 4h8v2H8v-2z"/>
-                                </svg>
-                                Live Demo
-                            </a>
-                        </footer>
-                    </div>
-                </article>
-
-                <!-- Project 6: Advanced QR Code Generator -->
-                <article class="modern-project-card" data-category="other" role="article">
-                    <div class="modern-card-design gradient-secondary">
-                        <div class="circle-1 center color-border">
-                            <div class="circle-2 center color-border">
-                                <div class="circle-3 center color-border">
-                                    <div class="circle-4 center color-border">
-                                        <div class="circle-5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mountain-1 shape shadow"></div>
-                        <div class="mountain-2 shape"></div>
-                        <div class="mountain-3 shape shadow"></div>
-                    </div>
-                    
-                    <div class="modern-project-content">
-                        <header>
-                            <h2 class="modern-project-title">Advanced QR Code Generator</h2>
-                            <p class="modern-project-description">Feature-rich QR code generator with customization options, batch processing capabilities, and advanced encoding features for various data types and use cases.</p>
-                        </header>
-                        
-                        <div class="modern-tech-stack">
-                            <span class="modern-tech-tag">Python</span>
-                            <span class="modern-tech-tag">QR Code</span>
-                            <span class="modern-tech-tag">PIL</span>
-                            <span class="modern-tech-tag">GUI</span>
-                            <span class="modern-tech-tag">Tkinter</span>
-                        </div>
-                        
-                        <footer class="modern-project-links">
-                            <a href="https://github.com/surajsk2003/Advanced-QR-Code-Generator" class="modern-btn modern-btn-primary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                                GitHub
-                            </a>
-                            <a href="#" class="modern-btn modern-btn-secondary" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                                </svg>
-                                Documentation
-                            </a>
-                        </footer>
-                    </div>
-                </article>
-
+            <div class="hero-content">
+                <h1>My <span class="highlight">Projects</span></h1>
+                <p class="subtitle">AI/ML • Web Development • Research</p>
+                <p>Explore my collection of projects spanning machine learning, web applications, and research initiatives.</p>
             </div>
+        </div>
+    </section>
 
-            <!-- No Results Message -->
-            <div class="no-results" id="noResults" style="display: none;" role="status" aria-live="polite">
-                <h2>No projects found</h2>
-                <p>Try selecting a different category or view all projects.</p>
+    <!-- All Projects -->
+    <section id="all-projects">
+        <div class="container">
+            <h2>All Projects</h2>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Featured Projects (Top 3) -->
+                <div class="project-card featured">
+                    <div class="featured-badge">Featured</div>
+                    <h3>E-commerce Recommendation Engine</h3>
+                    <p>Intelligent product recommendation system using machine learning algorithms to enhance user shopping experience and increase sales conversion.</p>
+                    <div class="project-tags">
+                        <span>Machine Learning</span>
+                        <span>Python</span>
+                        <span>Recommendation System</span>
+                        <span>E-commerce</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/ecommerce-recommendation-engine" target="_blank" class="btn secondary">View Code</a>
+                        <a href="https://surajsk2003.github.io/ecommerce-recommendation-engine/" target="_blank" class="btn primary">Live Demo</a>
+                    </div>
+                </div>
+                
+                <div class="project-card featured">
+                    <div class="featured-badge">Featured</div>
+                    <h3>HireNet</h3>
+                    <p>AI-powered recruitment platform that streamlines the hiring process with intelligent candidate matching and automated screening capabilities.</p>
+                    <div class="project-tags">
+                        <span>AI/ML</span>
+                        <span>Recruitment</span>
+                        <span>Python</span>
+                        <span>Web App</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/HireNet" target="_blank" class="btn secondary">View Code</a>
+                    </div>
+                </div>
+                
+                <div class="project-card featured">
+                    <div class="featured-badge">Featured</div>
+                    <h3>Talendy Website Design</h3>
+                    <p>Modern and responsive website design for Talendy platform created for Global Design Hackathon, featuring intuitive UI/UX and contemporary aesthetics.</p>
+                    <div class="project-tags">
+                        <span>UI/UX Design</span>
+                        <span>Figma</span>
+                        <span>Web Design</span>
+                        <span>Hackathon</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/talendy-website-design" target="_blank" class="btn secondary">View Code</a>
+                        <a href="https://www.figma.com/proto/6zEiQE5TZtyOA1hvBHrquW/2025---Global-Talendy-Website-Design-Hackathon-%7C-Tech-Japan-Inc.?node-id=1-17&p=f&t=S5l2m1u7nn3S319F-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A17" target="_blank" class="btn primary">View Design</a>
+                    </div>
+                </div>
+
+                <!-- Additional Projects -->
+                <div class="project-card">
+                    <h3>FitMind</h3>
+                    <p>Mental health and fitness tracking application that combines physical wellness monitoring with mental health insights and personalized recommendations.</p>
+                    <div class="project-tags">
+                        <span>Health Tech</span>
+                        <span>Mobile App</span>
+                        <span>Wellness</span>
+                        <span>Analytics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/FitMind" target="_blank" class="btn secondary">View Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>NewsScope AI</h3>
+                    <p>AI-driven news aggregation and analysis platform that provides personalized news feeds with sentiment analysis and trend detection.</p>
+                    <div class="project-tags">
+                        <span>AI/NLP</span>
+                        <span>News Analytics</span>
+                        <span>Sentiment Analysis</span>
+                        <span>Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/NewsScope-AI" target="_blank" class="btn secondary">View Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Advanced QR Code Generator</h3>
+                    <p>Feature-rich QR code generator with customization options, multiple data types support, and advanced styling capabilities for professional use.</p>
+                    <div class="project-tags">
+                        <span>JavaScript</span>
+                        <span>QR Code</span>
+                        <span>Web App</span>
+                        <span>Utility Tool</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/Advanced-QR-Code-Generator" target="_blank" class="btn secondary">View Code</a>
+                        <a href="https://surajsk2003.github.io/Advanced-QR-Code-Generator/" target="_blank" class="btn primary">Try Tool</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Productivity Dashboard</h3>
+                    <p>Comprehensive productivity management tool with task tracking, time management, goal setting, and analytics to boost personal efficiency.</p>
+                    <div class="project-tags">
+                        <span>Productivity</span>
+                        <span>Dashboard</span>
+                        <span>JavaScript</span>
+                        <span>Task Management</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/Productivity-Dashboard" target="_blank" class="btn secondary">View Code</a>
+                        <a href="https://surajsk2003.github.io/Productivity-Dashboard/" target="_blank" class="btn primary">Try Dashboard</a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Load More Button -->
-            <div class="load-more-container" style="display: none;">
-                <button class="codepen-button load-more-btn" aria-label="Load more projects">
-                    <span>Load More Projects</span>
-                </button>
-            </div>
-        </section>
-    </main>
-
-    <!-- ==========================================
-         FOOTER
-         ========================================== -->
+    <!-- Footer -->
     <footer id="Footer" role="contentinfo">
-        <!-- Inspirational Quotes -->
-        <div class="footer-quotes">
-            <h2>Inspiration</h2>
-            <ul role="list">
-                <li role="listitem">
-                    <em>"The best way to predict the future is to invent it." 
-                    <span class="quote-author">- Alan Kay</span></em>
-                </li>
-                <li role="listitem">
-                    <em>"Innovation distinguishes between a leader and a follower." 
-                    <span class="quote-author">- Steve Jobs</span></em>
-                </li>
-                <li role="listitem">
-                    <em>"Strive not to be a success, but rather to be of value." 
-                    <span class="quote-author">- Albert Einstein</span></em>
-                </li>
-            </ul>
-        </div>
-
-        <!-- General Links -->
-        <div class="general">
-            <h2 class="footer-accordion-header">
-                General
-                <span class="footer-accordion-arrow" aria-hidden="true"></span>
-            </h2>
-            <ul>
-                <li><a href="contact.html">Contact Me</a></li>
-                <li><a href="index.html#about">My Life & Journey</a></li>
-                <li><a href="https://my-blog-lemon-mu-45.vercel.app/" target="_blank" rel="noopener">My Blog</a></li>
-                <li><a href="https://surajsinghnitk.medium.com/" target="_blank" rel="noopener">Medium</a></li>
-                <li>BTech | EEE | NITK</li>
-            </ul>
-        </div>
-
-        <!-- Important Links -->
-        <div class="important-links-certificates">
-            <h2 class="footer-accordion-header">
-                Important Links
-                <span class="footer-accordion-arrow" aria-hidden="true"></span>
-            </h2>
-            <ul>
-                <li><a href="https://drive.google.com/file/d/1XixBxAh00Y827PAbBQPIwGz7wXCSDcej/view?usp=drive_link" target="_blank" rel="noopener">My Resume</a></li>
-                <li><a href="https://github.com/surajsk2003" target="_blank" rel="noopener">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener">LinkedIn</a></li>
-                <li><a href="https://www.kaggle.com/surajnitk2021" target="_blank" rel="noopener">Kaggle</a></li>
-                <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank" rel="noopener">View Certifications on LinkedIn</a></li>
-            </ul>
-        </div>
-
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-            <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
-            <p>Designed by Suraj Kumar</p>
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="code-line"><span class="prompt">$</span> echo "© 2024 Suraj Kumar. All rights reserved."</div>
+                <div class="output">© 2024 Suraj Kumar. All rights reserved.</div>
+                <div class="code-line"><span class="prompt">$</span> whoami</div>
+                <div class="output">Designed by Suraj Kumar</div>
+            </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top-button" id="backToTopBtn" aria-label="Back to top">
-        <svg class="svgIcon" viewBox="0 0 384 512">
-            <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
-        </svg>
-    </button>
-
-    <!-- ==========================================
-         JAVASCRIPT
-         ========================================== -->
-    <script>
-        'use strict';
-
-        /**
-         * Projects Page Application
-         * Handles projects filtering, background switching, and UI interactions
-         */
-        class ProjectsApp {
-            constructor() {
-                this.currentFilter = 'all';
-                this.projectCards = [];
-                this.init();
-            }
-
-            /**
-             * Initialize the application
-             */
-            init() {
-                this.bindEvents();
-                this.initializeComponents();
-            }
-
-            /**
-             * Bind all event listeners
-             */
-            bindEvents() {
-                document.addEventListener('DOMContentLoaded', () => {
-                    this.onDOMReady();
-                });
-
-                window.addEventListener('resize', () => {
-                    this.handleResize();
-                });
-            }
-
-            /**
-             * Handle DOM ready event
-             */
-            onDOMReady() {
-                this.initProjectFiltering();
-                this.cacheProjectCards();
-                // Background initialization handled by main.js PortfolioApp
-                this.updateActiveNavigation();
-                this.handlePageLoad();
-            }
-
-            /**
-             * Handle page load completion
-             */
-            handlePageLoad() {
-                // Initialize loading rain effects
-                this.initLoadingRain();
-                
-                // Hide loader after content loads
-                setTimeout(() => {
-                    const loader = document.getElementById('page-loader');
-                    if (loader) {
-                        loader.style.opacity = '0';
-                        setTimeout(() => {
-                            loader.style.display = 'none';
-                        }, 500);
-                    }
-                }, 4000);
-            }
-
-            /**
-             * Initialize loading screen rain effects
-             */
-            initLoadingRain() {
-                this.createLoadingRaindrops();
-                this.createLoadingPuddles();
-            }
-
-            /**
-             * Create raindrops for loading screen
-             */
-            createLoadingRaindrops() {
-                const container = document.getElementById('loading-raindrops');
-                if (!container) return;
-                
-                for (let i = 0; i < 50; i++) {
-                    const drop = document.createElement('div');
-                    drop.className = 'loading-raindrop';
-                    drop.style.left = Math.random() * 100 + '%';
-                    drop.style.animationDelay = Math.random() * 1.5 + 's';
-                    drop.style.animationDuration = (Math.random() * 0.5 + 1) + 's';
-                    container.appendChild(drop);
-                }
-            }
-
-            /**
-             * Create puddles with ripples for loading screen
-             */
-            createLoadingPuddles() {
-                const container = document.getElementById('loading-puddles');
-                if (!container) return;
-                
-                for (let i = 0; i < 3; i++) {
-                    const puddle = document.createElement('div');
-                    puddle.className = 'loading-puddle';
-                    puddle.style.left = Math.random() * 80 + 10 + '%';
-                    puddle.style.width = (Math.random() * 40 + 60) + 'px';
-                    
-                    // Add ripples to puddle
-                    for (let j = 0; j < 2; j++) {
-                        const ripple = document.createElement('div');
-                        ripple.className = 'loading-ripple';
-                        ripple.style.animationDelay = (j * 1 + Math.random() * 2) + 's';
-                        puddle.appendChild(ripple);
-                    }
-                    
-                    container.appendChild(puddle);
-                }
-            }
-
-            /**
-             * Handle window resize
-             */
-            handleResize() {
-                // Add any resize-specific logic here
-            }
-
-
-
-            /**
-             * Initialize project filtering
-             */
-            initProjectFiltering() {
-                const filterButtons = document.querySelectorAll('.project-filter');
-                
-                filterButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const filterValue = button.getAttribute('data-filter');
-                        this.filterProjects(filterValue, button);
-                    });
-
-                    // Keyboard support
-                    button.addEventListener('keydown', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            const filterValue = button.getAttribute('data-filter');
-                            this.filterProjects(filterValue, button);
-                        }
-                    });
-                });
-            }
-
-            /**
-             * Cache project cards for better performance
-             */
-            cacheProjectCards() {
-                this.projectCards = Array.from(document.querySelectorAll('.project-card, .modern-project-card'));
-            }
-
-            /**
-             * Filter projects based on category
-             */
-            filterProjects(filterValue, activeButton) {
-                // Update active button
-                this.updateActiveFilter(activeButton);
-                
-                // Update current filter
-                this.currentFilter = filterValue;
-                
-                // Filter projects with animation
-                this.animateProjectFiltering(filterValue);
-                
-                // Update URL hash for bookmarking
-                this.updateURLHash(filterValue);
-                
-                // Announce change to screen readers
-                this.announceFilterChange(filterValue);
-            }
-
-            /**
-             * Update active filter button
-             */
-            updateActiveFilter(activeButton) {
-                // Remove active class from all buttons
-                document.querySelectorAll('.project-filter').forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.setAttribute('aria-selected', 'false');
-                });
-                
-                // Add active class to clicked button
-                activeButton.classList.add('active');
-                activeButton.setAttribute('aria-selected', 'true');
-            }
-
-            /**
-             * Animate project filtering
-             */
-            animateProjectFiltering(filterValue) {
-                const visibleCards = [];
-                const hiddenCards = [];
-
-                this.projectCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    const shouldShow = filterValue === 'all' || category === filterValue;
-                    
-                    if (shouldShow) {
-                        visibleCards.push(card);
-                    } else {
-                        hiddenCards.push(card);
-                    }
-                });
-
-                // Hide cards with animation
-                hiddenCards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.opacity = '0';
-                        card.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            card.classList.add('hidden');
-                        }, 300);
-                    }, index * 50);
-                });
-
-                // Show cards with animation
-                setTimeout(() => {
-                    visibleCards.forEach((card, index) => {
-                        card.classList.remove('hidden');
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'scale(1)';
-                        }, index * 50);
-                    });
-                }, hiddenCards.length * 50 + 100);
-
-                // Update no results message
-                this.updateNoResultsMessage(visibleCards.length === 0);
-            }
-
-            /**
-             * Update no results message
-             */
-            updateNoResultsMessage(show) {
-                const noResults = document.getElementById('noResults');
-                if (noResults) {
-                    noResults.style.display = show ? 'block' : 'none';
-                }
-            }
-
-            /**
-             * Update URL hash for bookmarking
-             */
-            updateURLHash(filterValue) {
-                if (filterValue !== 'all') {
-                    window.history.replaceState(null, null, `#${filterValue}`);
-                } else {
-                    window.history.replaceState(null, null, window.location.pathname);
-                }
-            }
-
-            /**
-             * Announce filter change to screen readers
-             */
-            announceFilterChange(filterValue) {
-                const announcement = filterValue === 'all' 
-                    ? 'Showing all projects' 
-                    : `Showing ${filterValue} projects`;
-                
-                // Create temporary announcement element
-                const announcer = document.createElement('div');
-                announcer.setAttribute('aria-live', 'polite');
-                announcer.setAttribute('aria-atomic', 'true');
-                announcer.className = 'sr-only';
-                announcer.textContent = announcement;
-                
-                document.body.appendChild(announcer);
-                setTimeout(() => {
-                    document.body.removeChild(announcer);
-                }, 1000);
-            }
-
-            /**
-             * Switch background theme - delegate to main.js PortfolioApp
-             */
-            switchBackground(type) {
-                // Robust waiting for PortfolioApp with retries
-                let attempts = 0;
-                const maxAttempts = 20; // 2 seconds total
-                
-                const attemptSwitch = () => {
-                    attempts++;
-                    if (window.portfolioAppReady && window.portfolioApp && window.portfolioApp.switchBackground) {
-                        console.log(`ProjectsApp: Delegating background switch to PortfolioApp for "${type}"`);
-                        window.portfolioApp.switchBackground(type);
-                        return true;
-                    } else if (attempts < maxAttempts) {
-                        console.log(`ProjectsApp: Waiting for PortfolioApp... (attempt ${attempts}/${maxAttempts})`);
-                        setTimeout(attemptSwitch, 100);
-                        return false;
-                    } else {
-                        console.error('ProjectsApp: PortfolioApp not available after maximum attempts');
-                        return false;
-                    }
-                };
-
-                attemptSwitch();
-            }
-
-            /**
-             * Set default background
-             */
-            setDefaultBackground() {
-                // Restore from localStorage or use default
-                const savedBackground = localStorage.getItem('selectedBackground') || 'flashlight';
-                this.switchBackground(savedBackground);
-            }
-
-            /**
-             * Update active navigation
-             */
-            updateActiveNavigation() {
-                const navLinks = document.querySelectorAll('.nav-link');
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    link.removeAttribute('aria-current');
-                });
-
-                const activeLink = document.querySelector('.nav-link[href="projects.html"]');
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                    activeLink.setAttribute('aria-current', 'page');
-                }
-            }
-
-            /**
-             * Initialize other components
-             */
-            initializeComponents() {
-                this.initializeProgressBars();
-                this.handleHashNavigation();
-            }
-
-            /**
-             * Initialize progress bar animations
-             */
-            initializeProgressBars() {
-                const progressBars = document.querySelectorAll('.progress-bar');
-                
-                if (!window.IntersectionObserver) return;
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.animationPlayState = 'running';
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                progressBars.forEach(bar => {
-                    observer.observe(bar);
-                });
-            }
-
-            /**
-             * Handle hash-based navigation
-             */
-            handleHashNavigation() {
-                const hash = window.location.hash.substring(1);
-                const validFilters = ['all', 'web', 'ai', 'other'];
-                
-                if (hash && validFilters.includes(hash)) {
-                    const filterButton = document.querySelector(`[data-filter="${hash}"]`);
-                    if (filterButton) {
-                        this.filterProjects(hash, filterButton);
-                    }
-                }
-            }
-        }
-
-        // Initialize the projects application
-        const projectsApp = new ProjectsApp();
-
-        // Global error handling
-        window.addEventListener('error', (e) => {
-            console.error('Projects Page Error:', e.error);
-        });
-
-        // Add screen reader only class for accessibility
-        const style = document.createElement('style');
-        style.textContent = `
-            .sr-only {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                padding: 0;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-                white-space: nowrap;
-                border: 0;
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    <script src="main.js"></script>
+    </div>
 </body>
 </html>

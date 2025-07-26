@@ -1,1185 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Tags -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Suraj Kumar - Portfolio</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suraj Kumar - AI/ML Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css" onerror="console.warn('Main stylesheet failed to load')" />
+</head>
 
-    <!-- Scripts -->
-    <script src="cyberpunk.js" onerror="console.warn('Cyberpunk script failed to load')"></script>
-    <script src="ghibli.js" onerror="console.warn('Ghibli script failed to load')"></script>
-    <script src="space.js" onerror="console.warn('Space script failed to load')"></script>
-    <script src="city.js" onerror="console.warn('City script failed to load')"></script>
-    <script src="peace.js" onerror="console.warn('Peace script failed to load')"></script>
-    <script src="anime.js" onerror="console.warn('Anime script failed to load')"></script>
-
-    <!-- Google Fonts - Consolidated -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Emilys+Candy&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="images/profile_picture.jpeg" as="image" />
-    <!-- Google Analytics: This script helps us understand how visitors interact with the site. 
-         Data collected is anonymous and used for analytics purposes only. 
-         By continuing to use this site, you consent to this tracking. -->
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-X3XEGEKNQD"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-X3XEGEKNQD");
-    </script>
-  </head>
-
-  <body>
-    <!-- ==========================================
-         LOADING SCREEN
-         ========================================== -->
-    <div id="page-loader">
-      <div class="rain-loading-bg">
-        <div class="rain-overlay"></div>
-        <div class="fog"></div>
-        <div class="wet-ground"></div>
-        <div class="lightning"></div>
-        <div class="cloud cloud1"></div>
-        <div class="cloud cloud2"></div>
-        <div class="cloud cloud3"></div>
-        <div id="loading-raindrops"></div>
-        <div id="loading-puddles"></div>
-      </div>
-      <div
-        aria-label="Orange and tan hamster running in a metal wheel"
-        role="img"
-        class="wheel-and-hamster"
-      >
-        <div class="wheel"></div>
-        <div class="hamster">
-          <div class="hamster__body">
-            <div class="hamster__head">
-              <div class="hamster__ear"></div>
-              <div class="hamster__eye"></div>
-              <div class="hamster__nose"></div>
+<body class="loading">
+    <!-- Loading Screen -->
+    <div class="terminal-loader" id="loader">
+        <div class="terminal-header">
+            <div class="terminal-title">Status</div>
+            <div class="terminal-controls">
+                <div class="control close"></div>
+                <div class="control minimize"></div>
+                <div class="control maximize"></div>
             </div>
-            <div class="hamster__limb hamster__limb--fr"></div>
-            <div class="hamster__limb hamster__limb--fl"></div>
-            <div class="hamster__limb hamster__limb--br"></div>
-            <div class="hamster__limb hamster__limb--bl"></div>
-            <div class="hamster__tail"></div>
-          </div>
         </div>
-        <div class="spoke"></div>
-      </div>
-      <div class="loading-container">
-        <div class="loading-bar"></div>
-      </div>
-      <div class="loading-text">loading...</div>
+        <div class="text">Loading...</div>
     </div>
 
-    <!-- ==========================================
-         BACKGROUND SYSTEMS & PARTICLE EFFECTS
-         ========================================== -->
-    <div class="flashlight-bg" id="flashlight"></div>
-    <div class="cyberpunk-bg" id="cyberpunk">
-      <div class="grid-bg"></div>
-      <div class="scanlines"></div>
-      <div id="particles"></div>
-      <div id="codeRain"></div>
-      <div id="orbs"></div>
-      <div id="shapes"></div>
-      <div id="pulses"></div>
-      <div id="dataStreams"></div>
-    </div>
-    <div class="ghibli-bg" id="ghibli">
-      <div class="grass">
-        <div id="grassBlades"></div>
-      </div>
-      <div class="cloud cloud1"></div>
-      <div class="cloud cloud2"></div>
-      <div class="cloud cloud3"></div>
-      <div id="sootSprites"></div>
-      <div id="petals"></div>
-      <div id="fireflies"></div>
-      <div id="sparkles"></div>
-      <div id="seeds"></div>
-      <div id="auras"></div>
-    </div>
-    <div class="space-bg" id="space">
-      <div id="stars"></div>
-      <div id="shootingStars"></div>
-      <div id="planets"></div>
-      <div id="nebulae"></div>
-      <div id="galaxies"></div>
-      <div id="spaceDust"></div>
-      <div id="pulsars"></div>
-      <div id="blackHoles"></div>
-      <div id="cosmicRays"></div>
-      <div id="asteroids"></div>
-      <div id="comets"></div>
-    </div>
-    <div class="city-bg" id="city">
-      <div class="building building-1" id="building1"></div>
-      <div class="building building-2" id="building2"></div>
-      <div class="building building-3" id="building3"></div>
-      <div class="building building-4" id="building4"></div>
-      <div class="building building-5" id="building5"></div>
-      <div class="building building-6" id="building6"></div>
-      <div class="reflection"></div>
-      <div id="cityStars"></div>
-      <div id="neonSigns"></div>
-      <div id="trafficLights"></div>
-      <div id="streetLights"></div>
-      <div id="helicopters"></div>
-      <div id="searchlights"></div>
-      <div id="citySmoke"></div>
-      <div id="billboards"></div>
-      <div id="rainDrops"></div>
-      <div id="vehicles"></div>
-      <div id="airTraffic"></div>
-    </div>
-    <div class="peace-bg" id="peace">
-      <div class="gentle-glow"></div>
-      <div id="lotusPetals"></div>
-      <div id="waterRipples"></div>
-      <div id="peaceOrbs"></div>
-      <div id="omSymbols"></div>
-      <div id="zenCircles"></div>
-      <div id="leaves"></div>
-      <div id="lightRays"></div>
-      <div id="mandalas"></div>
-      <div id="butterflies"></div>
-      <div id="breathCircles"></div>
-      <div id="peacefulClouds"></div>
-      <div id="meditationParticles"></div>
-    </div>
-    <div class="anime-bg" id="anime">
-      <div class="shimmer"></div>
-      <div id="sakuraPetals"></div>
-      <div id="spiritLights"></div>
-      <div id="animeSparkles"></div>
-      <div id="bubbles"></div>
-      <div id="cloudHearts"></div>
-      <div id="magicCircles"></div>
-      <div id="speedLines"></div>
-      <div id="kawaiiCats"></div>
-      <div id="energyAuras"></div>
-    </div>
-
-    <!-- Neural Network Background -->
-    <div class="neural-bg" id="neural">
-      <div id="neuralNodes"></div>
-      <div id="neuralConnections"></div>
-      <div id="dataPackets"></div>
-      <div id="neuralPulses"></div>
-      <div id="brainWaves"></div>
-    </div>
-
-    <!-- Minimalist Professional Background -->
-    <div class="minimal-bg" id="minimal">
-      <div id="geometricShapes"></div>
-      <div id="subtleGradients"></div>
-      <div id="professionalGrid"></div>
-      <div id="cleanLines"></div>
-    </div>
-
-    <!-- Data Visualization Background -->
-    <div class="dataviz-bg" id="dataviz">
-      <div id="floatingCharts"></div>
-      <div id="animatedGraphs"></div>
-      <div id="codeSnippets"></div>
-      <div id="statisticsDisplay"></div>
-      <div id="dataStreams"></div>
-    </div>
-
-    <!-- ==========================================
-         NAVIGATION & CONTROLS
-         ========================================== -->
-    <!-- Main Sidebar Navigation -->
-    <nav class="sidebar" role="navigation" aria-label="Main navigation">
-      <div class="sidebar-header">
-        <a
-          href="#home"
-          class="sidebar-logo-link"
-          aria-label="Go to home section"
-        >
-          <img
-            src="images/profile_picture.jpeg"
-            alt="Suraj Kumar"
-            class="sidebar-logo"
-          />
-          <span>Suraj Kumar</span>
-        </a>
-      </div>
-
-      <ul class="sidebar-nav-links">
-        <li>
-          <a href="#home" class="nav-link active" aria-current="page">
-            <span class="nav-icon home-icon" aria-hidden="true"></span>Home
-          </a>
-        </li>
-        <li>
-          <a href="#about" class="nav-link">
-            <span class="nav-icon about-icon" aria-hidden="true"></span>About
-          </a>
-        </li>
-        <li>
-          <a href="#experience" class="nav-link">
-            <span class="nav-icon experience-icon" aria-hidden="true"></span>Experience
-          </a>
-        </li>
-        <li>
-          <a href="#education" class="nav-link">
-            <span class="nav-icon education-icon" aria-hidden="true"></span>Education
-          </a>
-        </li>
-        <li>
-          <a href="#achievements" class="nav-link">
-            <span class="nav-icon achievements-icon" aria-hidden="true"></span>Achievements
-          </a>
-        </li>
-        <li>
-          <a href="#testimonials" class="nav-link">
-            <span class="nav-icon testimonials-icon" aria-hidden="true"></span>Testimonials
-          </a>
-        </li>
-        <li>
-          <a href="#skills" class="nav-link">
-            <span class="nav-icon skills-icon" aria-hidden="true"></span>Skills
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://surajsk2003.github.io/Game-Zone/"
-            target="_blank"
-            class="nav-link"
-            rel="noopener"
-          >
-            <span class="nav-icon games-icon" aria-hidden="true"></span>Game
-            Zone
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://my-blog-lemon-mu-45.vercel.app/"
-            target="_blank"
-            class="nav-link"
-            rel="noopener"
-          >
-            <span class="nav-icon blog-icon" aria-hidden="true"></span>Blog
-          </a>
-        </li>
-        <li>
-          <a href="projects.html" class="nav-link">
-            <span class="nav-icon projects-icon" aria-hidden="true"></span
-            >Projects
-          </a>
-        </li>
-        <li>
-          <a href="contact.html" class="nav-link">
-            <span class="nav-icon contact-icon" aria-hidden="true"></span
-            >Contact
-          </a>
-        </li>
-      </ul>
-
-      <div class="sidebar-social-icons">
-        <a
-          href="https://github.com/surajsk2003"
-          target="_blank"
-          rel="noopener"
-          aria-label="GitHub Profile"
-        >
-          <img src="images/github.png" alt="GitHub" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/suraj-singh-96b45220a/"
-          target="_blank"
-          rel="noopener"
-          aria-label="LinkedIn Profile"
-        >
-          <img src="images/linkedin.png" alt="LinkedIn" />
-        </a>
-      </div>
+    <div class="main-content" id="mainContent">
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#home" class="logo">Suraj Kumar</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <label class="switch-button" for="switch">
+                <div class="switch-outer">
+                    <input id="switch" type="checkbox">
+                    <div class="button">
+                        <span class="button-toggle"></span>
+                        <span class="button-indicator"></span>
+                    </div>
+                </div>
+            </label>
+        </div>
     </nav>
 
-    <!-- Sidebar Toggle Button -->
-    <button
-      class="sidebar-toggle"
-      aria-label="Toggle navigation menu"
-      aria-expanded="false"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
 
-    <!-- Dark/Light Mode Toggle -->
-    <button class="theme-toggle" aria-label="Toggle dark/light mode" id="themeToggle">
-      <div class="theme-toggle-inner">
-        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-        </svg>
-        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </div>
-    </button>
 
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress-container">
-      <div class="scroll-progress-bar" id="scrollProgress"></div>
-    </div>
-
-    <!-- Background Switcher -->
-    <div class="bg-switcher-container">
-      <button
-        class="bg-menu-button"
-        id="bgMenuButton"
-        aria-label="Change background theme"
-        aria-expanded="false"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
-      <div class="bg-dropdown" id="bgDropdown" role="menu" aria-hidden="true">
-        <div class="bg-option" data-bg="flashlight" role="menuitem">
-          Flashlight
-        </div>
-        <div class="bg-option" data-bg="cyberpunk" role="menuitem">
-          Cyberpunk
-        </div>
-        <div class="bg-option" data-bg="ghibli" role="menuitem">Ghibli</div>
-        <div class="bg-option" data-bg="space" role="menuitem">Space</div>
-        <div class="bg-option" data-bg="city" role="menuitem">City</div>
-        <div class="bg-option" data-bg="peace" role="menuitem">Peace</div>
-        <div class="bg-option" data-bg="anime" role="menuitem">Anime</div>
-        <div class="bg-option" data-bg="neural" role="menuitem">Neural Network</div>
-        <div class="bg-option" data-bg="minimal" role="menuitem">Minimal Pro</div>
-        <div class="bg-option" data-bg="dataviz" role="menuitem">Data Viz</div>
-      </div>
-    </div>
-
-    <!-- ==========================================
-         MAIN CONTENT
-         ========================================== -->
-    <main role="main">
-      <!-- Home Section -->
-      <section id="home" class="intro-container" aria-label="Introduction">
-        <h1 id="typed-text">Suraj Kumar</h1>
-        <p class="tagline">
-          <span id="typing-animation"></span>
-          <span class="typing-cursor">|</span>
-        </p>
-        <p class="value-prop">
-          Building impactful AI solutions with a focus on computer vision, LLMs,
-          and real-world ML applications.
-        </p>
-        <div class="achievements" role="list" aria-label="Key achievements">
-          <span class="achievement-badge" role="listitem">NITK Surathkal</span>
-          <span class="achievement-badge" role="listitem">Computer Vision</span>
-          <span class="achievement-badge" role="listitem"
-            >LLM Applications</span
-          >
-        </div>
-      </section>
-
-      <!-- Social Links Carousel Section -->
-      <section
-        id="social-carousel"
-        class="social-carousel-section"
-        aria-label="Social media links"
-      >
-        <h2 class="section-title">Connect With Me</h2>
-        <p class="social-subtitle">
-          Follow my journey and let's collaborate on exciting projects!
-        </p>
-
-        <div class="social-logos-container">
-          <div class="social-logos-track" id="socialTrack">
-            <!-- Social links will be generated by JavaScript -->
-          </div>
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <section id="about" aria-label="About me">
-        <div class="about-content-wrapper">
-          <h2 class="section-title">About Me</h2>
-
-          <div class="about-grid">
-            <div class="about-card">
-              <h3 class="about-subtitle">Background</h3>
-              <p>
-                Final-year <strong>Electrical Engineering</strong> undergraduate
-                at <strong>NITK, Surathkal</strong> with specialized focus on
-                AI/ML applications. Expected graduation: May 2025.
-              </p>
-            </div>
-
-            <div class="about-card">
-              <h3 class="about-subtitle">Core Strengths</h3>
-              <p>
-                <strong>Machine learning model development</strong>,
-                <strong>natural language processing</strong>, and
-                <strong>data analysis</strong> with proven ability to translate
-                complex requirements into efficient technical solutions.
-              </p>
-            </div>
-
-            <div class="about-card">
-              <h3 class="about-subtitle">Key Projects</h3>
-              <p>
-                Developed <strong>computer vision applications</strong> with 95%
-                accuracy and built
-                <strong>LLM-powered applications</strong> using advanced
-                transformer architectures for improved information processing
-                and analysis.
-              </p>
-            </div>
-
-            <div class="about-card">
-              <h3 class="about-subtitle">Professional Skills</h3>
-              <p>
-                Strong <strong>analytical thinking</strong>,
-                <strong>problem-solving</strong>, and
-                <strong>communication skills</strong> developed through
-                technical projects and active participation in Toastmasters Club
-                at NITK.
-              </p>
-            </div>
-          </div>
-
-          <div class="about-cta-container">
-            <a href="projects.html" class="codepen-button"><span>View Projects</span></a>
-            <a href="contact.html" class="codepen-button"><span>Discuss Opportunities</span></a>
-          </div>
-        </div>
-
-        <div class="about-rest">
-          <h3 class="subsection-title">Professional Focus</h3>
-          <div class="focus-container">
-            <div class="focus-card">
-              <div class="focus-icon research-icon" aria-hidden="true"></div>
-              <h4>AI Research</h4>
-              <p>
-                Exploring cutting-edge techniques in machine learning and
-                natural language processing to solve complex data challenges and
-                create intelligent systems that deliver real-world impact.
-              </p>
-            </div>
-            <div class="focus-card">
-              <div class="focus-icon technical-icon" aria-hidden="true"></div>
-              <h4>Technical Expertise</h4>
-              <p>
-                Specialized in TensorFlow, scikit-learn, and Hugging Face
-                transformers with strong foundations in Python development, data
-                structures, and algorithms for efficient solution design.
-              </p>
-            </div>
-            <div class="focus-card">
-              <div class="focus-icon mission-icon" aria-hidden="true"></div>
-              <h4>Mission-Driven</h4>
-              <p>
-                Committed to developing AI solutions that enhance human
-                capabilities, improve decision-making processes, and create
-                meaningful technological advancements in high-impact domains.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Experience Section -->
-      <section id="experience" aria-label="Professional experience">
-        <h2 class="section-title">Professional Experience</h2>
-        
-        <!-- Modern Gradient Cards Showcase -->
-        <div class="modern-cards-showcase" style="display: flex; gap: 2rem; margin: 3rem 0; flex-wrap: wrap; justify-content: center;">
-          <div class="center">
-            <div class="modern-card-design gradient-primary">
-              <div class="circle-1 center color-border">
-                <div class="circle-2 center color-border">
-                  <div class="circle-3 center color-border">
-                    <div class="circle-4 center color-border">
-                      <div class="circle-5"></div>
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-close"></span>
+                        <span class="btn-minimize"></span>
+                        <span class="btn-maximize"></span>
                     </div>
-                  </div>
+                    <div class="terminal-title">suraj@portfolio:~$</div>
                 </div>
-              </div>
-              <div class="mountain-1 shape shadow"></div>
-              <div class="mountain-2 shape"></div>
-              <div class="mountain-3 shape shadow"></div>
-            </div>
-          </div>
-          
-          <div class="center">
-            <div class="modern-card-design gradient-success">
-              <div class="circle-1 center color-border">
-                <div class="circle-2 center color-border">
-                  <div class="circle-3 center color-border">
-                    <div class="circle-4 center color-border">
-                      <div class="circle-5"></div>
-                    </div>
-                  </div>
+                <div class="terminal-body">
+                    <div class="code-line"><span class="prompt">$</span> whoami</div>
+                    <div class="output">Suraj Kumar - AI/ML Engineer</div>
+                    <div class="code-line"><span class="prompt">$</span> cat about.txt</div>
+                    <div class="output">Final-year EE student @ NITK Surathkal</div>
+                    <div class="output">Specializing in: Computer Vision | LLMs | Deep Learning</div>
+                    <div class="code-line"><span class="prompt">$</span> ls skills/</div>
+                    <div class="output">Python TensorFlow PyTorch AWS Docker</div>
+                    <div class="code-line typing"><span class="prompt">$</span> <span class="cursor">_</span></div>
                 </div>
-              </div>
-              <div class="mountain-1 shape shadow"></div>
-              <div class="mountain-2 shape"></div>
-              <div class="mountain-3 shape shadow"></div>
             </div>
-          </div>
-          
-          <div class="center">
-            <div class="modern-card-design gradient-purple">
-              <div class="circle-1 center color-border">
-                <div class="circle-2 center color-border">
-                  <div class="circle-3 center color-border">
-                    <div class="circle-4 center color-border">
-                      <div class="circle-5"></div>
-                    </div>
-                  </div>
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Suraj Kumar</span></h1>
+                <p class="subtitle">AI/ML Engineer & Researcher</p>
+                <div class="buttons">
+                    <a href="#projects" class="btn primary">./view_projects.sh</a>
+                    <a href="#contact" class="btn secondary">./contact.py</a>
                 </div>
-              </div>
-              <div class="mountain-1 shape shadow"></div>
-              <div class="mountain-2 shape"></div>
-              <div class="mountain-3 shape shadow"></div>
             </div>
-          </div>
         </div>
-        
-        <div class="experience-timeline">
-          <!-- Experience 1: Data Engineering Intern -->
-          <div class="experience-item">
-            <div class="experience-date">Aug 2025 – Present</div>
-            <div class="experience-content">
-              <div class="experience-header">
-                <h3>Data Engineering Intern</h3>
-                <h4>Glowlogic Pvt. Ltd.</h4>
-                <span class="experience-location">Remote / Bangalore</span>
-              </div>
-              <ul class="experience-details">
-                <li>Designed and deployed robust data pipelines for real-time transport system analytics</li>
-                <li>Automated ETL processes integrating SQL Server, Python, and AWS (Lambda, S3)</li>
-                <li>Optimized data pipeline latency by 30% using asynchronous data loading techniques</li>
-                <li>Collaborated in the deployment of forecasting modules for logistics optimization</li>
-              </ul>
-              <div class="experience-skills">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">AWS</span>
-                <span class="skill-tag">SQL Server</span>
-                <span class="skill-tag">ETL</span>
-              </div>
-            </div>
-          </div>
+    </section>
 
-          <!-- Experience 2: Research Intern -->
-          <div class="experience-item">
-            <div class="experience-date">May 2025 – July 2025</div>
-            <div class="experience-content">
-              <div class="experience-header">
-                <h3>Research Intern – Hybrid Mamba Transformer for AWES</h3>
-                <h4>NITK Surathkal</h4>
-                <span class="experience-location">Onsite</span>
-              </div>
-              <div class="experience-mentors">
-                <strong>Mentors:</strong> Dr. Yashwant Kashyap (Faculty), Pankaj Kumar (PhD Scholar)
-              </div>
-              <ul class="experience-details">
-                <li>Developed a <strong>Hybrid Mamba-Transformer architecture</strong> for time-series modeling of Airborne Wind Energy Systems</li>
-                <li>Combined Mamba's state-space sequential modeling with Transformer's long-range attention for enhanced tether force prediction</li>
-                <li>Used Genetic Algorithm and Heap-based hyperparameter optimization for model refinement</li>
-                <li>Implemented physics-informed feature engineering, outlier removal, and advanced preprocessing</li>
-                <li>Significantly improved forecasting accuracy for renewable energy simulations</li>
-              </ul>
-              <div class="experience-skills">
-                <span class="skill-tag">Deep Learning</span>
-                <span class="skill-tag">Transformers</span>
-                <span class="skill-tag">Time Series</span>
-                <span class="skill-tag">Research</span>
-              </div>
-            </div>
-          </div>
 
-          <!-- Experience 3: ML Intern -->
-          <div class="experience-item">
-            <div class="experience-date">Jan 2024 – Mar 2024</div>
-            <div class="experience-content">
-              <div class="experience-header">
-                <h3>Machine Learning Intern</h3>
-                <h4>NITK Research Intern</h4>
-                <span class="experience-location">Onsite</span>
-              </div>
-              <ul class="experience-details">
-                <li>Developed supervised learning models (classification/regression) using scikit-learn</li>
-                <li>Focused on preprocessing, data cleaning, and feature selection techniques</li>
-                <li>Executed GridSearchCV-based hyperparameter tuning to boost performance metrics</li>
-                <li>Documented model results with visualizations and reports using Matplotlib & Seaborn</li>
-              </ul>
-              <div class="experience-skills">
-                <span class="skill-tag">Scikit-learn</span>
-                <span class="skill-tag">Data Analysis</span>
-                <span class="skill-tag">Visualization</span>
-                <span class="skill-tag">ML</span>
-              </div>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm passionate about leveraging AI to solve complex problems. Through research projects and internships, I've developed expertise in computer vision, NLP, and data science.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="number">15+</span>
+                            <span class="label">Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">3+</span>
+                            <span class="label">Internships</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">95%</span>
+                            <span class="label">CV Accuracy</span>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/profile_picture.jpeg" alt="Suraj Kumar" class="profile-img">
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!-- Education Section -->
-      <section id="education" aria-label="Educational background">
-        <h2 class="section-title">Education</h2>
-        
-        <div class="education-container">
-          <div class="education-card">
-            <div class="education-header">
-              <h3>Bachelor of Technology – Electrical and Electronics Engineering</h3>
-              <h4>National Institute of Technology Karnataka (NITK), Surathkal</h4>
-              <span class="education-duration">2021 – 2025</span>
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="date">Aug 2024 – Present</div>
+                    <div class="content">
+                        <h3>Data Engineering Intern</h3>
+                        <h4>Glowlogic Pvt. Ltd.</h4>
+                        <p>Designed data pipelines for real-time transport analytics. Optimized ETL processes with Python, AWS, and SQL Server, improving latency by 30%.</p>
+                        <div class="tags">
+                            <span>Python</span>
+                            <span>AWS</span>
+                            <span>SQL</span>
+                            <span>ETL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="date">May 2024 – July 2024</div>
+                    <div class="content">
+                        <h3>Research Intern</h3>
+                        <h4>NITK Surathkal</h4>
+                        <p>Developed Hybrid Mamba-Transformer architecture for time-series modeling of Airborne Wind Energy Systems.</p>
+                        <div class="tags">
+                            <span>Deep Learning</span>
+                            <span>Transformers</span>
+                            <span>PyTorch</span>
+                            <span>Research</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span>TensorFlow</span>
+                        <span>PyTorch</span>
+                        <span>Scikit-learn</span>
+                        <span>Hugging Face</span>
+                        <span>OpenCV</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-tags">
+                        <span>Python</span>
+                        <span>C++</span>
+                        <span>JavaScript</span>
+                        <span>SQL</span>
+                        <span>R</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-tags">
+                        <span>AWS</span>
+                        <span>Docker</span>
+                        <span>Git</span>
+                        <span>Jupyter</span>
+                        <span>Linux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="featured-badge">Featured</div>
+                    <h3>E-commerce Recommendation Engine</h3>
+                    <p>Intelligent product recommendation system using machine learning algorithms to enhance user shopping experience and increase sales conversion.</p>
+                    <div class="project-tags">
+                        <span>Machine Learning</span>
+                        <span>Python</span>
+                        <span>Recommendation System</span>
+                        <span>E-commerce</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/ecommerce-recommendation-engine" target="_blank" class="btn secondary">View Code</a>
+                        <a href="https://surajsk2003.github.io/ecommerce-recommendation-engine/" target="_blank" class="btn primary">Live Demo</a>
+                    </div>
+                </div>
+                
+                <div class="project-card featured">
+                    <div class="featured-badge">Featured</div>
+                    <h3>HireNet</h3>
+                    <p>AI-powered recruitment platform that streamlines the hiring process with intelligent candidate matching and automated screening capabilities.</p>
+                    <div class="project-tags">
+                        <span>AI/ML</span>
+                        <span>Recruitment</span>
+                        <span>Python</span>
+                        <span>Web App</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/HireNet" target="_blank" class="btn secondary">View Code</a>
+                    </div>
+                </div>
+                
+                <div class="project-card featured">
+                    <div class="featured-badge">Featured</div>
+                    <h3>Talendy Website Design</h3>
+                    <p>Modern and responsive website design for Talendy platform created for Global Design Hackathon, featuring intuitive UI/UX and contemporary aesthetics.</p>
+                    <div class="project-tags">
+                        <span>UI/UX Design</span>
+                        <span>Figma</span>
+                        <span>Web Design</span>
+                        <span>Hackathon</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/surajsk2003/talendy-website-design" target="_blank" class="btn secondary">View Code</a>
+                        <a href="https://www.figma.com/proto/6zEiQE5TZtyOA1hvBHrquW/2025---Global-Talendy-Website-Design-Hackathon-%7C-Tech-Japan-Inc.?node-id=1-17&p=f&t=S5l2m1u7nn3S319F-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A17" target="_blank" class="btn primary">View Design</a>
+                    </div>
+                </div>
             </div>
             
-            <div class="education-content">
-              <div class="education-section">
-                <h5>Relevant Courses</h5>
-                <div class="course-tags">
-                  <span class="course-tag">Machine Learning</span>
-                  <span class="course-tag">Artificial Neural Networks</span>
-                  <span class="course-tag">Control Systems</span>
-                  <span class="course-tag">Time Series Forecasting</span>
-                  <span class="course-tag">Probability & Statistics</span>
-                  <span class="course-tag">Optimization Techniques</span>
-                  <span class="course-tag">Power Systems</span>
-                </div>
-              </div>
-              
-              <div class="education-section">
-                <h5>Academic Projects & Research</h5>
-                <div class="academic-projects">
-                  <div class="academic-project">
-                    <h6>Hybrid Mamba Transformer for AWES</h6>
-                    <p>Developed a hybrid sequential attention model for tether force prediction using physics-informed data preprocessing and deep learning optimization.</p>
-                  </div>
-                  <div class="academic-project">
-                    <h6>Optimised LSTM for Time Series Forecasting</h6>
-                    <p>Enhanced LSTM performance using genetic and heap-based hyperparameter tuning based on a published research paper.</p>
-                  </div>
-                  <div class="academic-project">
-                    <h6>Personalized Fan Highlights Platform</h6>
-                    <p>Created a fan-focused content summarization system generating personalized video and text digests in multiple languages (English, Spanish, Japanese).</p>
-                  </div>
-                </div>
-              </div>
+            <div class="view-all-container">
+                <a href="projects.html" class="view-all-btn" title="View All Projects">
+                    <span>View All</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 74 74" height="34" width="34">
+                        <circle stroke-width="3" stroke="currentColor" r="35.5" cy="37" cx="37"></circle>
+                        <path fill="currentColor" d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"></path>
+                    </svg>
+                </a>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!-- Achievements Section -->
-      <section id="achievements" aria-label="Achievements and awards">
-        <h2 class="section-title">Achievements & Awards</h2>
-        
-        <div class="achievements-grid">
-          <div class="achievement-card-modern">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                <path d="M12 9a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3m0 8a5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5 5 5 0 01-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/>
-              </svg>
+    <!-- Interactive Showcase -->
+    <section id="interactive-showcase">
+        <div class="container">
+            <h2>Interactive Showcase</h2>
+            <div class="demos-grid">
+                <!-- Game Zone Demo -->
+                <div class="demo-section">
+                    <div class="demo-header">
+                        <div class="code-line"><span class="prompt">$</span> ./game-zone.sh</div>
+                    </div>
+                    <div class="live-window">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <div class="terminal-title">game-zone@live:~$</div>
+                        </div>
+                        <iframe 
+                            src="https://surajsk2003.github.io/Game-Zone/" 
+                            title="Game Zone Live Demo"
+                            width="100%" 
+                            height="400"
+                            frameborder="0">
+                        </iframe>
+                    </div>
+                    <div class="demo-button-container">
+                        <a href="https://surajsk2003.github.io/Game-Zone/" target="_blank" class="demo-visit-btn">
+                            <span>Play Games</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 74 74" height="34" width="34">
+                                <circle stroke-width="3" stroke="currentColor" r="35.5" cy="37" cx="37"></circle>
+                                <path fill="currentColor" d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publixly Demo -->
+                <div class="demo-section">
+                    <div class="demo-header">
+                        <div class="code-line"><span class="prompt">$</span> ./publixly.sh</div>
+                    </div>
+                    <div class="live-window">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <div class="terminal-title">publixly@live:~$</div>
+                        </div>
+                        <iframe 
+                            src="https://publixly.vercel.app/" 
+                            title="Publixly Live Demo"
+                            width="100%" 
+                            height="400"
+                            frameborder="0">
+                        </iframe>
+                    </div>
+                    <div class="demo-button-container">
+                        <a href="https://publixly.vercel.app/" target="_blank" class="demo-visit-btn">
+                            <span>Visit Platform</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 74 74" height="34" width="34">
+                                <circle stroke-width="3" stroke="currentColor" r="35.5" cy="37" cx="37"></circle>
+                                <path fill="currentColor" d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <h3>NTSE Scholar</h3>
-            <p>Qualified both Stage 1 & Stage 2 (2018)</p>
-          </div>
-          
-          <div class="achievement-card-modern">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                <path d="M7.5 11H2V9h5.5l1.75-3.5L11 9.25 9.25 12.5 7.5 11m5 2L11 9.25 12.75 5.5 14.5 9H20v2h-5.5L12.5 13z"/>
-                <circle cx="17" cy="15" r="4"/>
-                <path d="M17 12l1.5 3h-3L17 12z"/>
-              </svg>
-            </div>
-            <h3>JEE Advanced 2021</h3>
-            <p>Secured rank under 12,500 (CRL)</p>
-          </div>
-          
-          <div class="achievement-card-modern">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
-            </div>
-            <h3>JEE Mains 2021</h3>
-            <p>Secured rank under 9,500 (CRL)</p>
-          </div>
-          
-          <div class="achievement-card-modern">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10Z"/>
-              </svg>
-            </div>
-            <h3>UGEE (IIIT-H) Qualified</h3>
-            <p>Cleared SUPR round in 2021</p>
-          </div>
-          
-          <div class="achievement-card-modern">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                <path d="M12,2A7,7 0 0,0 5,9C5,11.38 6.19,13.47 8,14.74V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.74C17.81,13.47 19,11.38 19,9A7,7 0 0,0 12,2M9,21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V20H9V21Z"/>
-              </svg>
-            </div>
-            <h3>Hackathon Participant</h3>
-            <p>Developed "Personalised Fan Highlights" app with multilingual summarization features</p>
-          </div>
-          
-          <div class="achievement-card-modern">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-              </svg>
-            </div>
-            <h3>Medium Author</h3>
-            <p>Regularly writing articles on AI, personal growth, mental health, and technology</p>
-          </div>
-          
-          <div class="achievement-card-modern">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                <path d="M12,2A10,10 0 0,1 22,12C22,16.42 19.22,20.12 15.31,21.65C14.9,21.75 14.74,21.45 14.74,21.2C14.74,20.93 14.75,20.14 14.75,19.31C17.11,19.81 17.59,18.17 17.59,18.17C17.97,17.18 18.54,16.88 18.54,16.88C19.34,16.36 18.47,16.37 18.47,16.37C17.58,16.44 17.14,17.26 17.14,17.26C16.37,18.5 15.13,18.11 14.73,17.91C14.65,17.35 14.42,16.96 14.17,16.77C16.61,16.57 19.19,15.62 19.19,11.19C19.19,10.25 18.86,9.48 18.27,8.87C18.37,8.67 18.76,7.55 18.17,6.15C18.17,6.15 17.45,5.88 14.75,7.67C14.09,7.5 13.38,7.41 12.68,7.41C11.98,7.41 11.27,7.5 10.61,7.67C7.91,5.88 7.19,6.15 7.19,6.15C6.6,7.55 6.99,8.67 7.09,8.87C6.5,9.48 6.17,10.25 6.17,11.19C6.17,15.63 8.75,16.57 11.19,16.77C10.89,17.05 10.63,17.6 10.63,18.44C10.63,19.63 10.64,20.59 10.64,20.88C10.64,21.13 10.48,21.43 10.07,21.33C6.16,20.12 3.38,16.42 3.38,12A10,10 0 0,1 12,2Z"/>
-              </svg>
-            </div>
-            <h3>GitHub Contributor</h3>
-            <p>Built and open-sourced multiple ML/DS scripts, optimization modules, and forecasting pipelines</p>
-          </div>
-          
-          <div class="achievement-card-modern">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M21,9V7L15,1H5C3.89,1 3,1.89 3,3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V9M19,19H5V3H12V9H19V19Z"/>
-              </svg>
-            </div>
-            <h3>Major Project Recognition</h3>
-            <p>Selected for advanced LSTM & AWES forecasting under faculty research</p>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!-- Testimonials Section -->
-      <section id="testimonials" aria-label="Testimonials and recommendations">
-        <h2 class="section-title">Testimonials & Recommendations</h2>
-        
-        <div class="testimonials-container">
-          <div class="testimonial-card">
-            <div class="testimonial-content">
-              <blockquote>
-                "Suraj's research intuition and implementation rigor during our AWES project surpassed expectations. He is a quick learner, deeply committed, and intellectually curious."
-              </blockquote>
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <span>suraj.kumar@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>LinkedIn:</strong>
+                        <a href="https://www.linkedin.com/in/suraj-singh-96b45220a/">linkedin.com/in/suraj-singh-96b45220a</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>GitHub:</strong>
+                        <a href="https://github.com/surajsk2003">github.com/surajsk2003</a>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn primary">Send Message</button>
+                </form>
             </div>
-            <div class="testimonial-author">
-              <h4>Dr. Yashwant Kashyap</h4>
-              <p>Professor, NITK</p>
-            </div>
-          </div>
-          
-          <div class="testimonial-card">
-            <div class="testimonial-content">
-              <blockquote>
-                "Working with Suraj felt like collaborating with a fellow researcher. His coding efficiency and innovative thinking helped shape a novel hybrid architecture."
-              </blockquote>
-            </div>
-            <div class="testimonial-author">
-              <h4>Pankaj Kumar</h4>
-              <p>PhD Scholar</p>
-            </div>
-          </div>
-          
-          <div class="testimonial-card">
-            <div class="testimonial-content">
-              <blockquote>
-                "Suraj's calm leadership and ability to break down problems helped us turn abstract ideas into a working product. An incredible team player with a sharp mind."
-              </blockquote>
-            </div>
-            <div class="testimonial-author">
-              <h4>Hackathon Teammate</h4>
-              <p>Collaborative Partner</p>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!-- Skills Section -->
-      <section id="skills" aria-label="Technical skills">
-        <h2 class="section-title">Skills</h2>
-        <p>Click on a category to expand its skills.</p>
-
-        <div class="skills-accordion-container">
-          <!-- Machine Learning -->
-          <div class="skill-accordion-item">
-            <div
-              class="skill-accordion-header"
-              role="button"
-              tabindex="0"
-              aria-expanded="false"
-            >
-              <div class="skill-header-content">
-                <div class="skill-icon ml-icon" aria-hidden="true"></div>
-                <h3>Machine Learning</h3>
-              </div>
-              <span class="accordion-arrow" aria-hidden="true"></span>
-            </div>
-            <div class="sub-skills-content">
-              <div class="skill-progress-container">
-                <div class="skill-with-progress">
-                  <div class="skill-label">TensorFlow</div>
-                  <div
-                    class="progress-bar-container"
-                    role="progressbar"
-                    aria-valuenow="85"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar" style="width: 85%"></div>
-                  </div>
-                </div>
-                <div class="skill-with-progress">
-                  <div class="skill-label">scikit-learn</div>
-                  <div
-                    class="progress-bar-container"
-                    role="progressbar"
-                    aria-valuenow="90"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar" style="width: 90%"></div>
-                  </div>
-                </div>
-                <div class="skill-with-progress">
-                  <div class="skill-label">Hugging Face</div>
-                  <div
-                    class="progress-bar-container"
-                    role="progressbar"
-                    aria-valuenow="80"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar" style="width: 80%"></div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="sub-skills-row"
-                role="list"
-                aria-label="Additional machine learning skills"
-              >
-                <div class="sub-skill-box-modern" role="listitem"><span>spaCy</span></div>
-                <div class="sub-skill-box-modern" role="listitem"><span>RAG</span></div>
-                <div class="sub-skill-box-modern" role="listitem"><span>Transformers</span></div>
-                <div class="sub-skill-box-modern" role="listitem"><span>NLTK</span></div>
-                <div class="sub-skill-box-modern" role="listitem"><span>Pandas & NumPy</span></div>
-                <div class="sub-skill-box-modern" role="listitem"><span>Matplotlib</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Software & Web Development -->
-          <div class="skill-accordion-item">
-            <div
-              class="skill-accordion-header"
-              role="button"
-              tabindex="0"
-              aria-expanded="false"
-            >
-              <div class="skill-header-content">
-                <div class="skill-icon dev-icon" aria-hidden="true"></div>
-                <h3>Software & Web Development</h3>
-              </div>
-              <span class="accordion-arrow" aria-hidden="true"></span>
-            </div>
-            <div class="sub-skills-content">
-              <div class="skill-progress-container">
-                <div class="skill-with-progress">
-                  <div class="skill-label">Python</div>
-                  <div
-                    class="progress-bar-container"
-                    role="progressbar"
-                    aria-valuenow="95"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar" style="width: 95%"></div>
-                  </div>
-                </div>
-                <div class="skill-with-progress">
-                  <div class="skill-label">Django</div>
-                  <div
-                    class="progress-bar-container"
-                    role="progressbar"
-                    aria-valuenow="75"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar" style="width: 75%"></div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="sub-skills-row"
-                role="list"
-                aria-label="Additional development skills"
-              >
-                <div class="sub-skill-box-modern" role="listitem"><span>HTML</span></div>
-                <div class="sub-skill-box-modern" role="listitem"><span>CSS</span></div>
-                <div class="sub-skill-box-modern" role="listitem"><span>C++</span></div>
-                <div class="sub-skill-box-modern" role="listitem"><span>SQL</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tools -->
-          <div class="skill-accordion-item">
-            <div
-              class="skill-accordion-header"
-              role="button"
-              tabindex="0"
-              aria-expanded="false"
-            >
-              <div class="skill-header-content">
-                <div class="skill-icon tools-icon" aria-hidden="true"></div>
-                <h3>Tools</h3>
-              </div>
-              <span class="accordion-arrow" aria-hidden="true"></span>
-            </div>
-            <div class="sub-skills-content">
-              <div class="skill-progress-container">
-                <div class="skill-with-progress">
-                  <div class="skill-label">Git & GitHub</div>
-                  <div
-                    class="progress-bar-container"
-                    role="progressbar"
-                    aria-valuenow="85"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar" style="width: 85%"></div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="sub-skills-row"
-                role="list"
-                aria-label="Additional tools"
-              >
-                <div class="sub-skill-box-modern" role="listitem"><span>AWS</span></div>
-                <div class="sub-skill-box-modern" role="listitem"><span>VS Code</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Core Computer Science -->
-          <div class="skill-accordion-item">
-            <div
-              class="skill-accordion-header"
-              role="button"
-              tabindex="0"
-              aria-expanded="false"
-            >
-              <div class="skill-header-content">
-                <div class="skill-icon cs-icon" aria-hidden="true"></div>
-                <h3>Core Computer Science</h3>
-              </div>
-              <span class="accordion-arrow" aria-hidden="true"></span>
-            </div>
-            <div class="sub-skills-content">
-              <div class="skill-progress-container">
-                <div class="skill-with-progress">
-                  <div class="skill-label">DSA</div>
-                  <div
-                    class="progress-bar-container"
-                    role="progressbar"
-                    aria-valuenow="80"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar" style="width: 80%"></div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="sub-skills-row"
-                role="list"
-                aria-label="Computer science fundamentals"
-              >
-                <div class="sub-skill-box-modern" role="listitem">
-                  <span>Operating Systems</span>
-                </div>
-                <div class="sub-skill-box-modern" role="listitem">
-                  <span>Computer Networks</span>
-                </div>
-                <div class="sub-skill-box-modern" role="listitem">
-                  <span>Database Management (DBMS)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ==========================================
-         FOOTER
-         ========================================== -->
+    <!-- Footer -->
     <footer id="Footer" role="contentinfo">
-      <!-- Inspirational Quotes -->
-      <div class="footer-quotes">
-        <h2>Inspiration</h2>
-        <ul role="list">
-          <li role="listitem">
-            <em
-              >"The best way to predict the future is to invent it."
-              <span class="quote-author">- Alan Kay</span></em
-            >
-          </li>
-          <li role="listitem">
-            <em
-              >"Innovation distinguishes between a leader and a follower."
-              <span class="quote-author">- Steve Jobs</span></em
-            >
-          </li>
-          <li role="listitem">
-            <em
-              >"Strive not to be a success, but rather to be of value."
-              <span class="quote-author">- Albert Einstein</span></em
-            >
-          </li>
-        </ul>
-      </div>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Inspirational Quotes -->
+                <div class="footer-section">
+                    <div class="code-line"><span class="prompt">$</span> cat inspiration.txt</div>
+                    <div class="quotes-list">
+                        <div class="quote-item">
+                            <span class="quote-text">"The best way to predict the future is to invent it."</span>
+                            <span class="quote-author">- Alan Kay</span>
+                        </div>
+                        <div class="quote-item">
+                            <span class="quote-text">"Innovation distinguishes between a leader and a follower."</span>
+                            <span class="quote-author">- Steve Jobs</span>
+                        </div>
+                        <div class="quote-item">
+                            <span class="quote-text">"Strive not to be a success, but rather to be of value."</span>
+                            <span class="quote-author">- Albert Einstein</span>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- General Links -->
-      <div class="general">
-        <h2 class="footer-accordion-header">
-          General
-          <span class="footer-accordion-arrow" aria-hidden="true"></span>
-        </h2>
-        <ul>
-          <li><a href="contact.html">Contact Me</a></li>
-          <li><a href="#about">My Life & Journey</a></li>
-          <li>
-            <a
-              href="https://my-blog-lemon-mu-45.vercel.app/"
-              target="_blank"
-              rel="noopener"
-              >My Blog</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://surajsinghnitk.medium.com/"
-              target="_blank"
-              rel="noopener"
-              >Medium</a
-            >
-          </li>
-          <li>BTech | EEE | NITK</li>
-        </ul>
-      </div>
+                <!-- Important Links -->
+                <div class="footer-section">
+                    <div class="code-line"><span class="prompt">$</span> ls important/</div>
+                    <ul class="footer-links">
+                        <li><a href="https://drive.google.com/file/d/1XixBxAh00Y827PAbBQPIwGz7wXCSDcej/view?usp=drive_link" target="_blank"><img src="images/resume-icon.png" alt="Resume" class="footer-icon"> resume.pdf</a></li>
+                        <li><a href="https://github.com/surajsk2003" target="_blank"><img src="images/github.png" alt="GitHub" class="footer-icon"> github.com</a></li>
+                        <li><a href="https://www.linkedin.com/in/suraj-singh-96b45220a/" target="_blank"><img src="images/linkedin.png" alt="LinkedIn" class="footer-icon"> linkedin.com</a></li>
+                        <li><a href="https://www.kaggle.com/surajnitk2021" target="_blank"><img src="images/kaggle-icon.png" alt="Kaggle" class="footer-icon"> kaggle.com</a></li>
+                        <li><a href="https://publixly.vercel.app/" target="_blank"><img src="images/publixly.png" alt="Publixly" class="footer-icon"> publixly</a></li>
+                        <li><a href="https://surajsinghnitk.medium.com/" target="_blank"><img src="images/medium.png" alt="Medium" class="footer-icon"> medium.com</a></li>
+                    </ul>
+                </div>
+            </div>
 
-      <!-- Important Links -->
-      <div class="important-links-certificates">
-        <h2 class="footer-accordion-header">
-          Important Links
-          <span class="footer-accordion-arrow" aria-hidden="true"></span>
-        </h2>
-        <ul>
-          <li>
-            <a
-              href="https://drive.google.com/file/d/1XixBxAh00Y827PAbBQPIwGz7wXCSDcej/view?usp=drive_link"
-              target="_blank"
-              rel="noopener"
-              >My Resume</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://github.com/surajsk2003"
-              target="_blank"
-              rel="noopener"
-              >GitHub</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/suraj-singh-96b45220a/"
-              target="_blank"
-              rel="noopener"
-              >LinkedIn</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.kaggle.com/surajnitk2021"
-              target="_blank"
-              rel="noopener"
-              >Kaggle</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/suraj-singh-96b45220a/"
-              target="_blank"
-              rel="noopener"
-              >View Certifications on LinkedIn</a
-            >
-          </li>
-        </ul>
-      </div>
-
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <p>&copy; 2024 Suraj Kumar. All rights reserved.</p>
-        <p>Designed by Suraj Kumar</p>
-      </div>
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="code-line"><span class="prompt">$</span> echo "© 2024 Suraj Kumar. All rights reserved."</div>
+                <div class="output">© 2024 Suraj Kumar. All rights reserved.</div>
+                <div class="code-line"><span class="prompt">$</span> whoami</div>
+                <div class="output">Designed by Suraj Kumar</div>
+            </div>
+        </div>
     </footer>
+
+    <script src="main.js"></script>
+    </div>
+</body>
+</html>
+
+
 
     <!-- Back to Top Button -->
     <button class="back-to-top-button" id="backToTopBtn" aria-label="Back to top">
