@@ -1123,11 +1123,11 @@ body.light-theme .game-zone-btn:hover {
     overflow: hidden;
 }
 
-.demo-header {
+/* .demo-header {
     padding: 15px 20px;
     background: var(--bg-primary);
     border-bottom: 1px solid var(--border);
-}
+} */
 
 .live-window {
     background: var(--bg-secondary);
@@ -1198,11 +1198,124 @@ body.light-theme .demo-visit-btn:hover {
     box-shadow: 0 6px 20px rgba(49, 130, 206, 0.3);
 }
 
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+    z-index: 1000;
+    transition: width 0.1s ease;
+}
+
+/* Section Fade-in Animations */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animation for child elements */
+.fade-in-section .project-card,
+.fade-in-section .skill-category,
+.fade-in-section .timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-in-section.is-visible .project-card,
+.fade-in-section.is-visible .skill-category,
+.fade-in-section.is-visible .timeline-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-section.is-visible .project-card:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-section.is-visible .project-card:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-section.is-visible .project-card:nth-child(3) { transition-delay: 0.3s; }
+.fade-in-section.is-visible .skill-category:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-section.is-visible .skill-category:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-section.is-visible .skill-category:nth-child(3) { transition-delay: 0.3s; }
+
 @media (max-width: 768px) {
     .demos-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+    
+    .scroll-progress {
+        height: 2px;
+    }
+}
+
+/* Project Card Hover Preview */
+.project-card.has-live-demo {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card .project-content {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card .project-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.project-card .project-preview iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+.project-card.has-live-demo:hover .project-content {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.project-card.has-live-demo:hover .project-preview {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Loading state for preview */
+.project-preview::before {
+    content: 'Loading preview...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+.project-preview.loaded::before {
+    opacity: 0;
+    pointer-events: none;
 }
 
 

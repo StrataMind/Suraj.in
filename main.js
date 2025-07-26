@@ -315,6 +315,39 @@ function initThemeToggle() {
     }
 }
 
+// Scroll progress indicator
+function updateScrollProgress() {
+    const scrollProgress = document.getElementById('scrollProgress');
+    if (scrollProgress) {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+    }
+}
+
+// Section fade-in animations
+function initSectionAnimations() {
+    const sections = document.querySelectorAll('.fade-in-section');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptions);
+    
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+}
+
 // Initialize all effects
 document.addEventListener('DOMContentLoaded', () => {
     hideLoader();
@@ -324,7 +357,45 @@ document.addEventListener('DOMContentLoaded', () => {
     createParticles();
     updateLastUpdated();
     initThemeToggle();
+    initSectionAnimations();
+    initProjectPreviews();
 });
+
+// Project card hover preview functionality
+function initProjectPreviews() {
+    const projectCards = document.querySelectorAll('.project-card.has-live-demo');
+    
+    projectCards.forEach(card => {
+        const iframe = card.querySelector('.project-preview iframe');
+        const preview = card.querySelector('.project-preview');
+        const liveUrl = card.dataset.liveUrl;
+        
+        if (!iframe || !liveUrl || !preview) return;
+        
+        let previewLoaded = false;
+        
+        card.addEventListener('mouseenter', () => {
+            if (!previewLoaded) {
+                iframe.src = liveUrl;
+                previewLoaded = true;
+                
+                // Hide loading text when iframe loads
+                iframe.addEventListener('load', () => {
+                    preview.classList.add('loaded');
+                }, { once: true });
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            // Optional: Keep iframe loaded for better UX
+            // iframe.src = '';
+            // previewLoaded = false;
+        });
+    });
+}
+
+// Add scroll event listener for progress indicator
+window.addEventListener('scroll', updateScrollProgress);
 
 // Console easter egg
 console.log(`
