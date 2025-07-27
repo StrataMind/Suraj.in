@@ -149,7 +149,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Author
 
 **Suraj Kumar**  
-Final-year EE Student @ NITK Surathkal  
+EE Graduate (May 2025) @ NITK Surathkal  
 AI/ML Engineer & Researcher
 
 - **Portfolio:** [surajsk2003.github.io/Suraj.in](https://surajsk2003.github.io/Suraj.in/)

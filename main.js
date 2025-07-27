@@ -22,7 +22,7 @@ function initInteractiveTerminal() {
     if (!terminalInput || !terminalHistory) return;
     
     const commands = {
-        whoami: 'Suraj Kumar – Final-year EE student @ NITK Surathkal.\n\nCurrently diving deep into AI/ML research\nBuilding the future, one algorithm at a time',
+        whoami: 'Suraj Kumar – EE Graduate (May 2025) @ NITK Surathkal.\n\nCurrently diving deep into AI/ML research\nBuilding the future, one algorithm at a time',
         mission: 'To build intelligent systems that solve real problems.\n\n"The best way to predict the future is to invent it." — Alan Kay',
         origin: 'Born in Nalanda — shaped by ideas and ambition.\n\nFrom the land of ancient wisdom to modern innovation\nWhere Nalanda University once stood, dreams still rise',
         focus: 'AI Research | ML Projects | Human Impact\n\nCurrent obsessions:\n  • Computer Vision & Deep Learning\n  • Natural Language Processing\n  • Building products that matter',
