@@ -1318,6 +1318,207 @@ body.light-theme .demo-visit-btn:hover {
     pointer-events: none;
 }
 
+/* Interactive Terminal About Section */
+.interactive-terminal {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.terminal-window {
+    background: #1e1e1e;
+    border-radius: 8px;
+    border: 1px solid #333;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-window .terminal-header {
+    background: #2d2d2d;
+    padding: 12px 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.terminal-window .terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-window .terminal-buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+}
+
+.terminal-window .btn-close { background: #ff5f57; }
+.terminal-window .btn-minimize { background: #ffbd2e; }
+.terminal-window .btn-maximize { background: #28ca42; }
+
+.terminal-window .terminal-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: #888;
+}
+
+.terminal-body {
+    padding: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    color: #00ff00;
+}
+
+.help-text {
+    color: #888;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.terminal-history {
+    margin-bottom: 10px;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    background: #1e1e1e;
+    padding-top: 5px;
+}
+
+.prompt {
+    color: #00ff00;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00ff00;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    flex: 1;
+    caret-color: #00ff00;
+}
+
+.cursor {
+    display: none;
+}
+
+/* Matrix effect */
+.matrix-effect {
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+    animation: matrix-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes matrix-glow {
+    from { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+    to { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; }
+}
+
+body.matrix-mode {
+    background: #000;
+    color: #00ff00;
+}
+
+body.matrix-mode * {
+    color: #00ff00 !important;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+/* Enhanced command outputs */
+.command-output {
+    color: #ccc;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    white-space: pre-wrap;
+    line-height: 1.4;
+}
+
+/* Fun command styling */
+.command-output:has-text("Easter Egg") {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow 3s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(180deg); }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.command-line {
+    margin-bottom: 5px;
+}
+
+.command-output {
+    color: #ccc;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    white-space: pre-wrap;
+}
+
+.error-output {
+    color: #ff6b6b;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+}
+
+.about-image .profile-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .interactive-terminal {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .terminal-body {
+        font-size: 12px;
+        padding: 15px;
+        min-height: 250px;
+    }
+    
+    .about-image .profile-img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
 
 
 /* Mobile Responsive */
