@@ -155,7 +155,7 @@ AI/ML Engineer & Researcher
 - **Portfolio:** [surajsk2003.github.io/Suraj.in](https://surajsk2003.github.io/Suraj.in/)
 - **LinkedIn:** [linkedin.com/in/suraj-singh-96b45220a](https://www.linkedin.com/in/suraj-singh-96b45220a/)
 - **GitHub:** [github.com/surajsk2003](https://github.com/surajsk2003)
-- **Email:** suraj.kumar@example.com
+- **Twitter:** [x.com/SurajSinghNITK](https://x.com/SurajSinghNITK)
 
 ## Acknowledgments
 
