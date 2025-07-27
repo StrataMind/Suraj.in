@@ -209,10 +209,10 @@ function initInteractiveTerminal() {
         terminalInput.focus();
     });
     
-    // Initial focus
-    setTimeout(() => {
+    // Focus input when terminal is clicked
+    document.querySelector('.terminal-body').addEventListener('click', () => {
         terminalInput.focus();
-    }, 500);
+    });
 }
 
 // Legacy terminal typing animation (keep for other sections)
