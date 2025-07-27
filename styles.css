@@ -1462,6 +1462,49 @@ body.matrix-mode * {
     50% { filter: hue-rotate(180deg); }
 }
 
+/* Form Status Terminal Styling */
+.form-status {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    border: 1px solid;
+    background: var(--bg-secondary);
+}
+
+.form-status.sending {
+    color: var(--accent-green);
+    border-color: var(--accent-green);
+    background: rgba(57, 211, 83, 0.1);
+}
+
+.form-status.success {
+    color: var(--accent-green);
+    border-color: var(--accent-green);
+    background: rgba(57, 211, 83, 0.1);
+}
+
+.form-status.error {
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.form-status .prompt {
+    color: var(--accent-green);
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.form-status .output {
+    color: var(--text-secondary);
+    margin-left: 20px;
+    display: block;
+    margin-top: 5px;
+}
+
 @keyframes blink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }

@@ -549,11 +549,49 @@ function initSectionAnimations() {
     });
 }
 
+// Contact form handling
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('form-status');
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        status.style.display = 'block';
+        status.innerHTML = '<span class="prompt">$</span> sending_message.sh --to=suraj@portfolio.dev';
+        status.className = 'form-status sending';
+        
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+            
+            if (response.ok) {
+                status.innerHTML = '<span class="prompt">$</span> message.status: SUCCESS ✓<br><span class="output">Email delivered to inbox. Response expected within 24h.</span>';
+                status.className = 'form-status success';
+                form.reset();
+            } else {
+                status.innerHTML = '<span class="prompt">$</span> message.status: ERROR ✗<br><span class="output">Failed to send. Please retry or contact directly.</span>';
+                status.className = 'form-status error';
+            }
+        } catch (error) {
+            status.innerHTML = '<span class="prompt">$</span> network.status: CONNECTION_FAILED<br><span class="output">Check your connection and try again.</span>';
+            status.className = 'form-status error';
+        }
+    });
+}
+
 // Initialize all effects
 document.addEventListener('DOMContentLoaded', () => {
     hideLoader();
     typeWriter();
     initInteractiveTerminal();
+    initContactForm();
     createMatrixRain();
     addGlitchEffect();
     createParticles();
