@@ -159,10 +159,10 @@ AI/ML Engineer && Researcher
 
 ## Acknowledgments
 
-- Terminal design inspired by modern developer tools
-- Matrix effect concept from classic terminal aesthetics
-- Typography choices influenced by popular code editors
-- Interactive elements inspired by modern web experiences
+- Terminal design inspired by modern developer tools.
+- Matrix effect concept from classic terminal aesthetics.
+- Typography choices influenced by popular code editors.
+- Interactive elements inspired by modern web experiences..
 
 ---
 
