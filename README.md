@@ -150,7 +150,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Suraj Kumar**  
 EE Graduate (May 2025) @ NITK Surathkal  
-AI/ML Engineer & Researcher
+AI/ML Engineer && Researcher
 
 - **Portfolio:** [surajsk2003.github.io/Suraj.in](https://surajsk2003.github.io/Suraj.in/)
 - **LinkedIn:** [linkedin.com/in/suraj-singh-96b45220a](https://www.linkedin.com/in/suraj-singh-96b45220a/)
