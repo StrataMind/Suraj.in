@@ -49,7 +49,7 @@ cd portfolio/Suraj.in
 open index.html
 ```
 
-### Local Development
+### Local Development..
 ```bash
 # Using Python (if available)
 python -m http.server 8000
